@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WildID at WILDHACK 2K26: Building AI for Wildlife Conservation in 24 Hours</title>
+  <meta name="description" content="The complete engineering and field story of WildID: a simulation-driven AI system for individual wildlife re-identification built at WILDHACK 2K26 in collaboration with Tadoba-Andhari Tiger Reserve.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23142820'/><path d='M8 6 C12 12, 6 18, 12 26 M16 4 C20 12, 14 20, 18 28 M24 8 C22 14, 26 20, 22 26' stroke='%23D5A54A' stroke-width='2.5' fill='none' stroke-linecap='round'/></svg>">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/blog.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body class="blog-body">
+
+  <!-- Top Reading Progress Indicator -->
+  <div id="readingProgressBar" class="reading-progress-bar" aria-hidden="true"></div>
+
+  <div class="app-container">
+
+    <!-- Top Telemetry & Navigation Bar -->
+    <header class="telemetry-bar" role="banner">
+      <div class="telemetry-left">
+        <a href="index.html" class="nav-back-link" title="Return to The Identity Atlas Image Gallery">
+          ← <strong>THE IDENTITY ATLAS</strong> [IMAGE GALLERY]
+        </a>
+        <span class="telemetry-tag">// RESEARCH DISPATCH</span>
+        <span>WILDHACK 2K26 PROCEEDINGS</span>
+      </div>
+      <div class="telemetry-right">
+        <span id="blogSyncStatus" class="sync-status-indicator">
+          <span class="status-pulse-green"></span> Dynamically Synced with <code>blog.txt</code>
+        </span>
+        <button id="viewRawBtn" class="util-btn" title="View raw unformatted blog.txt source">
+          <span>📄</span> Raw Source
+        </button>
+        <button id="themeToggleBtn" class="util-btn" title="Toggle Archival Paper Publication theme">
+          <span id="themeIcon">📜</span> Archival Paper Mode
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Editorial Article Layout -->
+    <div class="blog-layout-grid">
+
+      <!-- Left Sticky Sidebar: Table of Contents & Article Metadata -->
+      <aside class="blog-sidebar">
+        <div class="sidebar-sticky-wrapper">
+          
+          <div class="sidebar-meta-card">
+            <div class="meta-card-label">ARCHIVAL RESEARCH DOSSIER</div>
+            <h2 class="meta-card-title">WildID Technical Dispatch</h2>
+            <div class="meta-card-item">
+              <span class="meta-k">Author</span>
+              <span class="meta-v">Hanshal Bobate</span>
+            </div>
+            <div class="meta-card-item">
+              <span class="meta-k">Team</span>
+              <span class="meta-v">HackOPs (4 Members)</span>
+            </div>
+            <div class="meta-card-item">
+              <span class="meta-k">Event</span>
+              <span class="meta-v">WILDHACK 2K26 (16–17 Oct)</span>
+            </div>
+            <div class="meta-card-item">
+              <span class="meta-k">Reserve Partner</span>
+              <span class="meta-v">Tadoba-Andhari (TATR)</span>
+            </div>
+            <div class="meta-card-item">
+              <span class="meta-k">Recognition</span>
+              <span class="meta-v" style="color: var(--color-ochre);">Special Mention</span>
+            </div>
+            <div class="meta-card-item">
+              <span class="meta-k">Estimated Read</span>
+              <span class="meta-v">18 Minutes</span>
+            </div>
+          </div>
+
+          <!-- Interactive Table of Contents -->
+          <nav class="blog-toc-card" aria-label="Article Table of Contents">
+            <div class="toc-header">
+              <span>TABLE OF CONTENTS</span>
+              <span class="toc-count">18 SECTIONS</span>
+            </div>
+            <ul id="tocList" class="toc-list">
+              <!-- Dynamically populated / updated by blog.js -->
+            </ul>
+          </nav>
+
+          <a href="index.html" class="btn-primary-ochre" style="display: block; text-align: center; text-decoration: none;">
+            Explore The 130 Specimen Plates ↗
+          </a>
+
+        </div>
+      </aside>
+
+      <!-- Right Column: Full Dynamic Article Body -->
+      <main class="blog-content-area" role="main">
+        <article id="blogArticleContent" class="blog-article-body">
+<h1 class="blog-main-title">WildID at WILDHACK 2K26: Building AI for Wildlife Conservation in 24 Hours</h1>
+<div class="blog-byline-banner">
+              <div class="byline-avatar">HB</div>
+              <div class="byline-details">
+                <span class="byline-author">Hanshal Bobate</span>
+                <span class="byline-meta">Team HackOPs · October 16–17, 2026 · WILDHACK 2K26</span>
+              </div>
+              <div class="byline-tag">SPECIAL MENTION AWARD</div>
+            </div>
+<p class="blog-p">What happens when a wildlife photographer&#x27;s curiosity meets computer science, a 24-hour hackathon, and the challenge of identifying individual wild animals? This is the story of WildID: our attempt to build a simulation-driven AI system for wildlife re-identification, the engineering behind it, the feedback that challenged our approach, and why a Special Mention was only the beginning.</p>
+<h2 id="section-1" class="blog-section-title"><span class="section-num">01</span> 1. Where Technology Meets the Wild</h2>
+<p class="blog-p">Some projects begin with a problem statement. Others begin with a personal interest that refuses to remain just a hobby.</p>
+<p class="blog-p">For me, WILDHACK 2K26 was where two of my biggest interests — computer science and wildlife — finally came together.</p>
+<p class="blog-p">I have always been interested in computer science, artificial intelligence, and the possibilities that emerge when technology is applied to real-world problems. At the same time, I am a wildlife photography enthusiast. Spending time observing wildlife, learning about animal behaviour, and capturing animals through a camera gives you a different perspective on the natural world.</p>
+<p class="blog-p">These interests had existed alongside each other for a long time. I had been planning to work on wildlife re-identification for quite some time, but somehow, I had never managed to bring the idea to life.</p>
+<p class="blog-p">I wanted to build something that could eventually reach forest authorities, something that went beyond being another academic project or a demonstration designed only to look impressive.</p>
+<p class="blog-p">Then I came across WILDHACK 2K26 through social media and LinkedIn.</p>
+<p class="blog-p">The opportunity immediately caught my attention. Here was a hackathon centred around wildlife, conservation, and technology — a chance to work on a problem that connected my technical interests with something I genuinely cared about.</p>
+<p class="blog-p">And honestly, the thought that crossed my mind was simple:</p>
+<p class="blog-p">If not me, then who?</p>
+<p class="blog-p">It was time to stop postponing the idea and start building.</p>
+<h2 id="section-2" class="blog-section-title"><span class="section-num">02</span> 2. What Was WILDHACK 2K26?</h2>
+<p class="blog-p">WILDHACK 2K26 was a 24-hour hackathon and ideathon held on 16–17 October 2026 at Ballarpur Institute of Technology, Bamni, Ballarpur, Chandrapur, organised in collaboration with the Tadoba-Andhari Tiger Reserve (TATR).</p>
+<p class="blog-p">The event brought together teams working on technology-driven solutions to challenges associated with wildlife and conservation.</p>
+<p class="blog-p">The competition began with a first round that included teams from across India. The number of participating teams in that round was confidential. From the shortlisted entries, the top 30 teams were selected for the final offline round.</p>
+<p class="blog-p">Our team, HackOPs, was among those selected.</p>
+<p class="blog-p">The final round meant moving beyond an idea or a presentation and demonstrating what we could actually build. We had 24 hours for development, followed by a presentation slot of approximately 30 minutes.</p>
+<p class="blog-p">For me, this was particularly exciting because it was my first-ever offline hackathon.</p>
+<p class="blog-p">I was looking forward to networking, meeting people with different technical backgrounds, exchanging ideas, and learning how other teams approached their problems. I also wanted to understand how emerging technologies, especially AI, could be implemented in national forests and wildlife reserves.</p>
+<p class="blog-p">But above everything else, I wanted to explore whether we could build something that might eventually contribute to Indian wildlife conservation.</p>
+<p class="blog-p">That was the motivation behind our participation, and it became the foundation of the project we called WildID.</p>
+<h2 id="section-3" class="blog-section-title"><span class="section-num">03</span> 3. Meet Team HackOPs</h2>
+<p class="blog-p">HackOPs consisted of four members:</p>
+<ul class="blog-bullet-list">
+<li>Hanshal Bobate</li>
+<li>Vaishnav Balpande</li>
+<li>Lokesh Parate</li>
+<li>Soham Bagmare</li>
+</ul>
+<p class="blog-p">What brought us together was a shared interest in technology and a common desire to contribute something meaningful towards Indian wildlife.</p>
+<p class="blog-p">We weren&#x27;t participating simply to add another project to our portfolios. We wanted to explore how the skills we were developing in computer science and AI could be applied to a real-world conservation challenge.</p>
+<p class="blog-p">A hackathon is an unusual environment in which to pursue that ambition. You have limited time, limited opportunities to test assumptions, and an enormous number of decisions to make before the deadline arrives.</p>
+<p class="blog-p">You cannot build everything you imagine. You have to decide which parts of the problem matter most, which technical approaches are feasible, and which features can be implemented without compromising the entire solution.</p>
+<p class="blog-p">That combination of ambition and constraint would define our experience at WILDHACK.</p>
+<p class="blog-p">Our objective was not merely to propose an interesting use of AI. We wanted to demonstrate a functioning system, explain how it could be useful to forest officials, and show how the underlying approach might eventually be adapted to different wildlife environments.</p>
+<p class="blog-p">The project needed to be ambitious enough to address a meaningful problem, but practical enough to demonstrate within 24 hours.</p>
+<p class="blog-p">That was the challenge we accepted.</p>
+<h2 id="section-4" class="blog-section-title"><span class="section-num">04</span> 4. The Problem Statement: Re-Identifying Individual Wild Animals</h2>
+<p class="blog-p">The official problem statement was:</p>
+<blockquote class="blog-blockquote"><p>“Re-Identifying Individual Wild Animals — Identify individual animals, even when the viewing angle, lighting, distance, or image quality changes.”</p></blockquote>
+<p class="blog-p">At first glance, the problem sounds relatively straightforward. Detect an animal in an image, extract its distinctive features, and compare those features with previously observed animals.</p>
+<p class="blog-p">But the real challenge lies in the details.</p>
+<p class="blog-p">Imagine a forest official reviewing hundreds or thousands of photographs collected by camera traps across a reserve. A tiger appears in one photograph during the morning. Several days later, another photograph captures what might be the same tiger from a completely different angle, under different lighting conditions, with vegetation covering part of its body.</p>
+<p class="blog-p">Is it the same individual?</p>
+<p class="blog-p">If it is, where was it previously observed? Has its movement pattern changed? Does it appear in areas where it was not previously recorded? Can these observations help researchers understand its territory or identify situations that require further investigation?</p>
+<p class="blog-p">Now imagine performing this process across an entire forest, with multiple animals, thousands of images, and observations collected over weeks or months.</p>
+<p class="blog-p">This is where individual wildlife re-identification becomes valuable.</p>
+<h3 class="blog-sub-title">Why is identifying individual animals difficult?</h3>
+<p class="blog-p">Unlike humans, many wild animals do not have obvious, easily recognisable identity markers that remain visible in every photograph.</p>
+<p class="blog-p">Tigers have distinctive stripe patterns, but recognising those patterns consistently is not as simple as comparing two photographs side by side.</p>
+<p class="blog-p">Several challenges make the task difficult.</p>
+<p class="blog-p"><strong>1. Changes in viewing angle</strong></p>
+<p class="blog-p">A tiger photographed from the front looks very different from the same tiger photographed from its side or rear. The visible stripe patterns change depending on the angle, and some body regions may disappear entirely from view.</p>
+<p class="blog-p"><strong>2. Changes in posture</strong></p>
+<p class="blog-p">An animal may be walking, sitting, running, lying down, or turning its body. Its skin and fur can fold, stretch, or become partially hidden depending on the pose.</p>
+<p class="blog-p"><strong>3. Lighting and image quality</strong></p>
+<p class="blog-p">Photographs captured during daylight may have very different visual characteristics from photographs captured at night using infrared illumination. Motion blur, low resolution, shadows, and poor camera positioning can further complicate identification.</p>
+<p class="blog-p"><strong>4. Occlusion</strong></p>
+<p class="blog-p">An animal may be partially hidden behind trees, bushes, grass, or other animals. Sometimes, only a small portion of its body is visible.</p>
+<p class="blog-p"><strong>5. Similar-looking individuals</strong></p>
+<p class="blog-p">Even when animals belong to the same species, distinguishing between individuals requires finding sufficiently distinctive features. A system that recognises the species correctly might still fail to identify the individual correctly.</p>
+<p class="blog-p"><strong>6. The scale of manual analysis</strong></p>
+<p class="blog-p">Manually inspecting every photograph and maintaining individual sighting records can be slow and labour-intensive. As the number of cameras and observations increases, the workload grows.</p>
+<p class="blog-p">The central problem was therefore not simply animal detection.</p>
+<p class="blog-p"><strong>We wanted to recognise individual animals across changing visual conditions and make those identities useful for wildlife monitoring.</strong></p>
+<p class="blog-p">That distinction shaped the entire direction of WildID.</p>
+<h2 id="section-5" class="blog-section-title"><span class="section-num">05</span> 5. Why We Chose This Problem</h2>
+<p class="blog-p">I had been planning to work on wildlife re-identification long before the hackathon.</p>
+<p class="blog-p">The idea appealed to me because it connected computer vision with a field I genuinely cared about. I wanted to explore whether AI could help turn wildlife photographs into structured information that forest authorities and researchers could use.</p>
+<p class="blog-p">WILDHACK provided the opportunity to pursue that idea within a focused development environment.</p>
+<p class="blog-p">We decided to concentrate on tigers and other big cats. The choice was partly driven by the scope of the hackathon and the practical need to keep the implementation manageable within 24 hours.</p>
+<p class="blog-p">Focusing on a specific animal group allowed us to concentrate our development efforts on the characteristics most relevant to the task, particularly body segmentation, pose, and fur markings.</p>
+<p class="blog-p">It also gave us a concrete starting point for exploring the broader problem of individual wildlife identification.</p>
+<p class="blog-p">The ambition, however, was not limited to building a tiger classifier.</p>
+<p class="blog-p">A classifier might tell us that an image contains a tiger. WildID was intended to go further by estimating which individual tiger was present and connecting that identification to other observations.</p>
+<p class="blog-p">Our broader vision was to create a system that could eventually support wildlife monitoring, help organise camera-trap records, and provide useful analytical information to forest officials.</p>
+<p class="blog-p">The problem was technically challenging, personally meaningful, and potentially adaptable to other wildlife species.</p>
+<p class="blog-p">That combination made it the right problem for us.</p>
+<h2 id="section-6" class="blog-section-title"><span class="section-num">06</span> 6. The Core Idea: What If We Could Generate Our Own Wildlife Data?</h2>
+<p class="blog-p">One of the biggest challenges in developing computer vision systems is obtaining the right data.</p>
+<p class="blog-p">A model can have a sophisticated architecture and still perform poorly if its training data does not represent the situations it encounters in practice.</p>
+<p class="blog-p">For wildlife re-identification, the data challenge becomes particularly interesting. We need images of individual animals across different poses, viewing angles, lighting conditions, distances, and degrees of occlusion. We also need reliable information about which photographs represent the same individual and which represent different animals.</p>
+<p class="blog-p">Collecting, sorting, and labelling such a dataset manually can consume considerable time.</p>
+<p class="blog-p">We began thinking about an alternative.</p>
+<p class="blog-p"><strong>What if we could automate data collection through simulated wildlife environments?</strong></p>
+<p class="blog-p">Instead of relying entirely on photographs collected in the wild, we could create virtual environments, control different visual conditions, and generate images programmatically.</p>
+<p class="blog-p">This became the central idea behind WildID&#x27;s simulation-driven approach.</p>
+<p class="blog-p">The objective was to make data generation more repeatable and controllable. By generating scenes locally, we could experiment with different conditions and organise the resulting images into a dataset suitable for developing and testing our models.</p>
+<p class="blog-p">Simulation also gave us the possibility of controlling variables that would be difficult to control when photographing real animals in the wild.</p>
+<p class="blog-p">For example, we could generate multiple views of a simulated animal, change its pose, vary the surrounding environment, and produce different scenes without needing to wait for a camera trap to capture a particular event.</p>
+<p class="blog-p">However, simulation comes with an important limitation: a virtual forest is not the same as a real forest.</p>
+<p class="blog-p">Synthetic images can help us develop a system and investigate how it behaves under controlled conditions, but they may not fully reproduce the complexity of real photographs. Fur appearance, camera noise, infrared imaging, environmental occlusion, and other visual characteristics can differ between simulated and real environments.</p>
+<p class="blog-p">We would eventually need to evaluate how well the models transferred from synthetic data to real wildlife imagery.</p>
+<p class="blog-p">At WILDHACK, we chose to pursue the simulation-first approach because it offered a practical way to build a substantial dataset and demonstrate our proposed pipeline within the available time.</p>
+<h2 id="section-7" class="blog-section-title"><span class="section-num">07</span> 7. Building the Forest: Blender, Python, and GroveScape</h2>
+<p class="blog-p">Our simulation environment was built using Blender and automated through its Python API, <code class="inline-code">bpy</code>.</p>
+<p class="blog-p">We also used GroveScape for forest generation.</p>
+<p class="blog-p">Rather than manually creating every scene, we used automation to construct the virtual environment and generate wildlife images locally.</p>
+<p class="blog-p">The broader workflow involved creating the forest environment, placing simulated animals within it, and generating images that could be used in the computer vision pipeline.</p>
+<p class="blog-p">We generated approximately <strong>10,000 images locally</strong> during development.</p>
+<p class="blog-p">This was an important part of the project because it allowed us to work with a sizeable collection of synthetic images without depending entirely on manual image collection.</p>
+<p class="blog-p">It also gave us a way to experiment with controlled visual variations and organise the generated images for model development.</p>
+<p class="blog-p">The simulation was not intended to be the final product. It was a means of addressing the data bottleneck and supporting the development of the re-identification system.</p>
+<p class="blog-p">The long-term question was whether this approach could be extended into a repeatable data-generation pipeline that could be adapted to different animal species and forest environments.</p>
+<p class="blog-p">That was one of the aspects of WildID we hoped would make the project scalable.</p>
+<h3 class="blog-sub-title">Why not simply use existing datasets?</h3>
+<p class="blog-p">Existing wildlife photographs and datasets remain important, especially when evaluating a system intended for real-world use.</p>
+<p class="blog-p">However, our approach was built around the idea of supplementing available data with controlled synthetic data generation.</p>
+<p class="blog-p">Simulation offered a way to generate images under selected conditions and experiment with different scenarios systematically.</p>
+<p class="blog-p">It also gave us greater control over the data-generation process than relying entirely on manually collected photographs.</p>
+<p class="blog-p">The trade-off was that synthetic data could not, by itself, establish real-world reliability. We would still need suitable real-image datasets for training, validation, and testing.</p>
+<p class="blog-p">That trade-off eventually became one of the most important points in our discussion with the judges.</p>
+<h2 id="section-8" class="blog-section-title"><span class="section-num">08</span> 8. From a Photograph to an Identity</h2>
+<p class="blog-p">WildID was designed as a collection of interconnected components rather than a single model expected to solve every part of the problem.</p>
+<p class="blog-p">The overall approach combined image processing, tiger segmentation, pose estimation, stripe-pattern extraction, and pattern matching.</p>
+<p class="blog-p">Each component addressed a different part of the identification problem.</p>
+<h3 class="blog-sub-title">Step 1: Image processing and tiger segmentation</h3>
+<p class="blog-p">The first challenge was isolating the animal from the surrounding environment.</p>
+<p class="blog-p">A photograph captured by a camera trap may contain trees, grass, branches, shadows, rocks, and other background elements. If we want to analyse a tiger&#x27;s distinctive fur patterns, we need to separate the animal from those surroundings as accurately as possible.</p>
+<p class="blog-p">We developed a segmentation and masking model to isolate the tiger within an image.</p>
+<p class="blog-p">The resulting mask helped identify the pixels belonging to the animal, allowing subsequent processing to focus on the relevant visual information rather than the entire photograph.</p>
+<p class="blog-p">This was important because the surrounding forest could vary substantially between observations, while the animal&#x27;s identity features were the information we wanted to compare.</p>
+<p class="blog-p">Our team reported segmentation accuracy above 95% in its prototype benchmarks. That figure reflected our development-stage evaluation and should not be interpreted as a guarantee of equivalent performance across real-world camera-trap conditions.</p>
+<h3 class="blog-sub-title">Step 2: Separating fur patterns from the rest of the image</h3>
+<p class="blog-p">Once the tiger was isolated, we needed to extract useful identity information.</p>
+<p class="blog-p">For tigers, stripe patterns are among the most important visual characteristics for distinguishing individuals.</p>
+<p class="blog-p">However, a photograph contains much more than stripes. It also contains fur colour, illumination changes, shadows, texture, and other visual information that can interfere with pattern extraction.</p>
+<p class="blog-p">We used high-pass filtering to help separate stripe details from relatively plain fur regions.</p>
+<p class="blog-p">The intention was to emphasise local visual patterns while reducing the influence of broader, smoother variations in appearance.</p>
+<p class="blog-p">This gave us a way to focus subsequent processing on the distinctive markings that could help differentiate one individual from another.</p>
+<p class="blog-p">The output of this stage was not simply an entire photograph of the tiger. It was a representation intended to preserve the relevant pattern information for matching.</p>
+<h3 class="blog-sub-title">Step 3: Understanding the animal&#x27;s pose</h3>
+<p class="blog-p">One of the biggest problems in comparing two tiger photographs is that the animal may be positioned differently in each image.</p>
+<p class="blog-p">Suppose a camera trap captures the right side of a tiger in one image and the left side in another. Even if both photographs show the same individual, the visible markings may be entirely different.</p>
+<p class="blog-p">Comparing the images directly could therefore produce an unreliable result.</p>
+<p class="blog-p">To address this challenge, we incorporated a tiger pose-estimation component.</p>
+<p class="blog-p">The pose estimator estimated the animal&#x27;s body pose and helped determine which parts of its body were visible.</p>
+<p class="blog-p">This was important for interpreting the available pattern information. A system should not treat a marking that is absent from an image as proof that the animal is a different individual if the relevant body region was never visible in the first place.</p>
+<p class="blog-p">Our reported prototype pose-estimation accuracy was above 70%.</p>
+<p class="blog-p">The broader purpose of this component was to help the system understand the relationship between the visible body regions and the patterns extracted from them.</p>
+<h3 class="blog-sub-title">Step 4: Mapping patterns to a common representation</h3>
+<p class="blog-p">After segmentation, pattern extraction, and pose estimation, we needed a representation that could be compared efficiently.</p>
+<p class="blog-p">Our approach involved mapping the extracted pattern information onto a flat tiger-fur template, which we described as a fur-carpet representation.</p>
+<p class="blog-p">The motivation was to create a more consistent representation of the available markings instead of comparing raw photographs alone.</p>
+<p class="blog-p">The pose information helped indicate which parts of the animal were visible, while the extracted markings provided the distinctive visual information used for comparison.</p>
+<p class="blog-p">The resulting representations could then be stored as vectors for efficient lookup.</p>
+<p class="blog-p">This was intended to make it possible to compare a new observation against previously stored representations without repeatedly processing every original photograph from scratch.</p>
+<p class="blog-p">The important idea was to separate the process of extracting identity-related information from the process of searching for matching identities.</p>
+<h3 class="blog-sub-title">Step 5: Pattern matching and identity retrieval</h3>
+<p class="blog-p">The final stage was matching the extracted representation against previously stored representations.</p>
+<p class="blog-p">Given a new photograph, the system needed to determine which existing individual, if any, was the most plausible match.</p>
+<p class="blog-p">This is more demanding than recognising that two images contain tigers. The system must distinguish between the same individual photographed under different conditions and different individuals whose appearances may be similar.</p>
+<p class="blog-p">Our team reported pattern-matching accuracy above 70% in its prototype benchmarks.</p>
+<p class="blog-p">We also identified this stage as one of the major weaknesses of the system at submission time. Improving the accuracy and reliability of the final matching component was one of our most important next steps.</p>
+<p class="blog-p">The pipeline was therefore a combination of several connected tasks:</p>
+<p class="blog-p">1. Isolate the tiger from the background.</p>
+<p class="blog-p">2. Extract the relevant stripe-pattern information.</p>
+<p class="blog-p">3. Estimate pose and determine which body regions are visible.</p>
+<p class="blog-p">4. Map the information to a common representation.</p>
+<p class="blog-p">5. Compare the representation against stored identities.</p>
+<p class="blog-p">Each stage contributed to the overall identification process.</p>
+<p class="blog-p">The challenge was ensuring that the combined system performed reliably, not merely that each individual component worked in isolation.</p>
+<h2 id="section-9" class="blog-section-title"><span class="section-num">09</span> 9. The Results: What We Had Built in 24 Hours</h2>
+<p class="blog-p">By the end of the hackathon, we had developed more than an isolated computer vision model.</p>
+<p class="blog-p">Our prototype included the image-processing pipeline, tiger segmentation, pose estimation, stripe-pattern detection, pattern matching, and a visual dashboard integrated with AI.</p>
+<p class="blog-p">Our reported prototype benchmark results were:</p>
+<div class="table-container"><table class="blog-data-table">
+<thead><tr>
+<th>Component</th>
+<th>Reported result</th>
+</tr></thead><tbody>
+<tr>
+<td>Tiger segmentation</td>
+<td>Above 95%</td>
+</tr>
+<tr>
+<td>Tiger pose estimation</td>
+<td>Above 70%</td>
+</tr>
+<tr>
+<td>Stripe-pattern detection</td>
+<td>Above 80%</td>
+</tr>
+<tr>
+<td>Pattern matching</td>
+<td>Above 70%</td>
+</tr>
+</tbody></table></div>
+<p class="blog-p">These figures came from our team&#x27;s benchmark tests using real images obtained from sources including Google Images. We also generated approximately 10,000 synthetic images locally for the simulation-driven development workflow.</p>
+<p class="blog-p">It is important to distinguish between those two things: the synthetic images supported our development approach, while the reported benchmark figures came from tests involving real images.</p>
+<p class="blog-p">The figures describe our prototype results. Without a documented evaluation protocol, test-set size, precise metric definitions, and an independently reproducible benchmark, they should not be treated as established real-world performance guarantees.</p>
+<p class="blog-p">Nevertheless, the work represented a substantial amount of integration within a 24-hour development window.</p>
+<p class="blog-p">We had a functioning pipeline and a dashboard through which we could demonstrate the system.</p>
+<p class="blog-p">The dashboard was working live, and the workflow did not depend on hardcoded entries. We could demonstrate the actual system rather than presenting only prepared screenshots or a static mock-up.</p>
+<p class="blog-p">The system was not cloud-deployed, but cloud deployment was not necessary for us to demonstrate the local prototype and its intended workflow.</p>
+<p class="blog-p">That distinction mattered to us. We wanted to show something that worked, explain its limitations, and demonstrate how the components fit together.</p>
+<h2 id="section-10" class="blog-section-title"><span class="section-num">10</span> 10. Beyond Re-Identification: A Dashboard for Forest Officials</h2>
+<p class="blog-p">We did not want WildID to stop at identifying individual animals.</p>
+<p class="blog-p">Our broader vision was to make the information extracted from wildlife observations useful to the people responsible for monitoring and protecting wildlife.</p>
+<p class="blog-p">A re-identification system can potentially help organise observations of individual animals over time. When combined with suitable historical records and environmental information, those observations may support additional analysis.</p>
+<p class="blog-p">This led us to build a visual dashboard integrating AI-assisted analysis and a chatbot designed around forest officials&#x27; queries.</p>
+<h3 class="blog-sub-title">A locally persistent AI assistant</h3>
+<p class="blog-p">The dashboard included a chatbot with persistent local memory, fine-tuning, and a retrieval-augmented generation (RAG) system.</p>
+<p class="blog-p">The purpose was to provide a conversational interface through which officials could ask questions about the information available to the system.</p>
+<p class="blog-p">We also designed the assistant to respond according to the user&#x27;s authority level.</p>
+<p class="blog-p">The underlying idea was that different users may have different responsibilities and information requirements. A forest officer, a reserve manager, and a researcher may need different views of the same underlying information.</p>
+<p class="blog-p">Rather than making the interface a generic chatbot disconnected from the project, we wanted it to serve as an access point for the system&#x27;s wildlife-related information and analytical capabilities.</p>
+<p class="blog-p">The chatbot and dashboard were part of our functioning prototype. Their usefulness in an operational environment would still depend on the quality of the underlying data, appropriate access controls, and careful validation of the answers and analyses they produced.</p>
+<h3 class="blog-sub-title">Analysing individual movement patterns</h3>
+<p class="blog-p">We also developed functionality intended to analyse individual tigers&#x27; roaming patterns and approximate territory use.</p>
+<p class="blog-p">The goal was to use observations associated with individual identities to help reveal patterns across time.</p>
+<p class="blog-p">For example, a sequence of sightings may help researchers understand which areas an animal has been observed in and how its recorded distribution changes.</p>
+<p class="blog-p">This information could potentially help forest officials identify areas requiring further investigation or understand changes in observed activity.</p>
+<p class="blog-p">However, camera-trap observations are incomplete by nature. An animal not appearing in a photograph does not necessarily mean it has left an area. Camera placement, detection opportunities, and gaps in observation can all affect the available evidence.</p>
+<p class="blog-p">For that reason, we viewed these analyses as tools for supporting investigation rather than definitive descriptions of an animal&#x27;s location or territory.</p>
+<h3 class="blog-sub-title">Exploring possible territory changes</h3>
+<p class="blog-p">Our broader analytical system also included functionality intended to examine possible changes in an individual&#x27;s territory and flag situations potentially associated with factors such as age, disease, or pregnancy in female tigers.</p>
+<p class="blog-p">The motivation was to explore whether changes in observed movement patterns could help identify cases requiring closer attention.</p>
+<p class="blog-p">For instance, a change in the area where an animal is recorded could have several explanations. It might reflect a change in behaviour, a change in observation patterns, environmental conditions, or another factor requiring further investigation.</p>
+<p class="blog-p">The system was intended to help surface such patterns for review, not to establish a medical condition from movement data alone.</p>
+<p class="blog-p">Reliable conclusions would require appropriate historical observations, relevant supporting information, and validation by wildlife experts.</p>
+<h3 class="blog-sub-title">Connecting wildlife observations with environmental conditions</h3>
+<p class="blog-p">We also explored the relationship between environmental conditions and potential tiger movement.</p>
+<p class="blog-p">Water availability, weather, vegetation, prey distribution, and other ecological factors can influence how wildlife uses its habitat.</p>
+<p class="blog-p">In our proposed use case, changes in water availability could help identify areas where movement patterns might shift.</p>
+<p class="blog-p">For example, if water becomes scarce in one area, the availability of more reliable water sources elsewhere could become relevant to understanding observed or potential movement patterns. We considered the Andheri River as an example of a relatively persistent water source in the regional context of our project.</p>
+<p class="blog-p">The goal was to explore how wildlife observations and environmental information could be brought together to provide a more useful picture of conditions across a forest.</p>
+<p class="blog-p">These analyses were part of our broader implementation and intended functionality. Their predictive reliability would depend on the quality, completeness, and validation of the historical and environmental data used.</p>
+<p class="blog-p">The larger idea was to connect identity, observation history, and environmental context within one system.</p>
+<p class="blog-p"><strong>We wanted WildID to help answer not only “Which animal is this?” but also “What can its observations tell us, and what might forest officials need to investigate next?”</strong></p>
+<h2 id="section-11" class="blog-section-title"><span class="section-num">11</span> 11. The Importance of Scalability</h2>
+<p class="blog-p">One of the most encouraging aspects of our evaluation was the judges&#x27; response to the architecture and implementation.</p>
+<p class="blog-p">They appreciated that WildID was designed to be scalable and could potentially be set up in other forests and adapted to other animal types.</p>
+<p class="blog-p">This mattered because we did not want the project to be limited to one demonstration environment or one species.</p>
+<p class="blog-p">The simulation-driven data-generation approach, the modular computer vision pipeline, the identity-matching workflow, and the dashboard were all intended to support a broader system.</p>
+<p class="blog-p">In principle, the same general approach to individual re-identification could be adapted to other species, although the visual characteristics, identification methods, datasets, and model requirements would differ.</p>
+<p class="blog-p">For example, a system designed for a striped animal cannot simply be assumed to work equally well for an animal with spots, unique facial markings, or other identifying characteristics. The relevant features and models would need to be adapted and validated for the target species.</p>
+<p class="blog-p">Likewise, adapting the system to another forest would involve more than deploying the software. It would require appropriate local data, testing under the relevant environmental and camera conditions, and collaboration with the people who understand the operational requirements.</p>
+<p class="blog-p">Nevertheless, the judges&#x27; positive response to the system&#x27;s scalability was encouraging.</p>
+<p class="blog-p">It suggested that the architecture and overall direction were worth pursuing beyond the initial prototype.</p>
+<h2 id="section-12" class="blog-section-title"><span class="section-num">12</span> 12. The Judges&#x27; Feedback: Synthetic Data Was Not Enough</h2>
+<p class="blog-p">One of the most important moments of the evaluation came when the judges raised a concern about our segmentation model.</p>
+<p class="blog-p">They wanted us to train the segmentor using real tiger-image data instead of relying on synthetic training data.</p>
+<p class="blog-p">Their feedback highlighted a central challenge in our approach.</p>
+<p class="blog-p">Simulation had helped us generate data systematically and develop the pipeline within a limited time. But the ultimate purpose of WildID was to operate on images collected in real forests, not just images generated inside a virtual environment.</p>
+<p class="blog-p">A synthetic image can represent a tiger convincingly while still differing from real camera-trap imagery in ways that matter to a model.</p>
+<p class="blog-p">Real photographs can contain complex lighting, infrared effects, sensor noise, motion blur, unusual viewpoints, partial visibility, and environmental conditions that are difficult to reproduce perfectly in simulation.</p>
+<p class="blog-p">Even when a model performs well on the images available during development, it may struggle when those conditions change.</p>
+<p class="blog-p">This is why real-world validation matters.</p>
+<p class="blog-p">A stronger next stage for WildID would involve assembling an appropriately labelled real-image dataset, establishing a clear evaluation protocol, training or fine-tuning the relevant models, and measuring performance on data that was not used for training.</p>
+<p class="blog-p">We would also need to evaluate the complete identification pipeline, rather than assuming that good performance from individual components automatically translates into reliable identity matching.</p>
+<p class="blog-p">The judges&#x27; request did not invalidate the simulation-driven approach. Instead, it highlighted the next step required to make the approach more credible for real-world use.</p>
+<p class="blog-p">Synthetic data generation could remain a valuable part of the development process, but it would need to work alongside real-world data and rigorous validation.</p>
+<p class="blog-p">For us, this was a useful technical lesson.</p>
+<p class="blog-p">Building a model that works is one milestone. Demonstrating that it works reliably under the conditions it was designed for is another.</p>
+<h2 id="section-13" class="blog-section-title"><span class="section-num">13</span> 13. What We Would Improve Next</h2>
+<p class="blog-p">Looking back at the prototype, we had two major areas that needed improvement.</p>
+<p class="blog-p">The first was the accuracy of the final stripe-pattern matching module.</p>
+<p class="blog-p">The second was the ability to process large collections of images efficiently.</p>
+<h3 class="blog-sub-title">Improving identity matching</h3>
+<p class="blog-p">The final matching stage was a critical part of the system because it determined whether a new observation could be associated with an existing identity.</p>
+<p class="blog-p">Even if segmentation, pattern extraction, and pose estimation produced useful outputs, errors or ambiguities in the matching stage could lead to incorrect identifications.</p>
+<p class="blog-p">We wanted to improve this component through further model development, stronger real-image evaluation, and a more systematic understanding of where matching errors occurred.</p>
+<p class="blog-p">That would involve investigating cases where the same individual was incorrectly treated as a different animal, as well as cases where different individuals were mistakenly matched.</p>
+<p class="blog-p">Understanding these errors would help us determine whether the weaknesses originated in segmentation, the available pattern information, pose handling, the vector representation, or the final matching process.</p>
+<p class="blog-p">The aim would be to improve the complete pipeline rather than simply optimise a single headline metric.</p>
+<h3 class="blog-sub-title">Making image ingestion practical</h3>
+<p class="blog-p">Our second weakness was more operational.</p>
+<p class="blog-p">At submission time, the workflow still involved manually uploading an image, selecting it, and confirming the action.</p>
+<p class="blog-p">That was sufficient for demonstrating the system, but it would not be an ideal workflow for large-scale camera-trap monitoring.</p>
+<p class="blog-p">A forest may produce large numbers of photographs over time. Requiring someone to upload and confirm every image individually would introduce unnecessary friction.</p>
+<p class="blog-p">We wanted to move towards bulk image ingestion and automated processing.</p>
+<p class="blog-p">That would allow larger collections of photographs to be processed through the pipeline with less manual intervention, making the system more practical for the environment it was intended to support.</p>
+<p class="blog-p">A more complete implementation would also need to handle failed processing attempts, duplicate images, uncertain matches, and cases that require human review.</p>
+<h3 class="blog-sub-title">Improving the UI and UX</h3>
+<p class="blog-p">We also wanted to improve the dashboard&#x27;s usability.</p>
+<p class="blog-p">A system designed for forest officials should not require every user to understand the technical details of the underlying AI pipeline.</p>
+<p class="blog-p">The interface should make the available information easy to interpret, communicate uncertainty clearly, and help users navigate from an observation to the relevant records or analytical outputs.</p>
+<p class="blog-p">We would prioritise a smoother workflow for importing images, reviewing candidate matches, examining observation histories, and identifying cases that need further attention.</p>
+<p class="blog-p">The objective would be to make the system more useful without hiding the uncertainty inherent in wildlife observations.</p>
+<h3 class="blog-sub-title">Training and validating on real datasets</h3>
+<p class="blog-p">Above everything else, our next priority would be further training and validation using real wildlife images.</p>
+<p class="blog-p">We would need to define appropriate training, validation, and test datasets; document the metrics being measured; and ensure that evaluation results reflected the intended use case.</p>
+<p class="blog-p">We would also need to investigate how well the system generalised across animals, camera locations, lighting conditions, and viewing angles.</p>
+<p class="blog-p">Only then could we develop a clearer understanding of the system&#x27;s practical limitations and its readiness for deployment.</p>
+<p class="blog-p">If we had another 24 hours at WILDHACK, these would have been our priorities: improve the models using real data, strengthen identity matching, and refine the user experience.</p>
+<h2 id="section-14" class="blog-section-title"><span class="section-num">14</span> 14. The Final Result: A Special Mention</h2>
+<p class="blog-p">At the end of WILDHACK 2K26, HackOPs received a <strong>Special Mention</strong>.</p>
+<p class="blog-p">We finished outside the top three. We did not receive detailed feedback explaining the exact ranking decisions or what the winning teams had done better, so I cannot claim to know precisely why we were not placed higher.</p>
+<p class="blog-p">It would be easy to speculate about the reasons, but that would not be fair to the judges or the other teams.</p>
+<p class="blog-p">What we could evaluate was our own work.</p>
+<p class="blog-p">We had built a functioning prototype under a 24-hour deadline. We had demonstrated the pipeline and dashboard live, discussed the system with the judges, and received feedback that identified both a strength of the architecture and a significant area for improvement.</p>
+<p class="blog-p">We had also identified limitations of our own, particularly in the final matching module and the image-ingestion workflow.</p>
+<p class="blog-p">Could we have done better? Absolutely.</p>
+<p class="blog-p">Could we have made the system more robust, easier to use, and better validated? Without a doubt.</p>
+<p class="blog-p">But the result did not erase the work that had gone into building WildID, nor did it diminish the value of the experience.</p>
+<p class="blog-p">We were happy to receive the Special Mention. More importantly, we left with a clearer idea of what we needed to do next.</p>
+<h2 id="section-15" class="blog-section-title"><span class="section-num">15</span> 15. Beyond the Podium: The People We Met</h2>
+<p class="blog-p">For my first offline hackathon, the experience was about much more than the final result.</p>
+<p class="blog-p">One of the things I had hoped to gain from WILDHACK was the opportunity to meet people from different backgrounds, learn from their experiences, and understand how technology connects with real-world problems.</p>
+<p class="blog-p">The event gave us that opportunity.</p>
+<p class="blog-p">Among the people we had the chance to meet were:</p>
+<p class="blog-p"><strong>Mr. Parag Gupta — Director and Country Manager, Amazon Devices India</strong></p>
+<p class="blog-p">LinkedIn: <a href="https://www.linkedin.com/in/parag-gupta-2316494/" target="_blank" rel="noopener noreferrer" class="blog-link">https://www.linkedin.com/in/parag-gupta-2316494/ ↗</a></p>
+<p class="blog-p"><strong>Mr. Sanjay Wasade — Chairman, Ballarpur Institute of Technology</strong></p>
+<p class="blog-p">LinkedIn: <a href="https://www.linkedin.com/in/sanjay-wasade-372655b/" target="_blank" rel="noopener noreferrer" class="blog-link">https://www.linkedin.com/in/sanjay-wasade-372655b/ ↗</a></p>
+<p class="blog-p"><strong>Mr. Lovely Sharma — BIT alumnus</strong></p>
+<p class="blog-p">LinkedIn: <a href="https://www.linkedin.com/in/lovely-k-sharma/" target="_blank" rel="noopener noreferrer" class="blog-link">https://www.linkedin.com/in/lovely-k-sharma/ ↗</a></p>
+<p class="blog-p"><strong>Dr. Prabhunath Shukla — Conservator of Forests and Field Director, Tadoba-Andhari Tiger Reserve, Chandrapur</strong></p>
+<p class="blog-p">LinkedIn: <a href="https://www.linkedin.com/in/prabhunath-shukla/" target="_blank" rel="noopener noreferrer" class="blog-link">https://www.linkedin.com/in/prabhunath-shukla/ ↗</a></p>
+<p class="blog-p">These were among the people we had the opportunity to meet, along with many others who made the event memorable.</p>
+<p class="blog-p">Networking can sound like a generic benefit of attending a hackathon, but for us, it had a more specific purpose.</p>
+<p class="blog-p">WildID was built around the idea of contributing to wildlife conservation. That meant we needed to understand not only the technical side of the problem but also the people and institutions involved in conservation.</p>
+<p class="blog-p">Speaking with people from different fields helped make the broader context of the project feel more tangible.</p>
+<p class="blog-p">A computer science student can build an interesting model, but understanding how that model might fit into an actual forest-monitoring workflow requires a wider perspective.</p>
+<p class="blog-p">The opportunity to exchange ideas and learn from people working in different domains was valuable in itself.</p>
+<p class="blog-p">We went to the event hoping to learn, build, and meet people. We came away having done all three.</p>
+<p class="blog-p">That, for us, was a win in its own right.</p>
+<h2 id="section-16" class="blog-section-title"><span class="section-num">16</span> 16. What WILDHACK Taught Me About Building AI</h2>
+<p class="blog-p">The most important lessons from WILDHACK were not limited to the technical implementation.</p>
+<p class="blog-p">They changed how I think about the relationship between a working prototype and a useful product.</p>
+<h3 class="blog-sub-title">A functioning demonstration is a beginning, not the finish line</h3>
+<p class="blog-p">It is satisfying to build a system that works, especially under a tight deadline.</p>
+<p class="blog-p">But a successful demonstration does not automatically establish that the system is ready for real-world use.</p>
+<p class="blog-p">WildID showed us how multiple AI components could be integrated into a functioning workflow. The judges&#x27; feedback reminded us that the next step was proving how reliably that workflow performed on real wildlife imagery.</p>
+<p class="blog-p">That distinction matters in any applied AI project.</p>
+<h3 class="blog-sub-title">Data quality and validation deserve as much attention as architecture</h3>
+<p class="blog-p">Our simulation-driven approach helped us generate a substantial collection of synthetic images and build the initial pipeline.</p>
+<p class="blog-p">But the real-world requirements of wildlife re-identification demanded further validation on actual photographs.</p>
+<p class="blog-p">The experience reinforced an important principle: data generation, training, evaluation, and deployment must be considered together.</p>
+<p class="blog-p">A technically interesting approach still needs convincing evidence that it performs under the conditions for which it is intended.</p>
+<h3 class="blog-sub-title">The weakest component can define the entire system</h3>
+<p class="blog-p">Our pipeline combined several components, each responsible for a different part of the identification process.</p>
+<p class="blog-p">However, a strong segmentation model does not automatically produce strong individual identification. Errors and ambiguities can accumulate as information passes through the pipeline.</p>
+<p class="blog-p">The final matching stage was one of our main weaknesses, and that shaped our priorities for further development.</p>
+<p class="blog-p">It reminded us to evaluate the complete workflow, not just its most impressive individual components.</p>
+<h3 class="blog-sub-title">Usability is part of engineering</h3>
+<p class="blog-p">The image-ingestion process was functional, but it was not yet ideal for processing large collections of images.</p>
+<p class="blog-p">That might sound like a relatively small issue compared with model accuracy, but operational friction can significantly limit the usefulness of a system.</p>
+<p class="blog-p">If a tool is intended to support real workflows, it needs to accommodate the volume of data, the needs of its users, and the way they actually work.</p>
+<p class="blog-p">The interface and workflow are not decorations added after the engineering is complete. They are part of the product.</p>
+<h3 class="blog-sub-title">Feedback is valuable when it identifies the next experiment</h3>
+<p class="blog-p">The judges&#x27; request for real tiger-image training gave us a concrete direction for further work.</p>
+<p class="blog-p">Rather than interpreting that feedback as a rejection of the project, we saw it as an indication of what would make the next version stronger.</p>
+<p class="blog-p">The question became more specific: how can we combine the advantages of simulation with real-world data to develop a more reliable re-identification system?</p>
+<p class="blog-p">That is a much more useful question to leave a hackathon with than simply asking how to win the next one.</p>
+<h2 id="section-17" class="blog-section-title"><span class="section-num">17</span> 17. What Comes Next for WildID?</h2>
+<p class="blog-p">WildID is not something we intend to leave behind as a hackathon submission.</p>
+<p class="blog-p">Our next priorities are to improve the identity-matching module, train and validate the models further using real wildlife images, and make the system more practical for large-scale image processing.</p>
+<p class="blog-p">We also want to continue developing the dashboard and its analytical capabilities.</p>
+<p class="blog-p">The broader ambition is to explore potential collaboration with <strong>Pench National Park and Tadoba-Andhari Tiger Reserve</strong>.</p>
+<p class="blog-p">These are aspirations, not confirmed partnerships. At the time of writing, no official collaboration has been finalised.</p>
+<p class="blog-p">Nevertheless, we hope to take the project forward and investigate whether the system could be useful in a real conservation setting.</p>
+<p class="blog-p">Such a step would require appropriate datasets, evaluation under real field conditions, feedback from relevant experts, and careful consideration of how the outputs would be used.</p>
+<p class="blog-p">We would also need to ensure that the system communicates uncertainty clearly and supports human decision-making rather than presenting predictions as unquestionable facts.</p>
+<p class="blog-p">The long-term vision is to develop an adaptable wildlife re-identification platform that can support the work of forest authorities and researchers.</p>
+<p class="blog-p">The simulation-driven approach is one part of that vision. The computer vision pipeline is another. The dashboard and analytical tools are intended to connect the technical outputs with practical questions about wildlife monitoring.</p>
+<p class="blog-p">There is still a considerable amount of work ahead.</p>
+<p class="blog-p">But WILDHACK gave us a starting point, a functioning prototype, and a clearer understanding of the challenges we need to address.</p>
+<p class="blog-p">That is enough reason to continue.</p>
+<h2 id="section-18" class="blog-section-title"><span class="section-num">18</span> 18. A Final Reflection: The Beginning, Not the Ending</h2>
+<p class="blog-p">When I first came across WILDHACK 2K26, I saw an opportunity to combine two interests that had been important to me for a long time: computer science and wildlife.</p>
+<p class="blog-p">I had wanted to work on wildlife re-identification before the event, but the idea had remained something I planned to pursue someday.</p>
+<p class="blog-p">The hackathon gave me a reason to finally begin.</p>
+<p class="blog-p">Over 24 hours, our team developed a simulation-driven approach, generated approximately 10,000 synthetic images locally, built a computer vision pipeline, integrated a dashboard with AI-assisted functionality, and demonstrated the working system to the judges.</p>
+<p class="blog-p">We received a Special Mention, met people from different fields, and received feedback that helped us identify the next challenges.</p>
+<p class="blog-p">We also learned where our approach needed improvement.</p>
+<p class="blog-p">Our final matching module needed further work. The image-ingestion process needed to become more practical. Most importantly, the models needed stronger validation on real wildlife images before we could make confident claims about their performance in the field.</p>
+<p class="blog-p">Those limitations are not details to hide. They are part of the engineering story.</p>
+<p class="blog-p">The point of building something is not to pretend that it is finished. It is to create something concrete enough that its strengths can be demonstrated, its weaknesses can be identified, and its next iteration can be better informed.</p>
+<p class="blog-p">We did not finish in the top three, and we do not know exactly how the winning teams were judged against us.</p>
+<p class="blog-p">But we left with a project we wanted to continue, a clearer understanding of the work ahead, and the motivation to take the next step.</p>
+<p class="blog-p">For a first offline hackathon, that was an experience worth having.</p>
+<p class="blog-p">Wildlife conservation has complex challenges, and AI is not a substitute for field expertise, careful research, or responsible decision-making. But technology can offer new ways to organise observations, explore patterns, and support the people working to protect wildlife.</p>
+<p class="blog-p">WildID is our attempt to explore one of those possibilities.</p>
+<p class="blog-p">We began with a question: can we use AI to identify individual wild animals even when their appearance changes across photographs?</p>
+<p class="blog-p">Now, we have a prototype, a direction for further research, and a much better understanding of what answering that question will require.</p>
+<p class="blog-p">The Special Mention was a milestone.</p>
+<p class="blog-p">The real work continues.</p>
+<p class="blog-p"><strong>This is WildID. And this is only the beginning.</strong></p>
+<hr class="blog-divider">
+<h2 id="section-19" class="blog-section-title"><span class="section-num">19</span> Acknowledgements</h2>
+<p class="blog-p">We would like to thank the organisers of WILDHACK 2K26, Ballarpur Institute of Technology, the collaborating team from Tadoba-Andhari Tiger Reserve, the judges, fellow participants, and everyone who contributed to making the event a valuable learning experience.</p>
+<p class="blog-p">A special acknowledgement goes to my teammates, Vaishnav Balpande, Lokesh Parate, and Soham Bagmare, for being part of this journey.</p>
+<p class="blog-p">And to everyone working towards the conservation of Indian wildlife: we hope to keep learning, building, and finding meaningful ways to contribute.</p>
+<p class="blog-p"><strong>Team HackOPs</strong></p>
+<p class="blog-p"><strong>Project: WildID — AI-Powered Individual Wildlife Re-Identification System</strong></p>
+        </article>
+      </main>
+
+    </div>
+
+    <!-- Raw Source Modal -->
+    <div id="rawTextModal" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Raw blog.txt content">
+      <div class="inspection-docket-window" style="grid-template-columns: 1fr; max-width: 960px; height: 80vh;">
+        <div class="modal-viewport" style="background: var(--bg-card); padding: 1.5rem; overflow-y: auto;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.75rem;">
+            <div>
+              <strong style="color: var(--color-ochre); font-family: var(--font-mono);">SOURCE FILE: blog.txt</strong>
+              <div style="font-size: 0.72rem; color: var(--text-muted);">Exact local text file loaded dynamically</div>
+            </div>
+            <button id="closeRawBtn" class="modal-close-btn">✕</button>
+          </div>
+          <pre id="rawTextContent" style="font-family: var(--font-mono); font-size: 0.8rem; line-height: 1.6; color: var(--text-body); white-space: pre-wrap; word-break: break-word;"># WildID at WILDHACK 2K26: Building AI for Wildlife Conservation in 24 Hours
+
+By Hanshal Bobate · Team HackOPs · October 2026
+
+What happens when a wildlife photographer&#x27;s curiosity meets computer science, a 24-hour hackathon, and the challenge of identifying individual wild animals? This is the story of WildID: our attempt to build a simulation-driven AI system for wildlife re-identification, the engineering behind it, the feedback that challenged our approach, and why a Special Mention was only the beginning.
+
+## 1. Where Technology Meets the Wild
+
+Some projects begin with a problem statement. Others begin with a personal interest that refuses to remain just a hobby.
+
+For me, WILDHACK 2K26 was where two of my biggest interests — computer science and wildlife — finally came together.
+
+I have always been interested in computer science, artificial intelligence, and the possibilities that emerge when technology is applied to real-world problems. At the same time, I am a wildlife photography enthusiast. Spending time observing wildlife, learning about animal behaviour, and capturing animals through a camera gives you a different perspective on the natural world.
+
+These interests had existed alongside each other for a long time. I had been planning to work on wildlife re-identification for quite some time, but somehow, I had never managed to bring the idea to life.
+
+I wanted to build something that could eventually reach forest authorities, something that went beyond being another academic project or a demonstration designed only to look impressive.
+
+Then I came across WILDHACK 2K26 through social media and LinkedIn.
+
+The opportunity immediately caught my attention. Here was a hackathon centred around wildlife, conservation, and technology — a chance to work on a problem that connected my technical interests with something I genuinely cared about.
+
+And honestly, the thought that crossed my mind was simple:
+
+If not me, then who?
+
+It was time to stop postponing the idea and start building.
+
+## 2. What Was WILDHACK 2K26?
+
+WILDHACK 2K26 was a 24-hour hackathon and ideathon held on 16–17 October 2026 at Ballarpur Institute of Technology, Bamni, Ballarpur, Chandrapur, organised in collaboration with the Tadoba-Andhari Tiger Reserve (TATR).
+
+The event brought together teams working on technology-driven solutions to challenges associated with wildlife and conservation.
+
+The competition began with a first round that included teams from across India. The number of participating teams in that round was confidential. From the shortlisted entries, the top 30 teams were selected for the final offline round.
+
+Our team, HackOPs, was among those selected.
+
+The final round meant moving beyond an idea or a presentation and demonstrating what we could actually build. We had 24 hours for development, followed by a presentation slot of approximately 30 minutes.
+
+For me, this was particularly exciting because it was my first-ever offline hackathon.
+
+I was looking forward to networking, meeting people with different technical backgrounds, exchanging ideas, and learning how other teams approached their problems. I also wanted to understand how emerging technologies, especially AI, could be implemented in national forests and wildlife reserves.
+
+But above everything else, I wanted to explore whether we could build something that might eventually contribute to Indian wildlife conservation.
+
+That was the motivation behind our participation, and it became the foundation of the project we called WildID.
+
+## 3. Meet Team HackOPs
+
+HackOPs consisted of four members:
+
+- Hanshal Bobate
+- Vaishnav Balpande
+- Lokesh Parate
+- Soham Bagmare
+
+What brought us together was a shared interest in technology and a common desire to contribute something meaningful towards Indian wildlife.
+
+We weren&#x27;t participating simply to add another project to our portfolios. We wanted to explore how the skills we were developing in computer science and AI could be applied to a real-world conservation challenge.
+
+A hackathon is an unusual environment in which to pursue that ambition. You have limited time, limited opportunities to test assumptions, and an enormous number of decisions to make before the deadline arrives.
+
+You cannot build everything you imagine. You have to decide which parts of the problem matter most, which technical approaches are feasible, and which features can be implemented without compromising the entire solution.
+
+That combination of ambition and constraint would define our experience at WILDHACK.
+
+Our objective was not merely to propose an interesting use of AI. We wanted to demonstrate a functioning system, explain how it could be useful to forest officials, and show how the underlying approach might eventually be adapted to different wildlife environments.
+
+The project needed to be ambitious enough to address a meaningful problem, but practical enough to demonstrate within 24 hours.
+
+That was the challenge we accepted.
+
+## 4. The Problem Statement: Re-Identifying Individual Wild Animals
+
+The official problem statement was:
+
+&gt; “Re-Identifying Individual Wild Animals — Identify individual animals, even when the viewing angle, lighting, distance, or image quality changes.”
+
+At first glance, the problem sounds relatively straightforward. Detect an animal in an image, extract its distinctive features, and compare those features with previously observed animals.
+
+But the real challenge lies in the details.
+
+Imagine a forest official reviewing hundreds or thousands of photographs collected by camera traps across a reserve. A tiger appears in one photograph during the morning. Several days later, another photograph captures what might be the same tiger from a completely different angle, under different lighting conditions, with vegetation covering part of its body.
+
+Is it the same individual?
+
+If it is, where was it previously observed? Has its movement pattern changed? Does it appear in areas where it was not previously recorded? Can these observations help researchers understand its territory or identify situations that require further investigation?
+
+Now imagine performing this process across an entire forest, with multiple animals, thousands of images, and observations collected over weeks or months.
+
+This is where individual wildlife re-identification becomes valuable.
+
+### Why is identifying individual animals difficult?
+
+Unlike humans, many wild animals do not have obvious, easily recognisable identity markers that remain visible in every photograph.
+
+Tigers have distinctive stripe patterns, but recognising those patterns consistently is not as simple as comparing two photographs side by side.
+
+Several challenges make the task difficult.
+
+**1. Changes in viewing angle**
+
+A tiger photographed from the front looks very different from the same tiger photographed from its side or rear. The visible stripe patterns change depending on the angle, and some body regions may disappear entirely from view.
+
+**2. Changes in posture**
+
+An animal may be walking, sitting, running, lying down, or turning its body. Its skin and fur can fold, stretch, or become partially hidden depending on the pose.
+
+**3. Lighting and image quality**
+
+Photographs captured during daylight may have very different visual characteristics from photographs captured at night using infrared illumination. Motion blur, low resolution, shadows, and poor camera positioning can further complicate identification.
+
+**4. Occlusion**
+
+An animal may be partially hidden behind trees, bushes, grass, or other animals. Sometimes, only a small portion of its body is visible.
+
+**5. Similar-looking individuals**
+
+Even when animals belong to the same species, distinguishing between individuals requires finding sufficiently distinctive features. A system that recognises the species correctly might still fail to identify the individual correctly.
+
+**6. The scale of manual analysis**
+
+Manually inspecting every photograph and maintaining individual sighting records can be slow and labour-intensive. As the number of cameras and observations increases, the workload grows.
+
+The central problem was therefore not simply animal detection.
+
+**We wanted to recognise individual animals across changing visual conditions and make those identities useful for wildlife monitoring.**
+
+That distinction shaped the entire direction of WildID.
+
+## 5. Why We Chose This Problem
+
+I had been planning to work on wildlife re-identification long before the hackathon.
+
+The idea appealed to me because it connected computer vision with a field I genuinely cared about. I wanted to explore whether AI could help turn wildlife photographs into structured information that forest authorities and researchers could use.
+
+WILDHACK provided the opportunity to pursue that idea within a focused development environment.
+
+We decided to concentrate on tigers and other big cats. The choice was partly driven by the scope of the hackathon and the practical need to keep the implementation manageable within 24 hours.
+
+Focusing on a specific animal group allowed us to concentrate our development efforts on the characteristics most relevant to the task, particularly body segmentation, pose, and fur markings.
+
+It also gave us a concrete starting point for exploring the broader problem of individual wildlife identification.
+
+The ambition, however, was not limited to building a tiger classifier.
+
+A classifier might tell us that an image contains a tiger. WildID was intended to go further by estimating which individual tiger was present and connecting that identification to other observations.
+
+Our broader vision was to create a system that could eventually support wildlife monitoring, help organise camera-trap records, and provide useful analytical information to forest officials.
+
+The problem was technically challenging, personally meaningful, and potentially adaptable to other wildlife species.
+
+That combination made it the right problem for us.
+
+## 6. The Core Idea: What If We Could Generate Our Own Wildlife Data?
+
+One of the biggest challenges in developing computer vision systems is obtaining the right data.
+
+A model can have a sophisticated architecture and still perform poorly if its training data does not represent the situations it encounters in practice.
+
+For wildlife re-identification, the data challenge becomes particularly interesting. We need images of individual animals across different poses, viewing angles, lighting conditions, distances, and degrees of occlusion. We also need reliable information about which photographs represent the same individual and which represent different animals.
+
+Collecting, sorting, and labelling such a dataset manually can consume considerable time.
+
+We began thinking about an alternative.
+
+**What if we could automate data collection through simulated wildlife environments?**
+
+Instead of relying entirely on photographs collected in the wild, we could create virtual environments, control different visual conditions, and generate images programmatically.
+
+This became the central idea behind WildID&#x27;s simulation-driven approach.
+
+The objective was to make data generation more repeatable and controllable. By generating scenes locally, we could experiment with different conditions and organise the resulting images into a dataset suitable for developing and testing our models.
+
+Simulation also gave us the possibility of controlling variables that would be difficult to control when photographing real animals in the wild.
+
+For example, we could generate multiple views of a simulated animal, change its pose, vary the surrounding environment, and produce different scenes without needing to wait for a camera trap to capture a particular event.
+
+However, simulation comes with an important limitation: a virtual forest is not the same as a real forest.
+
+Synthetic images can help us develop a system and investigate how it behaves under controlled conditions, but they may not fully reproduce the complexity of real photographs. Fur appearance, camera noise, infrared imaging, environmental occlusion, and other visual characteristics can differ between simulated and real environments.
+
+We would eventually need to evaluate how well the models transferred from synthetic data to real wildlife imagery.
+
+At WILDHACK, we chose to pursue the simulation-first approach because it offered a practical way to build a substantial dataset and demonstrate our proposed pipeline within the available time.
+
+## 7. Building the Forest: Blender, Python, and GroveScape
+
+Our simulation environment was built using Blender and automated through its Python API, `bpy`.
+
+We also used GroveScape for forest generation.
+
+Rather than manually creating every scene, we used automation to construct the virtual environment and generate wildlife images locally.
+
+The broader workflow involved creating the forest environment, placing simulated animals within it, and generating images that could be used in the computer vision pipeline.
+
+We generated approximately **10,000 images locally** during development.
+
+This was an important part of the project because it allowed us to work with a sizeable collection of synthetic images without depending entirely on manual image collection.
+
+It also gave us a way to experiment with controlled visual variations and organise the generated images for model development.
+
+The simulation was not intended to be the final product. It was a means of addressing the data bottleneck and supporting the development of the re-identification system.
+
+The long-term question was whether this approach could be extended into a repeatable data-generation pipeline that could be adapted to different animal species and forest environments.
+
+That was one of the aspects of WildID we hoped would make the project scalable.
+
+### Why not simply use existing datasets?
+
+Existing wildlife photographs and datasets remain important, especially when evaluating a system intended for real-world use.
+
+However, our approach was built around the idea of supplementing available data with controlled synthetic data generation.
+
+Simulation offered a way to generate images under selected conditions and experiment with different scenarios systematically.
+
+It also gave us greater control over the data-generation process than relying entirely on manually collected photographs.
+
+The trade-off was that synthetic data could not, by itself, establish real-world reliability. We would still need suitable real-image datasets for training, validation, and testing.
+
+That trade-off eventually became one of the most important points in our discussion with the judges.
+
+## 8. From a Photograph to an Identity
+
+WildID was designed as a collection of interconnected components rather than a single model expected to solve every part of the problem.
+
+The overall approach combined image processing, tiger segmentation, pose estimation, stripe-pattern extraction, and pattern matching.
+
+Each component addressed a different part of the identification problem.
+
+### Step 1: Image processing and tiger segmentation
+
+The first challenge was isolating the animal from the surrounding environment.
+
+A photograph captured by a camera trap may contain trees, grass, branches, shadows, rocks, and other background elements. If we want to analyse a tiger&#x27;s distinctive fur patterns, we need to separate the animal from those surroundings as accurately as possible.
+
+We developed a segmentation and masking model to isolate the tiger within an image.
+
+The resulting mask helped identify the pixels belonging to the animal, allowing subsequent processing to focus on the relevant visual information rather than the entire photograph.
+
+This was important because the surrounding forest could vary substantially between observations, while the animal&#x27;s identity features were the information we wanted to compare.
+
+Our team reported segmentation accuracy above 95% in its prototype benchmarks. That figure reflected our development-stage evaluation and should not be interpreted as a guarantee of equivalent performance across real-world camera-trap conditions.
+
+### Step 2: Separating fur patterns from the rest of the image
+
+Once the tiger was isolated, we needed to extract useful identity information.
+
+For tigers, stripe patterns are among the most important visual characteristics for distinguishing individuals.
+
+However, a photograph contains much more than stripes. It also contains fur colour, illumination changes, shadows, texture, and other visual information that can interfere with pattern extraction.
+
+We used high-pass filtering to help separate stripe details from relatively plain fur regions.
+
+The intention was to emphasise local visual patterns while reducing the influence of broader, smoother variations in appearance.
+
+This gave us a way to focus subsequent processing on the distinctive markings that could help differentiate one individual from another.
+
+The output of this stage was not simply an entire photograph of the tiger. It was a representation intended to preserve the relevant pattern information for matching.
+
+### Step 3: Understanding the animal&#x27;s pose
+
+One of the biggest problems in comparing two tiger photographs is that the animal may be positioned differently in each image.
+
+Suppose a camera trap captures the right side of a tiger in one image and the left side in another. Even if both photographs show the same individual, the visible markings may be entirely different.
+
+Comparing the images directly could therefore produce an unreliable result.
+
+To address this challenge, we incorporated a tiger pose-estimation component.
+
+The pose estimator estimated the animal&#x27;s body pose and helped determine which parts of its body were visible.
+
+This was important for interpreting the available pattern information. A system should not treat a marking that is absent from an image as proof that the animal is a different individual if the relevant body region was never visible in the first place.
+
+Our reported prototype pose-estimation accuracy was above 70%.
+
+The broader purpose of this component was to help the system understand the relationship between the visible body regions and the patterns extracted from them.
+
+### Step 4: Mapping patterns to a common representation
+
+After segmentation, pattern extraction, and pose estimation, we needed a representation that could be compared efficiently.
+
+Our approach involved mapping the extracted pattern information onto a flat tiger-fur template, which we described as a fur-carpet representation.
+
+The motivation was to create a more consistent representation of the available markings instead of comparing raw photographs alone.
+
+The pose information helped indicate which parts of the animal were visible, while the extracted markings provided the distinctive visual information used for comparison.
+
+The resulting representations could then be stored as vectors for efficient lookup.
+
+This was intended to make it possible to compare a new observation against previously stored representations without repeatedly processing every original photograph from scratch.
+
+The important idea was to separate the process of extracting identity-related information from the process of searching for matching identities.
+
+### Step 5: Pattern matching and identity retrieval
+
+The final stage was matching the extracted representation against previously stored representations.
+
+Given a new photograph, the system needed to determine which existing individual, if any, was the most plausible match.
+
+This is more demanding than recognising that two images contain tigers. The system must distinguish between the same individual photographed under different conditions and different individuals whose appearances may be similar.
+
+Our team reported pattern-matching accuracy above 70% in its prototype benchmarks.
+
+We also identified this stage as one of the major weaknesses of the system at submission time. Improving the accuracy and reliability of the final matching component was one of our most important next steps.
+
+The pipeline was therefore a combination of several connected tasks:
+
+1. Isolate the tiger from the background.
+2. Extract the relevant stripe-pattern information.
+3. Estimate pose and determine which body regions are visible.
+4. Map the information to a common representation.
+5. Compare the representation against stored identities.
+
+Each stage contributed to the overall identification process.
+
+The challenge was ensuring that the combined system performed reliably, not merely that each individual component worked in isolation.
+
+## 9. The Results: What We Had Built in 24 Hours
+
+By the end of the hackathon, we had developed more than an isolated computer vision model.
+
+Our prototype included the image-processing pipeline, tiger segmentation, pose estimation, stripe-pattern detection, pattern matching, and a visual dashboard integrated with AI.
+
+Our reported prototype benchmark results were:
+
+| Component                | Reported result |
+| ------------------------ | --------------- |
+| Tiger segmentation       | Above 95%       |
+| Tiger pose estimation    | Above 70%       |
+| Stripe-pattern detection | Above 80%       |
+| Pattern matching         | Above 70%       |
+
+These figures came from our team&#x27;s benchmark tests using real images obtained from sources including Google Images. We also generated approximately 10,000 synthetic images locally for the simulation-driven development workflow.
+
+It is important to distinguish between those two things: the synthetic images supported our development approach, while the reported benchmark figures came from tests involving real images.
+
+The figures describe our prototype results. Without a documented evaluation protocol, test-set size, precise metric definitions, and an independently reproducible benchmark, they should not be treated as established real-world performance guarantees.
+
+Nevertheless, the work represented a substantial amount of integration within a 24-hour development window.
+
+We had a functioning pipeline and a dashboard through which we could demonstrate the system.
+
+The dashboard was working live, and the workflow did not depend on hardcoded entries. We could demonstrate the actual system rather than presenting only prepared screenshots or a static mock-up.
+
+The system was not cloud-deployed, but cloud deployment was not necessary for us to demonstrate the local prototype and its intended workflow.
+
+That distinction mattered to us. We wanted to show something that worked, explain its limitations, and demonstrate how the components fit together.
+
+## 10. Beyond Re-Identification: A Dashboard for Forest Officials
+
+We did not want WildID to stop at identifying individual animals.
+
+Our broader vision was to make the information extracted from wildlife observations useful to the people responsible for monitoring and protecting wildlife.
+
+A re-identification system can potentially help organise observations of individual animals over time. When combined with suitable historical records and environmental information, those observations may support additional analysis.
+
+This led us to build a visual dashboard integrating AI-assisted analysis and a chatbot designed around forest officials&#x27; queries.
+
+### A locally persistent AI assistant
+
+The dashboard included a chatbot with persistent local memory, fine-tuning, and a retrieval-augmented generation (RAG) system.
+
+The purpose was to provide a conversational interface through which officials could ask questions about the information available to the system.
+
+We also designed the assistant to respond according to the user&#x27;s authority level.
+
+The underlying idea was that different users may have different responsibilities and information requirements. A forest officer, a reserve manager, and a researcher may need different views of the same underlying information.
+
+Rather than making the interface a generic chatbot disconnected from the project, we wanted it to serve as an access point for the system&#x27;s wildlife-related information and analytical capabilities.
+
+The chatbot and dashboard were part of our functioning prototype. Their usefulness in an operational environment would still depend on the quality of the underlying data, appropriate access controls, and careful validation of the answers and analyses they produced.
+
+### Analysing individual movement patterns
+
+We also developed functionality intended to analyse individual tigers&#x27; roaming patterns and approximate territory use.
+
+The goal was to use observations associated with individual identities to help reveal patterns across time.
+
+For example, a sequence of sightings may help researchers understand which areas an animal has been observed in and how its recorded distribution changes.
+
+This information could potentially help forest officials identify areas requiring further investigation or understand changes in observed activity.
+
+However, camera-trap observations are incomplete by nature. An animal not appearing in a photograph does not necessarily mean it has left an area. Camera placement, detection opportunities, and gaps in observation can all affect the available evidence.
+
+For that reason, we viewed these analyses as tools for supporting investigation rather than definitive descriptions of an animal&#x27;s location or territory.
+
+### Exploring possible territory changes
+
+Our broader analytical system also included functionality intended to examine possible changes in an individual&#x27;s territory and flag situations potentially associated with factors such as age, disease, or pregnancy in female tigers.
+
+The motivation was to explore whether changes in observed movement patterns could help identify cases requiring closer attention.
+
+For instance, a change in the area where an animal is recorded could have several explanations. It might reflect a change in behaviour, a change in observation patterns, environmental conditions, or another factor requiring further investigation.
+
+The system was intended to help surface such patterns for review, not to establish a medical condition from movement data alone.
+
+Reliable conclusions would require appropriate historical observations, relevant supporting information, and validation by wildlife experts.
+
+### Connecting wildlife observations with environmental conditions
+
+We also explored the relationship between environmental conditions and potential tiger movement.
+
+Water availability, weather, vegetation, prey distribution, and other ecological factors can influence how wildlife uses its habitat.
+
+In our proposed use case, changes in water availability could help identify areas where movement patterns might shift.
+
+For example, if water becomes scarce in one area, the availability of more reliable water sources elsewhere could become relevant to understanding observed or potential movement patterns. We considered the Andheri River as an example of a relatively persistent water source in the regional context of our project.
+
+The goal was to explore how wildlife observations and environmental information could be brought together to provide a more useful picture of conditions across a forest.
+
+These analyses were part of our broader implementation and intended functionality. Their predictive reliability would depend on the quality, completeness, and validation of the historical and environmental data used.
+
+The larger idea was to connect identity, observation history, and environmental context within one system.
+
+**We wanted WildID to help answer not only “Which animal is this?” but also “What can its observations tell us, and what might forest officials need to investigate next?”**
+
+## 11. The Importance of Scalability
+
+One of the most encouraging aspects of our evaluation was the judges&#x27; response to the architecture and implementation.
+
+They appreciated that WildID was designed to be scalable and could potentially be set up in other forests and adapted to other animal types.
+
+This mattered because we did not want the project to be limited to one demonstration environment or one species.
+
+The simulation-driven data-generation approach, the modular computer vision pipeline, the identity-matching workflow, and the dashboard were all intended to support a broader system.
+
+In principle, the same general approach to individual re-identification could be adapted to other species, although the visual characteristics, identification methods, datasets, and model requirements would differ.
+
+For example, a system designed for a striped animal cannot simply be assumed to work equally well for an animal with spots, unique facial markings, or other identifying characteristics. The relevant features and models would need to be adapted and validated for the target species.
+
+Likewise, adapting the system to another forest would involve more than deploying the software. It would require appropriate local data, testing under the relevant environmental and camera conditions, and collaboration with the people who understand the operational requirements.
+
+Nevertheless, the judges&#x27; positive response to the system&#x27;s scalability was encouraging.
+
+It suggested that the architecture and overall direction were worth pursuing beyond the initial prototype.
+
+## 12. The Judges&#x27; Feedback: Synthetic Data Was Not Enough
+
+One of the most important moments of the evaluation came when the judges raised a concern about our segmentation model.
+
+They wanted us to train the segmentor using real tiger-image data instead of relying on synthetic training data.
+
+Their feedback highlighted a central challenge in our approach.
+
+Simulation had helped us generate data systematically and develop the pipeline within a limited time. But the ultimate purpose of WildID was to operate on images collected in real forests, not just images generated inside a virtual environment.
+
+A synthetic image can represent a tiger convincingly while still differing from real camera-trap imagery in ways that matter to a model.
+
+Real photographs can contain complex lighting, infrared effects, sensor noise, motion blur, unusual viewpoints, partial visibility, and environmental conditions that are difficult to reproduce perfectly in simulation.
+
+Even when a model performs well on the images available during development, it may struggle when those conditions change.
+
+This is why real-world validation matters.
+
+A stronger next stage for WildID would involve assembling an appropriately labelled real-image dataset, establishing a clear evaluation protocol, training or fine-tuning the relevant models, and measuring performance on data that was not used for training.
+
+We would also need to evaluate the complete identification pipeline, rather than assuming that good performance from individual components automatically translates into reliable identity matching.
+
+The judges&#x27; request did not invalidate the simulation-driven approach. Instead, it highlighted the next step required to make the approach more credible for real-world use.
+
+Synthetic data generation could remain a valuable part of the development process, but it would need to work alongside real-world data and rigorous validation.
+
+For us, this was a useful technical lesson.
+
+Building a model that works is one milestone. Demonstrating that it works reliably under the conditions it was designed for is another.
+
+## 13. What We Would Improve Next
+
+Looking back at the prototype, we had two major areas that needed improvement.
+
+The first was the accuracy of the final stripe-pattern matching module.
+
+The second was the ability to process large collections of images efficiently.
+
+### Improving identity matching
+
+The final matching stage was a critical part of the system because it determined whether a new observation could be associated with an existing identity.
+
+Even if segmentation, pattern extraction, and pose estimation produced useful outputs, errors or ambiguities in the matching stage could lead to incorrect identifications.
+
+We wanted to improve this component through further model development, stronger real-image evaluation, and a more systematic understanding of where matching errors occurred.
+
+That would involve investigating cases where the same individual was incorrectly treated as a different animal, as well as cases where different individuals were mistakenly matched.
+
+Understanding these errors would help us determine whether the weaknesses originated in segmentation, the available pattern information, pose handling, the vector representation, or the final matching process.
+
+The aim would be to improve the complete pipeline rather than simply optimise a single headline metric.
+
+### Making image ingestion practical
+
+Our second weakness was more operational.
+
+At submission time, the workflow still involved manually uploading an image, selecting it, and confirming the action.
+
+That was sufficient for demonstrating the system, but it would not be an ideal workflow for large-scale camera-trap monitoring.
+
+A forest may produce large numbers of photographs over time. Requiring someone to upload and confirm every image individually would introduce unnecessary friction.
+
+We wanted to move towards bulk image ingestion and automated processing.
+
+That would allow larger collections of photographs to be processed through the pipeline with less manual intervention, making the system more practical for the environment it was intended to support.
+
+A more complete implementation would also need to handle failed processing attempts, duplicate images, uncertain matches, and cases that require human review.
+
+### Improving the UI and UX
+
+We also wanted to improve the dashboard&#x27;s usability.
+
+A system designed for forest officials should not require every user to understand the technical details of the underlying AI pipeline.
+
+The interface should make the available information easy to interpret, communicate uncertainty clearly, and help users navigate from an observation to the relevant records or analytical outputs.
+
+We would prioritise a smoother workflow for importing images, reviewing candidate matches, examining observation histories, and identifying cases that need further attention.
+
+The objective would be to make the system more useful without hiding the uncertainty inherent in wildlife observations.
+
+### Training and validating on real datasets
+
+Above everything else, our next priority would be further training and validation using real wildlife images.
+
+We would need to define appropriate training, validation, and test datasets; document the metrics being measured; and ensure that evaluation results reflected the intended use case.
+
+We would also need to investigate how well the system generalised across animals, camera locations, lighting conditions, and viewing angles.
+
+Only then could we develop a clearer understanding of the system&#x27;s practical limitations and its readiness for deployment.
+
+If we had another 24 hours at WILDHACK, these would have been our priorities: improve the models using real data, strengthen identity matching, and refine the user experience.
+
+## 14. The Final Result: A Special Mention
+
+At the end of WILDHACK 2K26, HackOPs received a **Special Mention**.
+
+We finished outside the top three. We did not receive detailed feedback explaining the exact ranking decisions or what the winning teams had done better, so I cannot claim to know precisely why we were not placed higher.
+
+It would be easy to speculate about the reasons, but that would not be fair to the judges or the other teams.
+
+What we could evaluate was our own work.
+
+We had built a functioning prototype under a 24-hour deadline. We had demonstrated the pipeline and dashboard live, discussed the system with the judges, and received feedback that identified both a strength of the architecture and a significant area for improvement.
+
+We had also identified limitations of our own, particularly in the final matching module and the image-ingestion workflow.
+
+Could we have done better? Absolutely.
+
+Could we have made the system more robust, easier to use, and better validated? Without a doubt.
+
+But the result did not erase the work that had gone into building WildID, nor did it diminish the value of the experience.
+
+We were happy to receive the Special Mention. More importantly, we left with a clearer idea of what we needed to do next.
+
+## 15. Beyond the Podium: The People We Met
+
+For my first offline hackathon, the experience was about much more than the final result.
+
+One of the things I had hoped to gain from WILDHACK was the opportunity to meet people from different backgrounds, learn from their experiences, and understand how technology connects with real-world problems.
+
+The event gave us that opportunity.
+
+Among the people we had the chance to meet were:
+
+**Mr. Parag Gupta — Director and Country Manager, Amazon Devices India**
+
+LinkedIn: [https://www.linkedin.com/in/parag-gupta-2316494/](https://www.linkedin.com/in/parag-gupta-2316494/)
+
+**Mr. Sanjay Wasade — Chairman, Ballarpur Institute of Technology**
+
+LinkedIn: [https://www.linkedin.com/in/sanjay-wasade-372655b/](https://www.linkedin.com/in/sanjay-wasade-372655b/)
+
+**Mr. Lovely Sharma — BIT alumnus**
+
+LinkedIn: [https://www.linkedin.com/in/lovely-k-sharma/](https://www.linkedin.com/in/lovely-k-sharma/)
+
+**Dr. Prabhunath Shukla — Conservator of Forests and Field Director, Tadoba-Andhari Tiger Reserve, Chandrapur**
+
+LinkedIn: [https://www.linkedin.com/in/prabhunath-shukla/](https://www.linkedin.com/in/prabhunath-shukla/)
+
+These were among the people we had the opportunity to meet, along with many others who made the event memorable.
+
+Networking can sound like a generic benefit of attending a hackathon, but for us, it had a more specific purpose.
+
+WildID was built around the idea of contributing to wildlife conservation. That meant we needed to understand not only the technical side of the problem but also the people and institutions involved in conservation.
+
+Speaking with people from different fields helped make the broader context of the project feel more tangible.
+
+A computer science student can build an interesting model, but understanding how that model might fit into an actual forest-monitoring workflow requires a wider perspective.
+
+The opportunity to exchange ideas and learn from people working in different domains was valuable in itself.
+
+We went to the event hoping to learn, build, and meet people. We came away having done all three.
+
+That, for us, was a win in its own right.
+
+## 16. What WILDHACK Taught Me About Building AI
+
+The most important lessons from WILDHACK were not limited to the technical implementation.
+
+They changed how I think about the relationship between a working prototype and a useful product.
+
+### A functioning demonstration is a beginning, not the finish line
+
+It is satisfying to build a system that works, especially under a tight deadline.
+
+But a successful demonstration does not automatically establish that the system is ready for real-world use.
+
+WildID showed us how multiple AI components could be integrated into a functioning workflow. The judges&#x27; feedback reminded us that the next step was proving how reliably that workflow performed on real wildlife imagery.
+
+That distinction matters in any applied AI project.
+
+### Data quality and validation deserve as much attention as architecture
+
+Our simulation-driven approach helped us generate a substantial collection of synthetic images and build the initial pipeline.
+
+But the real-world requirements of wildlife re-identification demanded further validation on actual photographs.
+
+The experience reinforced an important principle: data generation, training, evaluation, and deployment must be considered together.
+
+A technically interesting approach still needs convincing evidence that it performs under the conditions for which it is intended.
+
+### The weakest component can define the entire system
+
+Our pipeline combined several components, each responsible for a different part of the identification process.
+
+However, a strong segmentation model does not automatically produce strong individual identification. Errors and ambiguities can accumulate as information passes through the pipeline.
+
+The final matching stage was one of our main weaknesses, and that shaped our priorities for further development.
+
+It reminded us to evaluate the complete workflow, not just its most impressive individual components.
+
+### Usability is part of engineering
+
+The image-ingestion process was functional, but it was not yet ideal for processing large collections of images.
+
+That might sound like a relatively small issue compared with model accuracy, but operational friction can significantly limit the usefulness of a system.
+
+If a tool is intended to support real workflows, it needs to accommodate the volume of data, the needs of its users, and the way they actually work.
+
+The interface and workflow are not decorations added after the engineering is complete. They are part of the product.
+
+### Feedback is valuable when it identifies the next experiment
+
+The judges&#x27; request for real tiger-image training gave us a concrete direction for further work.
+
+Rather than interpreting that feedback as a rejection of the project, we saw it as an indication of what would make the next version stronger.
+
+The question became more specific: how can we combine the advantages of simulation with real-world data to develop a more reliable re-identification system?
+
+That is a much more useful question to leave a hackathon with than simply asking how to win the next one.
+
+## 17. What Comes Next for WildID?
+
+WildID is not something we intend to leave behind as a hackathon submission.
+
+Our next priorities are to improve the identity-matching module, train and validate the models further using real wildlife images, and make the system more practical for large-scale image processing.
+
+We also want to continue developing the dashboard and its analytical capabilities.
+
+The broader ambition is to explore potential collaboration with **Pench National Park and Tadoba-Andhari Tiger Reserve**.
+
+These are aspirations, not confirmed partnerships. At the time of writing, no official collaboration has been finalised.
+
+Nevertheless, we hope to take the project forward and investigate whether the system could be useful in a real conservation setting.
+
+Such a step would require appropriate datasets, evaluation under real field conditions, feedback from relevant experts, and careful consideration of how the outputs would be used.
+
+We would also need to ensure that the system communicates uncertainty clearly and supports human decision-making rather than presenting predictions as unquestionable facts.
+
+The long-term vision is to develop an adaptable wildlife re-identification platform that can support the work of forest authorities and researchers.
+
+The simulation-driven approach is one part of that vision. The computer vision pipeline is another. The dashboard and analytical tools are intended to connect the technical outputs with practical questions about wildlife monitoring.
+
+There is still a considerable amount of work ahead.
+
+But WILDHACK gave us a starting point, a functioning prototype, and a clearer understanding of the challenges we need to address.
+
+That is enough reason to continue.
+
+## 18. A Final Reflection: The Beginning, Not the Ending
+
+When I first came across WILDHACK 2K26, I saw an opportunity to combine two interests that had been important to me for a long time: computer science and wildlife.
+
+I had wanted to work on wildlife re-identification before the event, but the idea had remained something I planned to pursue someday.
+
+The hackathon gave me a reason to finally begin.
+
+Over 24 hours, our team developed a simulation-driven approach, generated approximately 10,000 synthetic images locally, built a computer vision pipeline, integrated a dashboard with AI-assisted functionality, and demonstrated the working system to the judges.
+
+We received a Special Mention, met people from different fields, and received feedback that helped us identify the next challenges.
+
+We also learned where our approach needed improvement.
+
+Our final matching module needed further work. The image-ingestion process needed to become more practical. Most importantly, the models needed stronger validation on real wildlife images before we could make confident claims about their performance in the field.
+
+Those limitations are not details to hide. They are part of the engineering story.
+
+The point of building something is not to pretend that it is finished. It is to create something concrete enough that its strengths can be demonstrated, its weaknesses can be identified, and its next iteration can be better informed.
+
+We did not finish in the top three, and we do not know exactly how the winning teams were judged against us.
+
+But we left with a project we wanted to continue, a clearer understanding of the work ahead, and the motivation to take the next step.
+
+For a first offline hackathon, that was an experience worth having.
+
+Wildlife conservation has complex challenges, and AI is not a substitute for field expertise, careful research, or responsible decision-making. But technology can offer new ways to organise observations, explore patterns, and support the people working to protect wildlife.
+
+WildID is our attempt to explore one of those possibilities.
+
+We began with a question: can we use AI to identify individual wild animals even when their appearance changes across photographs?
+
+Now, we have a prototype, a direction for further research, and a much better understanding of what answering that question will require.
+
+The Special Mention was a milestone.
+
+The real work continues.
+
+**This is WildID. And this is only the beginning.**
+
+---
+
+## Acknowledgements
+
+We would like to thank the organisers of WILDHACK 2K26, Ballarpur Institute of Technology, the collaborating team from Tadoba-Andhari Tiger Reserve, the judges, fellow participants, and everyone who contributed to making the event a valuable learning experience.
+
+A special acknowledgement goes to my teammates, Vaishnav Balpande, Lokesh Parate, and Soham Bagmare, for being part of this journey.
+
+And to everyone working towards the conservation of Indian wildlife: we hope to keep learning, building, and finding meaningful ways to contribute.
+
+**Team HackOPs**
+
+**Project: WildID — AI-Powered Individual Wildlife Re-Identification System**</pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- Site Footer -->
+    <footer class="site-footer" role="contentinfo">
+      <div>
+        <p class="footer-quote">“The Forest Has a Memory. We Are Learning to Read It.”</p>
+        <p class="footer-credits">
+          <strong>WildID</strong> — AI-Powered Individual Wildlife Re-Identification Initiative.<br>
+          Published by <strong>Team HackOPs</strong> (Hanshal Bobate, Vaishnav Balpande, Lokesh Parate, Soham Bagmare).<br>
+          In collaboration with <strong>Tadoba-Andhari Tiger Reserve (TATR)</strong>.
+        </p>
+      </div>
+      <div style="text-align: right;">
+        <p><a href="index.html" style="color: var(--color-ochre); text-decoration: none;">← Return to The Identity Atlas Image Gallery</a></p>
+        <p style="margin-top: 0.35rem; color: var(--text-muted);">100% Client-Side Static Architecture · Dynamic Sync Enabled</p>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Dynamic Blog Engine -->
+  <script src="js/blog.js"></script>
+
+</body>
+</html>

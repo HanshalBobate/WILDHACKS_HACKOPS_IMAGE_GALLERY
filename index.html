@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WildID — The Identity Atlas | AI-Powered Individual Wildlife Re-Identification</title>
+  <meta name="description" content="WildID is an AI-powered individual wildlife re-identification initiative. The Identity Atlas: an archival forensic photographic gallery connecting forest habitat, individual Bengal tigers, unique stripe geometry, and computational interpretation.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+
+  <!-- Topographic Terrain Elevation Canvas (Subtle Field Motif) -->
+  <canvas id="topoCanvas" aria-hidden="true"></canvas>
+
+  <div class="app-container">
+
+    <!-- 1. Telemetry Status Bar -->
+    <header class="telemetry-bar" role="banner">
+      <div class="telemetry-left">
+        <span><span class="telemetry-pulse"></span> <span class="telemetry-tag">FIELD STATION TATR-09</span> // SECTOR 4B</span>
+        <span>LAT: <strong>20.2173° N</strong> &nbsp; LNG: <strong>79.3082° E</strong></span>
+        <span>ELEV: <strong>246M</strong> (TADOBA-ANDHARI RESERVE)</span>
+      </div>
+      <div class="telemetry-right">
+        <span id="activeSpecimensCount">CATALOG: <strong>130 OBSERVATIONS</strong></span>
+        <!-- Ambient Forest Soundscape Generator (Web Audio API, Muted by Default) -->
+        <button id="soundscapeBtn" class="util-btn" title="Toggle gentle synthesized forest soundscape (dry leaves & distant field crickets)">
+          <span id="soundIcon">🔇</span> Field Soundscape
+        </button>
+        <!-- Theme Toggle: Forest Canopy Dark vs Archival Ivory Light -->
+        <button id="themeToggleBtn" class="util-btn" title="Toggle Archival Paper Publication theme">
+          <span id="themeIcon">📜</span> Archival Paper Mode
+        </button>
+      </div>
+    </header>
+
+    <!-- 2. Hero Editorial & Identity Atlas Manifesto -->
+    <section class="hero-section">
+      <div class="hero-meta-label">
+        WILDID ARCHIVAL DISCOVERY RECORD // OCTOBER 2026 FIELD OPS
+      </div>
+      <div class="hero-title-grid">
+        <div class="hero-title-col">
+          <h1 class="hero-heading">
+            The Forest Has a Memory.
+            <em>We Are Learning to Read It.</em>
+          </h1>
+        </div>
+        <div class="hero-desc-col">
+          <p class="hero-lead-text">
+            <strong>Every animal is an individual.</strong> Its markings are an identity, not merely a decorative pattern. 
+            Technology must serve the forest: artificial intelligence as an analytical instrument, while wildlife and conservation remain the living subject. 
+            Every observation cataloged herein is a scientific claim grounded in forensic comparison, observation, and discovery.
+          </p>
+        </div>
+      </div>
+
+      <!-- The 5-Stage Scientific Progression Navigation -->
+      <nav class="progression-strip" aria-label="Methodology Progression">
+        <div class="prog-item active" data-stage="All">
+          <div class="prog-step">STAGE 00 // COMPENDIUM</div>
+          <div class="prog-title">The Complete Atlas</div>
+          <div class="prog-desc">Full 130-observation corpus spanning field biology, telemetry, and engineering.</div>
+        </div>
+        <div class="prog-item" data-stage="Landscape">
+          <div class="prog-step">STAGE 01 // LANDSCAPE</div>
+          <div class="prog-title">Forest Cartography</div>
+          <div class="prog-desc">Dry deciduous terrain, teak canopy elevation contours, and movement corridors.</div>
+        </div>
+        <div class="prog-item" data-stage="Individual">
+          <div class="prog-step">STAGE 02 // INDIVIDUAL</div>
+          <div class="prog-title">Bengal Tiger Specimen</div>
+          <div class="prog-desc">Full-body natural postures, environmental context, and camera trap logs.</div>
+        </div>
+        <div class="prog-item" data-stage="Evidence">
+          <div class="prog-step">STAGE 03 // EVIDENCE</div>
+          <div class="prog-title">Stripe Geometry & Re-ID</div>
+          <div class="prog-desc">Flank bifurcations, whisker spot matrices, and biometric topological evidence.</div>
+        </div>
+        <div class="prog-item" data-stage="Interpretation">
+          <div class="prog-step">STAGE 04 // INTERPRETATION</div>
+          <div class="prog-title">Command Telemetry</div> 
+          <div class="prog-desc">Range officer decision support, roaming range maps, and patrol intelligence.</div>
+        </div>
+      </nav>
+    </section>
+
+    <!-- 3. Curated Identity Atlas Exhibition Spotlight -->
+    <section class="showcase-banner" id="showcaseBanner">
+      <div class="showcase-visual" id="showcaseVisual" title="Click to inspect this master plate in deep forensic mode">
+        <img id="showcaseImg" class="showcase-img" src="" alt="Featured WildID Specimen Plate" loading="eager">
+        <div class="showcase-overlay-reticle">
+          <div class="reticle-corner top">+ CORNER [0,0] // SPECIMEN RETICLE</div>
+          <div class="reticle-corner bottom">TATR SECTOR 4B // TELEMETRY CORRESPONDENCE +</div>
+        </div>
+      </div>
+      <article class="showcase-docket">
+        <span class="docket-badge" id="showcaseBadge">SPECIMEN // BIOMETRIC PROVENANCE</span>
+        <h2 class="docket-headline" id="showcaseHeadline">Individual Lateral Stripe Profiling & Re-ID</h2>
+        <blockquote class="docket-quote" id="showcaseQuote">
+          “A tiger’s stripe pattern is a persistent forensic fingerprint. Even in dappled shadow, local bifurcation geometry remains mathematically unique across an entire lifespan.”
+        </blockquote>
+        <table class="docket-specs-table">
+          <tbody>
+            <tr>
+              <td class="spec-k">Observation ID</td>
+              <td class="spec-v" id="showcaseId">OBS-TAD-001</td>
+            </tr>
+            <tr>
+              <td class="spec-k">Biometric Classification</td>
+              <td class="spec-v" id="showcaseClass">Bengal Tiger (Panthera tigris)</td>
+            </tr>
+            <tr>
+              <td class="spec-k">Habitat Sector</td>
+              <td class="spec-v" id="showcaseSector">Moharli Core Range (Sector 4B)</td>
+            </tr>
+            <tr>
+              <td class="spec-k">Sensor Station</td>
+              <td class="spec-v" id="showcaseCam">Ultra-High Dynamic Range Optical Sensor</td>
+            </tr>
+            <tr>
+              <td class="spec-k">Telemetry Status</td>
+              <td class="spec-v" id="showcaseStatus" style="color: var(--color-ochre);">Confirmed Mark-Recapture Match</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="docket-actions">
+          <button class="btn-primary-ochre" id="showcaseInspectBtn">Deep Forensic Inspection</button>
+          <button class="btn-secondary-outline" id="showcaseWorkbenchBtn">Load in Re-ID Workbench</button>
+        </div>
+      </article>
+    </section>
+
+    <!-- 4. Forensic Control Deck (Sticky Filters & Tools) -->
+    <section class="control-deck" id="controlDeck" aria-label="Gallery Controls">
+      <div class="control-row-top">
+        <!-- Category Filter Tabs -->
+        <div class="category-tabs" role="tablist">
+          <button class="tab-btn active" data-category="all" role="tab" aria-selected="true">
+            All Observations <span class="badge-count" id="countAll">130</span>
+          </button>
+          <button class="tab-btn" data-category="telemetry" role="tab" aria-selected="false">
+            Biometric & Telemetry <span class="badge-count" id="countTelemetry">21</span>
+          </button>
+          <button class="tab-btn" data-category="wildlife" role="tab" aria-selected="false">
+            Wildlife & Tigers <span class="badge-count" id="countWildlife">39</span>
+          </button>
+          <button class="tab-btn" data-category="chronicles" role="tab" aria-selected="false">
+            HackOps Field Sprint <span class="badge-count" id="countChronicles">70</span>
+          </button>
+        </div>
+
+        <!-- View Mode Switcher -->
+        <div class="view-mode-group" role="group" aria-label="View Mode">
+          <button class="view-btn active" id="viewGridBtn" title="Specimen Plates Grid View">
+            Plates Grid
+          </button>
+          <button class="view-btn" id="viewTableBtn" title="Archival Docket Register Table">
+            Archival Register
+          </button>
+          <button class="view-btn" id="viewWorkbenchBtn" title="Dual-Specimen Re-ID Workbench">
+            Re-ID Workbench
+          </button>
+        </div>
+      </div>
+
+      <div class="control-row-bottom">
+        <!-- Live Search Input -->
+        <div class="search-box-wrap">
+          <span class="search-icon" aria-hidden="true">⌕</span>
+          <input type="text" id="searchInput" class="search-input" placeholder="Search by Observation ID, title, sector, camera, or coordinates..." aria-label="Search gallery records">
+        </div>
+
+        <!-- Filter Controls -->
+        <div class="filter-controls-group">
+          <!-- Stage Selector -->
+          <div class="select-wrap">
+            <select id="stageFilter" class="select-filter" aria-label="Filter by Scientific Stage">
+              <option value="all">Stage: All Stages</option>
+              <option value="Landscape">Stage 1: Landscape</option>
+              <option value="Individual">Stage 2: Individual</option>
+              <option value="Evidence">Stage 3: Evidence</option>
+              <option value="Interpretation">Stage 4: Interpretation</option>
+              <option value="Field Lab">Stage: HackOps Field Lab</option>
+            </select>
+          </div>
+
+          <!-- Sort Selector -->
+          <div class="select-wrap">
+            <select id="sortSelect" class="select-filter" aria-label="Sort observations">
+              <option value="index-asc">Sort: Chronological (Oldest First)</option>
+              <option value="index-desc">Sort: Chronological (Newest First)</option>
+              <option value="size-desc">Sort: File Size (Highest Resolution)</option>
+              <option value="pixels-desc">Sort: Sensor Megapixels</option>
+            </select>
+          </div>
+
+          <!-- Results Counter -->
+          <div class="results-counter" id="resultsCounter">
+            Showing <strong id="visibleCount">130</strong> of 130 records
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. View Mode A: Specimen Plates Gallery Grid -->
+    <main id="galleryGrid" class="gallery-grid" role="region" aria-label="Image Observations Grid">
+      <!-- Injected dynamically by app.js -->
+    </main>
+
+    <!-- 6. View Mode B: Archival Docket Catalog Table -->
+    <section id="catalogTableWrap" class="catalog-table-wrap" role="region" aria-label="Archival Register Table">
+      <table class="catalog-table">
+        <thead>
+          <tr>
+            <th>Specimen Code</th>
+            <th>Plate</th>
+            <th>Stage</th>
+            <th>Observation Title & Scientific Claim</th>
+            <th>Habitat Sector</th>
+            <th>Sensor / Camera</th>
+            <th>Dimensions</th>
+            <th>File Weight</th>
+            <th>Verification Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="catalogTableBody">
+          <!-- Injected dynamically by app.js -->
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 7. View Mode C: Dual-Specimen Comparison Workbench -->
+    <section id="workbenchView" class="workbench-container" role="region" aria-label="Stripe Re-ID Analysis Workbench">
+      <div class="workbench-header">
+        <div>
+          <h2 class="workbench-title">Stripe Re-Identification Dual Workbench</h2>
+          <p class="workbench-subtitle">
+            Side-by-side biometric comparison verifying stripe correspondence, flank bifurcation topology, and individual mark-recapture identity.
+          </p>
+        </div>
+        <button class="util-btn" id="workbenchResetBtn">Reset to Recommended Pair</button>
+      </div>
+
+      <div class="workbench-dual-viewport">
+        <!-- Specimen A (Reference Profile) -->
+        <div class="workbench-panel">
+          <div class="workbench-panel-head">
+            <span class="workbench-slot-label">Specimen A // Reference Observation</span>
+            <select id="workbenchSelectA" class="select-filter" aria-label="Select Specimen A"></select>
+          </div>
+          <div class="workbench-img-wrap" id="workbenchWrapA">
+            <img id="workbenchImgA" class="workbench-img" src="" alt="Specimen A">
+          </div>
+          <div class="card-meta-table">
+            <span>ID: <strong id="wbIdA">OBS-001</strong></span>
+            <span>Sector: <strong id="wbSectorA">Moharli</strong></span>
+            <span>Date: <strong id="wbDateA">2026-10-16</strong></span>
+            <span>Sensor: <strong id="wbCamA">Optical Station</strong></span>
+          </div>
+        </div>
+
+        <!-- Specimen B (Candidate Sighting) -->
+        <div class="workbench-panel">
+          <div class="workbench-panel-head">
+            <span class="workbench-slot-label">Specimen B // Candidate Sighting</span>
+            <select id="workbenchSelectB" class="select-filter" aria-label="Select Specimen B"></select>
+          </div>
+          <div class="workbench-img-wrap" id="workbenchWrapB">
+            <img id="workbenchImgB" class="workbench-img" src="" alt="Specimen B">
+          </div>
+          <div class="card-meta-table">
+            <span>ID: <strong id="wbIdB">OBS-002</strong></span>
+            <span>Sector: <strong id="wbSectorB">Tadoba Basin</strong></span>
+            <span>Date: <strong id="wbDateB">2026-10-17</strong></span>
+            <span>Sensor: <strong id="wbCamB">Field Station</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Comparative Biometric Analytics Readout -->
+      <div class="workbench-analysis-metrics">
+        <div class="metric-box">
+          <span class="metric-label">Stripe Feature Similarity</span>
+          <span class="metric-val" id="wbSimVal">98.4%</span>
+        </div>
+        <div class="metric-box">
+          <span class="metric-label">Verified Correspondences</span>
+          <span class="metric-val" id="wbCorrVal">24 Nodes</span>
+        </div>
+        <div class="metric-box">
+          <span class="metric-label">Spatial Distance Delta</span>
+          <span class="metric-val" id="wbDistVal">4.2 km</span>
+        </div>
+        <div class="metric-box">
+          <span class="metric-label">Identification Claim</span>
+          <span class="metric-val" id="wbClaimVal" style="font-size: 1.25rem;">CONFIRMED MATCH</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. Deep Forensic Lightbox & Inspection Modal -->
+    <div id="inspectionModal" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Forensic Inspection Docket">
+      <div class="inspection-docket-window">
+        
+        <!-- Viewport Section (Left) -->
+        <div class="modal-viewport">
+          <div class="modal-viewport-toolbar">
+            <div style="display: flex; gap: 0.85rem; align-items: center;">
+              <span>ZOOM: <strong id="modalZoomVal">100%</strong></span>
+              <button class="util-btn" id="modalZoomInBtn" title="Zoom in (+)">+</button>
+              <button class="util-btn" id="modalZoomOutBtn" title="Zoom out (-)">−</button>
+              <button class="util-btn" id="modalZoomFitBtn" title="Fit to viewport">Fit</button>
+              <button class="util-btn" id="modalZoom100Btn" title="View 1:1 original pixels">100%</button>
+            </div>
+            <div style="display: flex; gap: 0.85rem; align-items: center;">
+              <button class="util-btn" id="modalHudToggleBtn" title="Toggle Cartographic Coordinate Grid Overlay">
+                [+] Coordinate Grid
+              </button>
+              <span id="modalImgIndex">SPECIMEN 1 / 130</span>
+            </div>
+          </div>
+
+          <div class="modal-viewport-canvas-wrap" id="modalCanvasWrap">
+            <img id="modalMasterImg" class="modal-master-img" src="" alt="Full Master Specimen">
+            <div id="modalForensicHud" class="modal-forensic-hud" aria-hidden="true"></div>
+          </div>
+
+          <button class="modal-nav-arrow prev" id="modalPrevBtn" title="Previous Specimen (Left Arrow)" aria-label="Previous Specimen">‹</button>
+          <button class="modal-nav-arrow next" id="modalNextBtn" title="Next Specimen (Right Arrow)" aria-label="Next Specimen">›</button>
+        </div>
+
+        <!-- Specimen Archival Docket Sidebar (Right) -->
+        <aside class="modal-sidebar-docket">
+          <div class="modal-sidebar-header">
+            <div>
+              <div class="sidebar-specimen-id" id="modalSpecimenCode">SPEC-TATR-T12</div>
+              <div style="font-size: 0.72rem; color: var(--text-muted);" id="modalStageTag">STAGE 03 // EVIDENCE</div>
+            </div>
+            <button class="modal-close-btn" id="modalCloseBtn" title="Close docket (Esc)" aria-label="Close modal">✕</button>
+          </div>
+
+          <div class="modal-sidebar-content">
+            <h3 class="sidebar-title" id="modalTitle">Lateral Stripe Profile Observation</h3>
+            
+            <div class="sidebar-claim-box" id="modalClaim">
+              Multi-channel biometric observation documenting unique bifurcation patterns on the flank. Mathematical correspondence vectors confirmed against central mark-recapture archive.
+            </div>
+
+            <!-- Technical Specimen Metadata Group -->
+            <div class="sidebar-data-group">
+              <div class="data-group-title">Forensic Field Metadata</div>
+              <div class="data-row">
+                <span class="data-row-k">Timestamp</span>
+                <span class="data-row-v" id="modalDate">2026-10-17 • 06:39</span>
+              </div>
+              <div class="data-row">
+                <span class="data-row-k">Sensor Model</span>
+                <span class="data-row-v" id="modalCamera">Galaxy F15 5G Field Optical Unit</span>
+              </div>
+              <div class="data-row">
+                <span class="data-row-k">Raw Resolution</span>
+                <span class="data-row-v" id="modalDimensions">4080 × 2296 px</span>
+              </div>
+              <div class="data-row">
+                <span class="data-row-k">Master File Size</span>
+                <span class="data-row-v" id="modalSize">1.4 MB</span>
+              </div>
+              <div class="data-row">
+                <span class="data-row-k">Raw Filename</span>
+                <span class="data-row-v" id="modalFilename" style="font-size: 0.7rem;">20261017_063919.jpg.jpeg</span>
+              </div>
+            </div>
+
+            <!-- Geographic & Conservation Status Group -->
+            <div class="sidebar-data-group">
+              <div class="data-group-title">Geographic & Biometric Metrics</div>
+              <div class="data-row">
+                <span class="data-row-k">Forest Sector</span>
+                <span class="data-row-v" id="modalSector">Moharli Core (Sector 4B)</span>
+              </div>
+              <div class="data-row">
+                <span class="data-row-k">GPS Coordinates</span>
+                <span class="data-row-v" id="modalCoords">20.2173° N, 79.3082° E</span>
+              </div>
+              <div class="data-row">
+                <span class="data-row-k">Stripe Density Index</span>
+                <span class="data-row-v" id="modalStripeDensity">0.82 σ</span>
+              </div>
+              <div class="data-row">
+                <span class="data-row-k">Verification Status</span>
+                <span class="data-row-v" id="modalStatus" style="color: var(--color-ochre);">Confirmed Mark-Recapture Match</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-sidebar-actions">
+            <a id="modalDownloadMasterLink" class="btn-primary-ochre" href="#" target="_blank" download>
+              Open Raw Master Image File
+            </a>
+            <button class="btn-secondary-outline" id="modalSendToWorkbenchBtn">
+              Compare in Re-ID Workbench
+            </button>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+
+    <!-- 9. Scientific Citation & Archival Declaration -->
+    <footer class="site-footer" role="contentinfo">
+      <div>
+        <p class="footer-quote">“The Forest Has a Memory. We Are Learning to Read It.”</p>
+        <p class="footer-credits">
+          <strong>WildID</strong> — AI-Powered Individual Wildlife Re-Identification Initiative.<br>
+          Curated from authentic research observations, telemetry streams, and HackOps field laboratory chronicles.<br>
+          Indian Dry Deciduous Habitat Study: <span>Tadoba-Andhari Tiger Reserve (TATR)</span>.
+        </p>
+      </div>
+      <div style="text-align: right;">
+        <p>130 Documented Observations // 100% Client-Side Static Architecture</p>
+        <p style="color: var(--color-ochre); margin-top: 0.35rem;">Field Research + Forensic Pattern Analysis + Computational Cartography</p>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Pure Client-Side Static Scripts (Zero Node / Zero Flask) -->
+  <script src="js/gallery_data.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>
