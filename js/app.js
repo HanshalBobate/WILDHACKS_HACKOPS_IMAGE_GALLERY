@@ -56,6 +56,9 @@
   // Showcase elements
   const showcaseImg = document.getElementById('showcaseImg');
   const showcaseHeadline = document.getElementById('showcaseHeadline');
+  const showcaseQuote = document.getElementById('showcaseQuote');
+  const showcaseBadge = document.getElementById('showcaseBadge');
+  const showcaseClass = document.getElementById('showcaseClass');
   const showcaseId = document.getElementById('showcaseId');
   const showcaseSector = document.getElementById('showcaseSector');
   const showcaseCam = document.getElementById('showcaseCam');
@@ -116,27 +119,39 @@
   const workbenchResetBtn = document.getElementById('workbenchResetBtn');
 
   // 2. INITIALIZE SHOWCASE WITH A PROMINENT PLATE
-  function initShowcase() {
-    // Pick the most iconic wildlife or high-res plate
-    const featured = data.find(d => d.filename.includes('20261017_063919')) || data[0];
-    if (featured) {
+  function updateShowcaseItem(featured) {
+    if (!featured) return;
+    if (showcaseImg) {
       showcaseImg.src = featured.thumb;
       showcaseImg.alt = featured.title;
-      showcaseHeadline.textContent = featured.title;
-      showcaseId.textContent = featured.specimenCode;
-      showcaseSector.textContent = featured.sector;
-      showcaseCam.textContent = featured.camera;
-      showcaseStatus.textContent = featured.status;
+    }
+    if (showcaseHeadline) showcaseHeadline.textContent = featured.title;
+    if (showcaseQuote) showcaseQuote.textContent = `“${featured.claim}”`;
+    if (showcaseBadge) showcaseBadge.textContent = `${featured.stage.toUpperCase()} // ${featured.category.toUpperCase()}`;
+    if (showcaseId) showcaseId.textContent = featured.specimenCode;
+    if (showcaseClass) {
+      showcaseClass.textContent = featured.category === 'wildlife' ? 'Forest Habitat & Wildlife' : (featured.category === 'telemetry' ? 'Biometric & GIS Telemetry' : 'HackOPs Field Sprint');
+    }
+    if (showcaseSector) showcaseSector.textContent = featured.sector;
+    if (showcaseCam) showcaseCam.textContent = featured.camera;
+    if (showcaseStatus) showcaseStatus.textContent = featured.status;
 
-      const openFeatured = () => openModal(featured.index - 1);
-      showcaseInspectBtn.onclick = openFeatured;
-      showcaseVisual.onclick = openFeatured;
+    const openFeatured = () => openModal(featured.index - 1);
+    if (showcaseInspectBtn) showcaseInspectBtn.onclick = openFeatured;
+    if (showcaseVisual) showcaseVisual.onclick = openFeatured;
+    if (showcaseWorkbenchBtn) {
       showcaseWorkbenchBtn.onclick = () => {
         switchViewMode('workbench');
         workbenchSelectA.value = featured.id;
         updateWorkbench();
       };
     }
+  }
+
+  function initShowcase() {
+    // Pick the most iconic wildlife or high-res plate
+    const featured = data.find(d => d.filename.includes('20261017_063919')) || data[0];
+    updateShowcaseItem(featured);
   }
 
   // 3. FILTERING & SORTING LOGIC

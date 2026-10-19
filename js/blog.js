@@ -226,28 +226,28 @@
       photoCard.className = 'blog-editorial-figure';
       photoCard.innerHTML = `
         <div class="figure-img-frame">
-          <img src="thumbs/IMG-20261016-WA0002.jpeg" alt="Team HackOps at WILDHACK 2K26" loading="lazy">
-          <div class="figure-reticle-corner">[SPECIMEN HACKOPS-SPRINT-001]</div>
+          <img src="thumbs/IMG_20261016_131054.jpg" alt="Team HackOps at WILDHACK 2K26" loading="lazy">
+          <div class="figure-reticle-corner">[TEAM HACKOPS // BIT BAMNI CAMPUS]</div>
         </div>
         <figcaption class="figure-caption">
-          <strong>Figure 1.1 // Team HackOPs at WILDHACK 2K26:</strong> Hanshal Bobate, Vaishnav Balpande, Lokesh Parate, and Soham Bagmare at Ballarpur Institute of Technology in collaboration with Tadoba-Andhari Tiger Reserve.
+          <strong>Figure 1.1 // Team HackOPs at WILDHACK 2K26:</strong> Hanshal Bobate, Vaishnav Balpande, Lokesh Parate, and Soham Bagmare gathered around the campus installation at Ballarpur Institute of Technology before the hackathon kickoff.
         </figcaption>
       `;
       sec3.parentNode.insertBefore(photoCard, sec3.nextSibling);
     }
 
-    // 2. Photo of Bengal Tiger Observation in Section 4
+    // 2. Photo of Tiger Biometric Prototype in Section 4
     const sec4 = document.getElementById('section-4');
     if (sec4) {
       const photoCard = document.createElement('figure');
       photoCard.className = 'blog-editorial-figure';
       photoCard.innerHTML = `
         <div class="figure-img-frame">
-          <img src="thumbs/20261017_063919.jpg.jpeg" alt="Bengal Tiger Flank Stripe Detail" loading="lazy">
-          <div class="figure-reticle-corner">[OBS-TAD-001 // FLANK RE-ID]</div>
+          <img src="thumbs/IMG-20261017-WA0010.jpg" alt="Biometric Screen Test of Tiger Re-ID" loading="lazy">
+          <div class="figure-reticle-corner">[PROTOTYPE SCREEN // TIGER RE-ID BENCH]</div>
         </div>
         <figcaption class="figure-caption">
-          <strong>Figure 2.1 // Distinctive Stripe Fingerprint:</strong> Lateral stripe bifurcation on an individual Bengal tiger photographed in central Indian dry deciduous forest. Each stripe configuration acts as a persistent individual biometric identifier.
+          <strong>Figure 2.1 // Biometric Stripe Isolation Prototype:</strong> Testing invariant stripe feature extraction across multiple candidate tiger postures and camera angles on our development workstation.
         </figcaption>
       `;
       sec4.parentNode.insertBefore(photoCard, sec4.nextSibling);
@@ -285,6 +285,23 @@
         </figcaption>
       `;
       sec10.parentNode.insertBefore(photoCard, sec10.nextSibling);
+    }
+
+    // 5. Special Mention Award in Section 14
+    const sec14 = document.getElementById('section-14');
+    if (sec14) {
+      const photoCard = document.createElement('figure');
+      photoCard.className = 'blog-editorial-figure';
+      photoCard.innerHTML = `
+        <div class="figure-img-frame">
+          <img src="thumbs/IMG-20261018-WA0000.jpg" alt="WILDHACK 2K26 Special Mention Citation and Medal" loading="lazy">
+          <div class="figure-reticle-corner">[VALEDICTORY CITATION // SPECIAL MENTION]</div>
+        </div>
+        <figcaption class="figure-caption">
+          <strong>Figure 5.1 // Special Mention Recognition:</strong> The official certificate of excellence and green-ribbon medal awarded to Team HackOPs by Ballarpur Institute of Technology and Tadoba-Andhari Tiger Reserve leadership.
+        </figcaption>
+      `;
+      sec14.parentNode.insertBefore(photoCard, sec14.nextSibling);
     }
   }
 
