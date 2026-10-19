@@ -1,0 +1,905 @@
+/* ==========================================================================
+   WILDID // EDITORIAL STORYTELLING DESIGN SYSTEM
+   "Our Experience at WILDHACK 2K26"
+   A 24-hour journey: wildlife, computer vision, and an idea we had postponed.
+   Field Canopy: #142820 | Tiger Ochre: #D5A54A | Carbon Black: #111513
+   Archival Ivory: #F2EFE6 | Research Navy: #243746 | Field Slate: #65736D
+   ========================================================================== */
+
+/* 1. Global Reading Progress Indicator */
+.reading-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-ochre), var(--color-ochre-light));
+  z-index: 1000;
+  width: 0%;
+  transition: width 0.1s linear;
+  box-shadow: 0 0 10px rgba(213, 165, 74, 0.6);
+}
+
+/* 2. Floating Chapter Progress Nav */
+.chapter-nav {
+  position: fixed;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 900;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0.75rem 0.5rem;
+  background: rgba(17, 21, 19, 0.75);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-subtle);
+  border-radius: 2rem;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+@media (max-width: 1200px) {
+  .chapter-nav {
+    display: none;
+  }
+}
+
+.chapter-nav-dot {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-slate);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  border: none;
+  padding: 0;
+}
+
+.chapter-nav-dot:hover,
+.chapter-nav-dot.active {
+  background: var(--color-ochre);
+  transform: scale(1.6);
+  box-shadow: 0 0 8px var(--color-ochre-glow);
+}
+
+.chapter-nav-dot .dot-tooltip {
+  position: absolute;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--bg-card);
+  color: var(--text-display);
+  border: 1px solid var(--border-subtle);
+  padding: 0.3rem 0.65rem;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.chapter-nav-dot:hover .dot-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* 3. Editorial Layout Elements */
+.editorial-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.editorial-section {
+  position: relative;
+  padding: 6.5rem 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.editorial-section.last-chapter {
+  border-bottom: none;
+}
+
+/* Section Header Badges */
+.chapter-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-ochre);
+  margin-bottom: 1.25rem;
+  padding: 0.3rem 0.75rem;
+  background: var(--color-ochre-dim);
+  border: 1px solid rgba(213, 165, 74, 0.3);
+  border-radius: 2px;
+}
+
+.chapter-kicker::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-ochre);
+  border-radius: 50%;
+  animation: pulse-dot 2.4s infinite ease-in-out;
+}
+
+.editorial-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--text-display);
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.015em;
+}
+
+.editorial-title em {
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-ochre-light);
+}
+
+.editorial-lead {
+  font-family: var(--font-editorial);
+  font-size: clamp(1.25rem, 2vw, 1.6rem);
+  line-height: 1.45;
+  color: var(--color-ivory);
+  font-style: italic;
+  margin-bottom: 2rem;
+  max-width: 900px;
+}
+
+body.archival-light-mode .editorial-lead {
+  color: var(--color-navy);
+}
+
+.editorial-prose {
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  line-height: 1.82;
+  color: var(--text-body);
+}
+
+.editorial-prose p {
+  margin-bottom: 1.5rem;
+}
+
+.editorial-prose p:last-child {
+  margin-bottom: 0;
+}
+
+.editorial-prose strong {
+  color: var(--text-display);
+  font-weight: 600;
+}
+
+/* Editorial Dropcap */
+.dropcap::first-letter {
+  font-family: var(--font-serif);
+  float: left;
+  font-size: 4.2rem;
+  line-height: 0.85;
+  padding-top: 4px;
+  padding-right: 12px;
+  padding-bottom: 2px;
+  color: var(--color-ochre);
+  font-weight: 700;
+}
+
+/* Pull Quotes */
+.editorial-quote {
+  position: relative;
+  margin: 3.5rem 0;
+  padding: 2rem 2.5rem 2rem 3rem;
+  border-left: 3px solid var(--color-ochre);
+  background: linear-gradient(90deg, var(--color-ochre-dim), transparent);
+}
+
+.editorial-quote p {
+  font-family: var(--font-editorial);
+  font-size: clamp(1.35rem, 2.4vw, 1.95rem);
+  line-height: 1.35;
+  font-style: italic;
+  color: var(--text-display);
+  margin-bottom: 0.75rem;
+}
+
+.editorial-quote cite {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-style: normal;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-ochre);
+}
+
+/* Visual Asymmetric Split Layout */
+.story-split-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 3.5rem;
+  align-items: center;
+  margin: 3.5rem 0;
+}
+
+.story-split-grid.reverse {
+  grid-template-columns: 0.85fr 1.15fr;
+}
+
+@media (max-width: 960px) {
+  .story-split-grid,
+  .story-split-grid.reverse {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+/* Editorial Photo Frame */
+.editorial-photo-frame {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-card);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+}
+
+.editorial-photo-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.editorial-photo-frame:hover img {
+  transform: scale(1.02);
+}
+
+.photo-caption {
+  padding: 0.85rem 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+  background: rgba(17, 21, 19, 0.95);
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+body.archival-light-mode .photo-caption {
+  background: #E8E4D8;
+  color: #56645F;
+}
+
+.caption-tag {
+  color: var(--color-ochre);
+  font-weight: 600;
+}
+
+/* Measurement Reticle Overlay */
+.reticle-box {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  padding: 0.35rem 0.65rem;
+  background: rgba(17, 21, 19, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(213, 165, 74, 0.4);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--color-ochre);
+  letter-spacing: 0.08em;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   CHAPTER SPECIFIC STYLES
+   ========================================================================== */
+
+/* Chapter 01: Hero Opening */
+.hero-story-header {
+  position: relative;
+  min-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 4rem 2rem 5rem 2rem;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.hero-backdrop-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 38%;
+  filter: brightness(0.62) contrast(1.1);
+  z-index: 0;
+  transform: scale(1.02);
+  transition: transform 12s ease-out;
+}
+
+.hero-story-header:hover .hero-backdrop-img {
+  transform: scale(1.06);
+}
+
+.hero-gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg, 
+    rgba(17, 21, 19, 0.4) 0%, 
+    rgba(17, 21, 19, 0.25) 40%, 
+    rgba(20, 40, 32, 0.85) 75%, 
+    rgba(17, 21, 19, 0.98) 100%
+  );
+  z-index: 1;
+}
+
+.hero-content-wrap {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.hero-event-docket {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.75rem;
+  padding: 1.25rem 0;
+  border-top: 1px solid rgba(242, 239, 230, 0.2);
+  border-bottom: 1px solid rgba(242, 239, 230, 0.2);
+  margin: 2rem 0 2.5rem 0;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.08em;
+  color: var(--color-ivory);
+}
+
+.hero-event-docket span strong {
+  color: var(--color-ochre);
+}
+
+.hero-cta-row {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.btn-enter-story {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.95rem 2rem;
+  background: var(--color-ochre);
+  color: var(--color-charcoal-pure);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 20px rgba(213, 165, 74, 0.35);
+}
+
+.btn-enter-story:hover {
+  background: var(--color-ochre-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(213, 165, 74, 0.5);
+}
+
+.btn-open-archive {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.95rem 1.85rem;
+  background: rgba(17, 21, 19, 0.6);
+  backdrop-filter: blur(8px);
+  color: var(--color-ivory);
+  border: 1px solid var(--border-medium);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: all 0.25s ease;
+}
+
+.btn-open-archive:hover {
+  border-color: var(--color-ochre);
+  color: var(--color-ochre);
+}
+
+/* Chapter 03: Team Presentation Roster */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin: 3rem 0;
+}
+
+@media (max-width: 900px) {
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.team-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  padding: 1.5rem;
+  border-top: 3px solid var(--color-ochre);
+  position: relative;
+  transition: var(--transition-smooth);
+}
+
+.team-card:hover {
+  border-color: var(--color-ochre);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.team-role {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-ochre);
+  margin-bottom: 0.5rem;
+}
+
+.team-name {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-display);
+  margin-bottom: 0.5rem;
+}
+
+.team-desc {
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+/* Chapter 04: Side-by-side Biometric Comparison */
+.challenge-comparison-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+@media (max-width: 768px) {
+  .challenge-comparison-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.comparison-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  overflow: hidden;
+  position: relative;
+}
+
+.comparison-head {
+  padding: 0.85rem 1.25rem;
+  background: var(--bg-docket);
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: var(--color-ivory);
+}
+
+.comparison-img-wrap {
+  position: relative;
+  height: 380px;
+  overflow: hidden;
+  background: #000;
+}
+
+.comparison-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.comparison-card:hover .comparison-img-wrap img {
+  transform: scale(1.03);
+}
+
+.comparison-overlay-reticle {
+  position: absolute;
+  inset: 1.5rem;
+  border: 1px dashed rgba(213, 165, 74, 0.5);
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.comparison-meta-footer {
+  padding: 1.25rem;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--text-body);
+}
+
+/* Chapter 05: Pipeline & Architecture Cards */
+.pipeline-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.25rem;
+  margin: 3rem 0;
+}
+
+@media (max-width: 1100px) {
+  .pipeline-steps-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .pipeline-steps-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pipeline-step-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  padding: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.pipeline-step-num {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--color-ochre);
+  letter-spacing: 0.12em;
+  margin-bottom: 0.75rem;
+}
+
+.pipeline-step-title {
+  font-family: var(--font-serif);
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--text-display);
+  margin-bottom: 0.65rem;
+}
+
+.pipeline-step-desc {
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.pipeline-benchmark-badge {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  padding: 0.3rem 0.5rem;
+  background: var(--color-ochre-dim);
+  border: 1px solid rgba(213, 165, 74, 0.35);
+  color: var(--color-ochre);
+  align-self: flex-start;
+  border-radius: 2px;
+}
+
+/* Chapter 06: 24-Hour Midnight Sprint Gallery */
+.sprint-masonry {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 1.5rem;
+  margin: 3.5rem 0;
+}
+
+@media (max-width: 850px) {
+  .sprint-masonry {
+    grid-template-columns: 1fr;
+  }
+}
+
+.sprint-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Chapter 07: Live Dashboard Demonstration Showcase */
+.dashboard-showcase-panel {
+  background: var(--bg-docket);
+  border: 1px solid var(--border-medium);
+  padding: 2rem;
+  margin: 3.5rem 0;
+  position: relative;
+  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.4);
+}
+
+.dashboard-showcase-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+@media (max-width: 960px) {
+  .dashboard-showcase-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.dashboard-features-list {
+  list-style: none;
+  margin: 1.5rem 0 0 0;
+  padding: 0;
+}
+
+.dashboard-features-list li {
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  gap: 1rem;
+  font-size: 0.95rem;
+}
+
+.dashboard-features-list li:last-child {
+  border-bottom: none;
+}
+
+.feature-bullet {
+  font-family: var(--font-mono);
+  color: var(--color-ochre);
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+/* Chapter 08: Critique & Feedback Columns */
+.critique-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  margin: 3rem 0;
+}
+
+@media (max-width: 800px) {
+  .critique-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.critique-card {
+  padding: 2.25rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-top: 3px solid var(--color-slate);
+}
+
+.critique-card.highlight {
+  border-top-color: var(--color-ochre);
+}
+
+.critique-type {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-ochre);
+  margin-bottom: 0.75rem;
+}
+
+.critique-title {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: var(--text-display);
+  margin-bottom: 1rem;
+}
+
+/* Chapter 09: Dignitaries Roster */
+.dignitary-pills-wrap {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  margin: 2.5rem 0;
+}
+
+@media (max-width: 768px) {
+  .dignitary-pills-wrap {
+    grid-template-columns: 1fr;
+  }
+}
+
+.dignitary-pill {
+  padding: 1.25rem 1.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.dignitary-name {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-display);
+}
+
+.dignitary-org {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.dignitary-link {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--color-ochre);
+  text-decoration: none;
+  margin-top: 0.4rem;
+  align-self: flex-start;
+  transition: color 0.2s;
+}
+
+.dignitary-link:hover {
+  text-decoration: underline;
+  color: var(--color-ochre-light);
+}
+
+/* Chapter 10: Roadmap Milestones */
+.roadmap-timeline {
+  position: relative;
+  margin: 3.5rem 0;
+  padding-left: 2.5rem;
+  border-left: 2px solid var(--border-medium);
+}
+
+.roadmap-item {
+  position: relative;
+  margin-bottom: 2.5rem;
+}
+
+.roadmap-item:last-child {
+  margin-bottom: 0;
+}
+
+.roadmap-marker {
+  position: absolute;
+  left: -3.05rem;
+  top: 0.25rem;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--bg-app);
+  border: 3px solid var(--color-ochre);
+}
+
+.roadmap-item-title {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--text-display);
+  margin-bottom: 0.5rem;
+}
+
+/* Chapter 11: Colophon / Signoff */
+.colophon-card {
+  padding: 3rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-medium);
+  border-top: 4px solid var(--color-ochre);
+  margin: 4rem 0 2rem 0;
+  text-align: center;
+}
+
+.colophon-headline {
+  font-family: var(--font-serif);
+  font-size: 1.85rem;
+  font-weight: 600;
+  color: var(--text-display);
+  margin-bottom: 0.85rem;
+}
+
+.colophon-sub {
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--color-ochre-light);
+  margin-bottom: 2rem;
+}
+
+.colophon-links-row {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+/* Collapsible Companion Specimen Archive Section */
+.specimen-archive-section {
+  padding: 4rem 0;
+  background: rgba(13, 27, 21, 0.7);
+  border-top: 2px solid var(--color-ochre);
+}
+
+.archive-toggle-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-medium);
+  margin-bottom: 2rem;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.archive-toggle-bar:hover {
+  border-color: var(--color-ochre);
+}
+
+.archive-toggle-title {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  color: var(--text-display);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.archive-expand-icon {
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  color: var(--color-ochre);
+  transition: transform 0.3s ease;
+}
+
+.specimen-archive-section.collapsed .archive-content-body {
+  display: none;
+}
+
+.specimen-archive-section.expanded .archive-expand-icon {
+  transform: rotate(180deg);
+}

@@ -777,26 +777,88 @@
           stripeDensity: '0.84 σ',
           correspondenceCount: 16
         };
-
         data.unshift(newItem);
       });
 
-      // Update counters
-      document.getElementById('countAll').textContent = data.length;
-      document.getElementById('countTelemetry').textContent = data.filter(d => d.category === 'telemetry').length;
-      document.getElementById('countWildlife').textContent = data.filter(d => d.category === 'wildlife').length;
-      document.getElementById('countChronicles').textContent = data.filter(d => d.category === 'chronicles').length;
-      document.getElementById('activeSpecimensCount').innerHTML = `CATALOG: <strong>${data.length} OBSERVATIONS</strong>`;
+      const cntAll = document.getElementById('countAll');
+      if (cntAll) cntAll.textContent = data.length;
+      const cntTel = document.getElementById('countTelemetry');
+      if (cntTel) cntTel.textContent = data.filter(d => d.category === 'telemetry').length;
+      const cntWild = document.getElementById('countWildlife');
+      if (cntWild) cntWild.textContent = data.filter(d => d.category === 'wildlife').length;
+      const cntChron = document.getElementById('countChronicles');
+      if (cntChron) cntChron.textContent = data.filter(d => d.category === 'chronicles').length;
+      const actCount = document.getElementById('activeSpecimensCount');
+      if (actCount) actCount.innerHTML = `CATALOG: <strong>${data.length} OBSERVATIONS</strong>`;
+      const topCount = document.getElementById('topBarCount');
+      if (topCount) topCount.textContent = data.length;
 
       populateWorkbenchSelects();
       renderView();
     });
   }
 
-  // 13. BOOTSTRAP APPLICATION
-  initShowcase();
-  populateWorkbenchSelects();
-  renderView();
-  initTopoCanvas();
+    // 12C. EDITORIAL SCROLL PROGRESS & CHAPTER HIGHLIGHTING
+    const readingProgressBar = document.getElementById('readingProgressBar');
+    const chapterDots = document.querySelectorAll('.chapter-nav-dot');
+    const chapterIds = [
+      'chapter-01', 'chapter-02', 'chapter-03', 'chapter-04', 'chapter-05',
+      'chapter-06', 'chapter-07', 'chapter-08', 'chapter-09', 'chapter-10', 'chapter-11'
+    ];
 
-})();
+    function onScrollUpdate() {
+      const scrollY = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? Math.min(100, Math.max(0, (scrollY / docHeight) * 100)) : 0;
+      
+      if (readingProgressBar) {
+        readingProgressBar.style.width = `${progress}%`;
+        readingProgressBar.setAttribute('aria-valuenow', Math.round(progress));
+      }
+
+      let activeId = 'chapter-01';
+      for (const id of chapterIds) {
+        const el = document.getElementById(id);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= window.innerHeight * 0.45) {
+            activeId = id;
+          }
+        }
+      }
+
+      chapterDots.forEach(dot => {
+        const target = dot.getAttribute('href') ? dot.getAttribute('href').replace('#', '') : '';
+        if (target === activeId) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', onScrollUpdate, { passive: true });
+    onScrollUpdate();
+
+    // 12D. COMPANION SPECIMEN ARCHIVE COLLAPSIBLE DRAWER
+    const archiveToggleBar = document.getElementById('archiveToggleBar');
+    const specimenArchiveSection = document.getElementById('specimenArchiveSection');
+    if (archiveToggleBar && specimenArchiveSection) {
+      archiveToggleBar.addEventListener('click', () => {
+        specimenArchiveSection.classList.toggle('expanded');
+        specimenArchiveSection.classList.toggle('collapsed');
+      });
+    }
+
+    // Top bar count initial sync
+    const initialTopCount = document.getElementById('topBarCount');
+    if (initialTopCount) initialTopCount.textContent = data.length;
+
+    // 13. BOOTSTRAP APPLICATION
+    initShowcase();
+    populateWorkbenchSelects();
+    renderView();
+    initTopoCanvas();
+
+  })();
+

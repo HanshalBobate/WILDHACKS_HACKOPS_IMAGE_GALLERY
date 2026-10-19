@@ -3,302 +3,1131 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WildID — The Identity Atlas | AI-Powered Individual Wildlife Re-Identification</title>
-  <meta name="description" content="WildID is an AI-powered individual wildlife re-identification initiative. The Identity Atlas: an archival forensic photographic gallery connecting forest habitat, individual Bengal tigers, unique stripe geometry, and computational interpretation.">
+  <title>Our Experience at WILDHACK 2K26 | Team HackOPs — WildID</title>
+  <meta name="description" content="A 24-hour journey where wildlife, computer vision, and an idea we had been postponing finally came together. The first-person field experience of Team HackOPs at WILDHACK 2K26.">
+  
+  <!-- Visual Design Stylesheets -->
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/editorial.css">
+  
+  <!-- Editorial Typography: Cinzel, Cormorant Garamond, Plus Jakarta Sans, JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <!-- Topographic Terrain Elevation Canvas (Subtle Field Motif) -->
+  <!-- Topographic Terrain Elevation Canvas (Field Cartography Motif) -->
   <canvas id="topoCanvas" aria-hidden="true"></canvas>
+
+  <!-- Sticky Top Reading Progress Bar -->
+  <div class="reading-progress-bar" id="readingProgressBar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+
+  <!-- Floating 11-Chapter Progress Navigator -->
+  <nav class="chapter-nav" id="chapterNav" aria-label="Chapter Navigation">
+    <a href="#chapter-01" class="chapter-nav-dot active" data-chapter="1" title="01. The Opening" aria-label="01. The Opening">
+      <span class="dot-tooltip">01 // The Opening</span>
+    </a>
+    <a href="#chapter-02" class="chapter-nav-dot" data-chapter="2" title="02. Why We Showed Up" aria-label="02. Why We Showed Up">
+      <span class="dot-tooltip">02 // Why We Showed Up</span>
+    </a>
+    <a href="#chapter-03" class="chapter-nav-dot" data-chapter="3" title="03. Place, People, Opportunity" aria-label="03. Place, People, Opportunity">
+      <span class="dot-tooltip">03 // Place & People</span>
+    </a>
+    <a href="#chapter-04" class="chapter-nav-dot" data-chapter="4" title="04. The Challenge" aria-label="04. The Challenge">
+      <span class="dot-tooltip">04 // The Challenge</span>
+    </a>
+    <a href="#chapter-05" class="chapter-nav-dot" data-chapter="5" title="05. The Build" aria-label="05. The Build">
+      <span class="dot-tooltip">05 // The Build</span>
+    </a>
+    <a href="#chapter-06" class="chapter-nav-dot" data-chapter="6" title="06. Twenty-Four Hours" aria-label="06. Twenty-Four Hours">
+      <span class="dot-tooltip">06 // 24-Hour Sprint</span>
+    </a>
+    <a href="#chapter-07" class="chapter-nav-dot" data-chapter="7" title="07. Showing What We Built" aria-label="07. Showing What We Built">
+      <span class="dot-tooltip">07 // The Demonstration</span>
+    </a>
+    <a href="#chapter-08" class="chapter-nav-dot" data-chapter="8" title="08. The Feedback That Mattered" aria-label="08. The Feedback That Mattered">
+      <span class="dot-tooltip">08 // Critical Feedback</span>
+    </a>
+    <a href="#chapter-09" class="chapter-nav-dot" data-chapter="9" title="09. A Special Mention" aria-label="09. A Special Mention">
+      <span class="dot-tooltip">09 // Special Mention</span>
+    </a>
+    <a href="#chapter-10" class="chapter-nav-dot" data-chapter="10" title="10. What Comes After" aria-label="10. What Comes After">
+      <span class="dot-tooltip">10 // What Comes After</span>
+    </a>
+    <a href="#chapter-11" class="chapter-nav-dot" data-chapter="11" title="11. The Closing" aria-label="11. The Closing">
+      <span class="dot-tooltip">11 // The Closing</span>
+    </a>
+  </nav>
 
   <div class="app-container">
 
-    <!-- 1. Telemetry Status Bar -->
+    <!-- 1. Telemetry Masthead Bar -->
     <header class="telemetry-bar" role="banner">
       <div class="telemetry-left">
-        <span><span class="telemetry-pulse"></span> <span class="telemetry-tag">FIELD STATION TATR-09</span> // SECTOR 4B</span>
-        <span>LAT: <strong>20.2173° N</strong> &nbsp; LNG: <strong>79.3082° E</strong></span>
-        <span>ELEV: <strong>246M</strong> (TADOBA-ANDHARI RESERVE)</span>
+        <span><span class="telemetry-pulse"></span> <span class="telemetry-tag">FIELD NARRATIVE</span> // TEAM HACKOPS</span>
+        <span>EVENT: <strong>WILDHACK 2K26</strong> (16–17 OCT 2026)</span>
+        <span>VENUE: <strong>BALLARPUR INSTITUTE OF TECHNOLOGY</strong> (TATR PARTNER)</span>
       </div>
       <div class="telemetry-right">
-        <span id="activeSpecimensCount">CATALOG: <strong>130 OBSERVATIONS</strong></span>
-        <!-- Ambient Forest Soundscape Generator (Web Audio API, Muted by Default) -->
-        <button id="soundscapeBtn" class="util-btn" title="Toggle gentle synthesized forest soundscape (dry leaves & distant field crickets)">
-          <span id="soundIcon">🔇</span> Field Soundscape
+        <!-- Quick Nav to Blog Dispatch -->
+        <a href="blog.html" class="util-btn" title="Read the complete 731-line research dispatch">
+          📑 Research Dispatch
+        </a>
+        <!-- Quick Jump to Specimen Archive -->
+        <a href="#specimenArchiveSection" class="util-btn" title="Explore the 130-observation forensic identity atlas">
+          🐅 Specimen Atlas (<span id="topBarCount">130</span>)
+        </a>
+        <!-- Ambient Soundscape Toggle (Web Audio API) -->
+        <button id="soundscapeBtn" class="util-btn" title="Toggle gentle synthesized forest soundscape (dry leaves & distant crickets)">
+          <span id="soundIcon">🔇</span> Soundscape
         </button>
-        <!-- Theme Toggle: Forest Canopy Dark vs Archival Ivory Light -->
+        <!-- Theme Toggle -->
         <button id="themeToggleBtn" class="util-btn" title="Toggle Archival Paper Publication theme">
-          <span id="themeIcon">📜</span> Archival Paper Mode
+          <span id="themeIcon">📜</span> Paper Mode
         </button>
       </div>
     </header>
 
-    <!-- 2. Hero Editorial & Identity Atlas Manifesto -->
-    <section class="hero-section">
-      <div class="hero-meta-label">
-        WILDID ARCHIVAL DISCOVERY RECORD // OCTOBER 2026 FIELD OPS
-      </div>
-      <div class="hero-title-grid">
-        <div class="hero-title-col">
-          <h1 class="hero-heading">
-            The Forest Has a Memory.
-            <em>We Are Learning to Read It.</em>
-          </h1>
-        </div>
-        <div class="hero-desc-col">
-          <p class="hero-lead-text">
-            <strong>Every animal is an individual.</strong> Its markings are an identity, not merely a decorative pattern. 
-            Technology must serve the forest: artificial intelligence as an analytical instrument, while wildlife and conservation remain the living subject. 
-            Every observation cataloged herein is a scientific claim grounded in forensic comparison, observation, and discovery.
-          </p>
-        </div>
-      </div>
+    <!-- ====================================================================
+         SECTION 01 — THE OPENING
+         ==================================================================== -->
+    <section class="hero-story-header" id="chapter-01" aria-label="Chapter 01: The Opening">
+      <img class="hero-backdrop-img" src="thumbs/20261017_063919.jpg.jpeg" alt="Royal Bengal Tiger in Tadoba Forest Canopy" loading="eager">
+      <div class="hero-gradient-overlay"></div>
+      
+      <div class="hero-content-wrap">
+        <span class="chapter-kicker">CHAPTER 01 // PROLOGUE</span>
+        <h1 class="editorial-title" style="font-size: clamp(2.6rem, 5.5vw, 4.8rem); max-width: 1050px; margin-bottom: 1.25rem;">
+          Our Experience at<br><em>WILDHACK 2K26</em>
+        </h1>
+        <p class="editorial-lead" style="font-size: clamp(1.3rem, 2.4vw, 1.85rem); margin-bottom: 1.5rem; max-width: 850px;">
+          24 hours. One conservation challenge. An idea we had been waiting to build.
+        </p>
 
-      <!-- The 5-Stage Scientific Progression Navigation -->
-      <nav class="progression-strip" aria-label="Methodology Progression">
-        <div class="prog-item active" data-stage="All">
-          <div class="prog-step">STAGE 00 // COMPENDIUM</div>
-          <div class="prog-title">The Complete Atlas</div>
-          <div class="prog-desc">Full 130-observation corpus spanning field biology, telemetry, and engineering.</div>
+        <!-- Unobtrusive Event Metadata Dossier -->
+        <div class="hero-event-docket">
+          <span>EVENT: <strong>WILDHACK 2K26</strong></span>
+          <span>DATES: <strong>16–17 OCTOBER 2026</strong></span>
+          <span>VENUE: <strong>BALLARPUR INSTITUTE OF TECHNOLOGY, BAMNI, CHANDRAPUR</strong></span>
+          <span>CONSERVATION PARTNER: <strong>TADOBA-ANDHARI TIGER RESERVE (TATR)</strong></span>
+          <span>TEAM: <strong>HACKOPS</strong></span>
+          <span>FORMAT: <strong>24-HOUR HACKATHON & IDEATHON</strong></span>
         </div>
-        <div class="prog-item" data-stage="Landscape">
-          <div class="prog-step">STAGE 01 // LANDSCAPE</div>
-          <div class="prog-title">Forest Cartography</div>
-          <div class="prog-desc">Dry deciduous terrain, teak canopy elevation contours, and movement corridors.</div>
+
+        <div class="hero-cta-row">
+          <a href="#chapter-02" class="btn-enter-story">
+            <span>Enter the Story</span>
+            <span aria-hidden="true">↓</span>
+          </a>
+          <a href="#specimenArchiveSection" class="btn-open-archive">
+            <span>Explore 130-Specimen Atlas</span>
+            <span aria-hidden="true">↗</span>
+          </a>
         </div>
-        <div class="prog-item" data-stage="Individual">
-          <div class="prog-step">STAGE 02 // INDIVIDUAL</div>
-          <div class="prog-title">Bengal Tiger Specimen</div>
-          <div class="prog-desc">Full-body natural postures, environmental context, and camera trap logs.</div>
-        </div>
-        <div class="prog-item" data-stage="Evidence">
-          <div class="prog-step">STAGE 03 // EVIDENCE</div>
-          <div class="prog-title">Stripe Geometry & Re-ID</div>
-          <div class="prog-desc">Flank bifurcations, whisker spot matrices, and biometric topological evidence.</div>
-        </div>
-        <div class="prog-item" data-stage="Interpretation">
-          <div class="prog-step">STAGE 04 // INTERPRETATION</div>
-          <div class="prog-title">Command Telemetry</div> 
-          <div class="prog-desc">Range officer decision support, roaming range maps, and patrol intelligence.</div>
-        </div>
-      </nav>
+      </div>
     </section>
 
-    <!-- 3. Curated Identity Atlas Exhibition Spotlight -->
-    <section class="showcase-banner" id="showcaseBanner">
-      <div class="showcase-visual" id="showcaseVisual" title="Click to inspect this master plate in deep forensic mode">
-        <img id="showcaseImg" class="showcase-img" src="" alt="Featured WildID Specimen Plate" loading="eager">
-        <div class="showcase-overlay-reticle">
-          <div class="reticle-corner top">+ CORNER [0,0] // SPECIMEN RETICLE</div>
-          <div class="reticle-corner bottom">TATR SECTOR 4B // TELEMETRY CORRESPONDENCE +</div>
+    <!-- Main Editorial Story Flow -->
+    <main class="editorial-container" role="main">
+
+      <!-- ====================================================================
+           SECTION 02 — WHY WE SHOWED UP
+           ==================================================================== -->
+      <article class="editorial-section" id="chapter-02" aria-label="Chapter 02: Why We Showed Up">
+        <span class="chapter-kicker">CHAPTER 02 // MOTIVATION</span>
+        <h2 class="editorial-title">
+          Some ideas stay with you until you<br><em>finally do something about them.</em>
+        </h2>
+        <p class="editorial-lead">
+          Where wildlife photography curiosity met computer science, and a dormant ambition found its catalyst.
+        </p>
+
+        <div class="story-split-grid">
+          <div class="editorial-prose">
+            <p class="dropcap">
+              Some projects begin with a problem statement assigned on a briefing sheet. Others begin with a personal interest that stubbornly refuses to remain just a weekend pastime.
+            </p>
+            <p>
+              For me, WILDHACK 2K26 was where two of my deepest pursuits — computer science and wildlife — finally converged. I have always been fascinated by artificial intelligence, computational geometry, and the quiet power that emerges when software tackles real-world friction. At the same time, I am an avid wildlife photography enthusiast.
+            </p>
+            <p>
+              When you spend dawn hours sitting in a safari jeep in the teak forests of Central India, tracking movement through a telephoto lens, you begin to see wildlife differently. Every Bengal tiger is not just a representative of <em>Panthera tigris</em>; it is a living individual with a distinct identity, an intricate behavioral history, and a unique biometric fingerprint etched across its flanks in high-contrast melanistic stripes.
+            </p>
+            <p>
+              I had been thinking about wildlife re-identification for quite some time. The concept of turning raw camera-trap photographs into verifiable individual identities was something I talked about, researched in academic papers, and repeatedly postponed because of semester workloads and data scarcity.
+            </p>
+            <p>
+              Then, scrolling through LinkedIn, the announcement for WILDHACK 2K26 appeared: an offline hackathon organized in Ballarpur, Chandrapur, in direct collaboration with the Tadoba-Andhari Tiger Reserve.
+            </p>
+            <p>
+              A single thought crossed my mind, clear and unavoidable: <strong>If not me, then who?</strong> It was time to stop postponing the idea and start building.
+            </p>
+          </div>
+
+          <div class="editorial-photo-frame">
+            <div class="reticle-box">FIELD SENSOR // TATR DAWN LIGHT</div>
+            <img src="thumbs/IMG_20261016_061050.jpg" alt="Dawn light through the dry deciduous forest of Tadoba" loading="lazy">
+            <div class="photo-caption">
+              <span><span class="caption-tag">PLATE 01</span> // Dry deciduous teak canopy at dawn, Central Indian corridor.</span>
+              <span>2026-10-16 • 06:10</span>
+            </div>
+          </div>
         </div>
-      </div>
-      <article class="showcase-docket">
-        <span class="docket-badge" id="showcaseBadge">SPECIMEN // BIOMETRIC PROVENANCE</span>
-        <h2 class="docket-headline" id="showcaseHeadline">Individual Lateral Stripe Profiling & Re-ID</h2>
-        <blockquote class="docket-quote" id="showcaseQuote">
-          “A tiger’s stripe pattern is a persistent forensic fingerprint. Even in dappled shadow, local bifurcation geometry remains mathematically unique across an entire lifespan.”
+
+        <blockquote class="editorial-quote">
+          <p>“I had been thinking about wildlife re-identification for quite some time. WILDHACK was an opportunity to stop postponing the idea and start building.”</p>
+          <cite>— Hanshal Bobate, Team HackOPs</cite>
         </blockquote>
-        <table class="docket-specs-table">
-          <tbody>
-            <tr>
-              <td class="spec-k">Observation ID</td>
-              <td class="spec-v" id="showcaseId">OBS-TAD-001</td>
-            </tr>
-            <tr>
-              <td class="spec-k">Biometric Classification</td>
-              <td class="spec-v" id="showcaseClass">Bengal Tiger (Panthera tigris)</td>
-            </tr>
-            <tr>
-              <td class="spec-k">Habitat Sector</td>
-              <td class="spec-v" id="showcaseSector">Moharli Core Range (Sector 4B)</td>
-            </tr>
-            <tr>
-              <td class="spec-k">Sensor Station</td>
-              <td class="spec-v" id="showcaseCam">Ultra-High Dynamic Range Optical Sensor</td>
-            </tr>
-            <tr>
-              <td class="spec-k">Telemetry Status</td>
-              <td class="spec-v" id="showcaseStatus" style="color: var(--color-ochre);">Confirmed Mark-Recapture Match</td>
-            </tr>
-          </tbody>
-        </table>
-        <div class="docket-actions">
-          <button class="btn-primary-ochre" id="showcaseInspectBtn">Deep Forensic Inspection</button>
-          <button class="btn-secondary-outline" id="showcaseWorkbenchBtn">Load in Re-ID Workbench</button>
+      </article>
+
+      <!-- ====================================================================
+           SECTION 03 — THE PLACE, THE PEOPLE, THE OPPORTUNITY
+           ==================================================================== -->
+      <article class="editorial-section" id="chapter-03" aria-label="Chapter 03: Place, People, Opportunity">
+        <span class="chapter-kicker">CHAPTER 03 // THE GATHERING</span>
+        <h2 class="editorial-title">
+          First offline hackathon. Twenty-four hours.<br><em>A problem that mattered to us.</em>
+        </h2>
+        <p class="editorial-lead">
+          Arriving at Ballarpur Institute of Technology with laptops, cameras, and a shared commitment to Indian conservation.
+        </p>
+
+        <div class="editorial-prose">
+          <p>
+            WILDHACK 2K26 took place on 16–17 October 2026 at the Ballarpur Institute of Technology in Bamni, Ballarpur, located in the Chandrapur district of Maharashtra — a stone’s throw from the renowned tiger landscapes of Tadoba-Andhari.
+          </p>
+          <p>
+            The competition began with an initial round open to engineering teams from across the nation. The total number of participating teams was kept confidential by the organizers, but when the shortlists were published, only the top 30 teams had been invited to travel to Chandrapur for the final offline round.
+          </p>
+          <p>
+            Our team, <strong>HackOPs</strong>, was among those selected. For all four of us, this was our first-ever offline hackathon. The atmosphere when walking into the BIT campus was electric: students from different states unpacking desktop rigs, configuring local GPU environments, comparing notes, and preparing to build non-stop for 24 hours.
+          </p>
+        </div>
+
+        <!-- Authentic Team HackOPs Cards -->
+        <div class="team-grid">
+          <div class="team-card">
+            <div class="team-role">Lead & CV Architecture</div>
+            <div class="team-name">Hanshal Bobate</div>
+            <div class="team-desc">Wildlife photographer and computer science student. Conceived WildID's vision pipeline, coordinate unwrapping, and biometric matching approach.</div>
+          </div>
+          <div class="team-card">
+            <div class="team-role">Systems & Simulation</div>
+            <div class="team-name">Vaishnav Balpande</div>
+            <div class="team-desc">Engineered local Blender Python automation scripts, procedural forest asset generation, and local dataset rendering workflows.</div>
+          </div>
+          <div class="team-card">
+            <div class="team-role">Integration & Analytics</div>
+            <div class="team-name">Lokesh Parate</div>
+            <div class="team-desc">Architected telemetry data handling, territorial roaming range computations, and spatial GIS mapping for forest patrol officers.</div>
+          </div>
+          <div class="team-card">
+            <div class="team-role">Pipeline & Interface</div>
+            <div class="team-name">Soham Bagmare</div>
+            <div class="team-desc">Integrated the multi-stage vision models with the interactive command dashboard, RAG assistant queries, and model benchmarking.</div>
+          </div>
+        </div>
+
+        <!-- Photo Spread of Genuine Hackathon Venue -->
+        <div class="story-split-grid reverse">
+          <div class="editorial-photo-frame">
+            <div class="reticle-box">VENUE AUDITORIUM // BIT BAMNI</div>
+            <img src="thumbs/IMG-20261016-WA0014.jpeg" alt="The hackathon hall at Ballarpur Institute of Technology" loading="lazy">
+            <div class="photo-caption">
+              <span><span class="caption-tag">EVENT RECORD</span> // Top 30 shortlisted teams assembled for the opening briefing.</span>
+              <span>16 Oct 2026</span>
+            </div>
+          </div>
+
+          <div class="editorial-prose">
+            <p>
+              What brought the four of us together was not the pursuit of another bullet point on a résumé. It was a shared conviction that technology should serve the living forest.
+            </p>
+            <p>
+              Walking into an offline hackathon is very different from submitting code remotely. You look across the room and see dozens of talented peers tackling conservation issues with drones, acoustic sensors, and satellite imagery.
+            </p>
+            <p>
+              We knew our objective had to be crisp: we did not want to show a slide deck of hypothetical ideas. We wanted to build a working, demonstrable prototype that could take an image of a tiger, extract its individual stripes, match it against a database, and show forest officials actionable territorial intelligence.
+            </p>
+          </div>
         </div>
       </article>
-    </section>
 
-    <!-- 4. Forensic Control Deck (Sticky Filters & Tools) -->
-    <section class="control-deck" id="controlDeck" aria-label="Gallery Controls">
-      <div class="control-row-top">
-        <!-- Category Filter Tabs -->
-        <div class="category-tabs" role="tablist">
-          <button class="tab-btn active" data-category="all" role="tab" aria-selected="true">
-            All Observations <span class="badge-count" id="countAll">130</span>
-          </button>
-          <button class="tab-btn" data-category="telemetry" role="tab" aria-selected="false">
-            Biometric & Telemetry <span class="badge-count" id="countTelemetry">21</span>
-          </button>
-          <button class="tab-btn" data-category="wildlife" role="tab" aria-selected="false">
-            Wildlife & Tigers <span class="badge-count" id="countWildlife">39</span>
-          </button>
-          <button class="tab-btn" data-category="chronicles" role="tab" aria-selected="false">
-            HackOps Field Sprint <span class="badge-count" id="countChronicles">70</span>
-          </button>
-        </div>
+      <!-- ====================================================================
+           SECTION 04 — THE CHALLENGE
+           ==================================================================== -->
+      <article class="editorial-section" id="chapter-04" aria-label="Chapter 04: The Challenge">
+        <span class="chapter-kicker">CHAPTER 04 // THE PROBLEM</span>
+        <h2 class="editorial-title">
+          What if recognising a tiger was<br><em>only the beginning?</em>
+        </h2>
+        <p class="editorial-lead">
+          The official challenge asked us to identify individual wild animals across changing viewpoints, lighting, and quality. The real complexity was far more subtle.
+        </p>
 
-        <!-- View Mode Switcher -->
-        <div class="view-mode-group" role="group" aria-label="View Mode">
-          <button class="view-btn active" id="viewGridBtn" title="Specimen Plates Grid View">
-            Plates Grid
-          </button>
-          <button class="view-btn" id="viewTableBtn" title="Archival Docket Register Table">
-            Archival Register
-          </button>
-          <button class="view-btn" id="viewWorkbenchBtn" title="Dual-Specimen Re-ID Workbench">
-            Re-ID Workbench
-          </button>
-        </div>
-      </div>
-
-      <div class="control-row-bottom">
-        <!-- Live Search Input -->
-        <div class="search-box-wrap">
-          <span class="search-icon" aria-hidden="true">⌕</span>
-          <input type="text" id="searchInput" class="search-input" placeholder="Search by Observation ID, title, sector, camera, or coordinates..." aria-label="Search gallery records">
-        </div>
-
-        <!-- Filter Controls -->
-        <div class="filter-controls-group">
-          <!-- Stage Selector -->
-          <div class="select-wrap">
-            <select id="stageFilter" class="select-filter" aria-label="Filter by Scientific Stage">
-              <option value="all">Stage: All Stages</option>
-              <option value="Landscape">Stage 1: Landscape</option>
-              <option value="Individual">Stage 2: Individual</option>
-              <option value="Evidence">Stage 3: Evidence</option>
-              <option value="Interpretation">Stage 4: Interpretation</option>
-              <option value="Field Lab">Stage: HackOps Field Lab</option>
-            </select>
-          </div>
-
-          <!-- Sort Selector -->
-          <div class="select-wrap">
-            <select id="sortSelect" class="select-filter" aria-label="Sort observations">
-              <option value="index-asc">Sort: Chronological (Oldest First)</option>
-              <option value="index-desc">Sort: Chronological (Newest First)</option>
-              <option value="size-desc">Sort: File Size (Highest Resolution)</option>
-              <option value="pixels-desc">Sort: Sensor Megapixels</option>
-            </select>
-          </div>
-
-          <!-- Results Counter -->
-          <div class="results-counter" id="resultsCounter">
-            Showing <strong id="visibleCount">130</strong> of 130 records
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 5. View Mode A: Specimen Plates Gallery Grid -->
-    <main id="galleryGrid" class="gallery-grid" role="region" aria-label="Image Observations Grid">
-      <!-- Injected dynamically by app.js -->
-    </main>
-
-    <!-- 6. View Mode B: Archival Docket Catalog Table -->
-    <section id="catalogTableWrap" class="catalog-table-wrap" role="region" aria-label="Archival Register Table">
-      <table class="catalog-table">
-        <thead>
-          <tr>
-            <th>Specimen Code</th>
-            <th>Plate</th>
-            <th>Stage</th>
-            <th>Observation Title & Scientific Claim</th>
-            <th>Habitat Sector</th>
-            <th>Sensor / Camera</th>
-            <th>Dimensions</th>
-            <th>File Weight</th>
-            <th>Verification Status</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody id="catalogTableBody">
-          <!-- Injected dynamically by app.js -->
-        </tbody>
-      </table>
-    </section>
-
-    <!-- 7. View Mode C: Dual-Specimen Comparison Workbench -->
-    <section id="workbenchView" class="workbench-container" role="region" aria-label="Stripe Re-ID Analysis Workbench">
-      <div class="workbench-header">
-        <div>
-          <h2 class="workbench-title">Stripe Re-Identification Dual Workbench</h2>
-          <p class="workbench-subtitle">
-            Side-by-side biometric comparison verifying stripe correspondence, flank bifurcation topology, and individual mark-recapture identity.
+        <div class="editorial-prose">
+          <p>
+            The official problem statement was framed in a single clear sentence:
           </p>
         </div>
-        <button class="util-btn" id="workbenchResetBtn">Reset to Recommended Pair</button>
+
+        <blockquote class="editorial-quote" style="border-left-color: var(--color-ochre-light);">
+          <p>“Re-Identifying Individual Wild Animals — Identify individual animals, even when the viewing angle, lighting, distance, or image quality changes.”</p>
+          <cite>Official Problem Statement // WILDHACK 2K26</cite>
+        </blockquote>
+
+        <div class="editorial-prose">
+          <p>
+            At first glance, non-specialists often conflate <strong>species detection</strong> with <strong>individual re-identification</strong>. Modern object detectors like YOLO or Faster R-CNN can locate a tiger in a camera-trap frame in less than 20 milliseconds with overwhelming accuracy. But finding a tiger tells a forest manager almost nothing about population health.
+          </p>
+          <p>
+            Imagine a remote camera trap anchored to a sal tree in the Moharli range. At 06:39 AM, it captures a tiger crossing a firebreak. Three days later, another camera seven kilometers away in the Kolsa sector captures what might be the same tiger — but this time photographed at twilight, from a sharp three-quarter rear angle, walking uphill, with its lower torso obscured by dry bamboo fronds.
+          </p>
+          <p>
+            Is it the same individual? If it is, the observation proves that the animal has crossed a territorial buffer corridor. If it is not, an unrecorded individual has entered the range.
+          </p>
+        </div>
+
+        <!-- Comparative Specimen Flank Markings -->
+        <div class="challenge-comparison-grid">
+          <div class="comparison-card">
+            <div class="comparison-head">
+              <span>SPECIMEN A // REFERENCE OBSERVATION</span>
+              <span>OBS-TAD-002</span>
+            </div>
+            <div class="comparison-img-wrap">
+              <img src="thumbs/20261017_063934.jpg.jpeg" alt="Tiger lateral flank reference observation" loading="lazy">
+              <div class="comparison-overlay-reticle">
+                <span style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--color-ochre);">+ NODE-R1 [LATERAL FLANK]</span>
+                <span style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--color-ochre); text-align: right;">BIFURCATION RATIO: 1.42 +</span>
+              </div>
+            </div>
+            <div class="comparison-meta-footer">
+              <strong>Observation Angle: Right Lateral Flank</strong><br>
+              Direct sunlight, dry deciduous backdrop. Notice the triplet stripe bifurcation forming a distinct trident fork along the rib cage.
+            </div>
+          </div>
+
+          <div class="comparison-card">
+            <div class="comparison-head">
+              <span>SPECIMEN B // CANDIDATE SIGHTING</span>
+              <span>OBS-TAD-006</span>
+            </div>
+            <div class="comparison-img-wrap">
+              <img src="thumbs/20261017_064014.jpg.jpeg" alt="Tiger candidate sighting from oblique angle" loading="lazy">
+              <div class="comparison-overlay-reticle">
+                <span style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--color-ochre);">+ NODE-R2 [OBLIQUE PERSPECTIVE]</span>
+                <span style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--color-ochre); text-align: right;">TOPOLOGICAL MATCH: CONFIRMED +</span>
+              </div>
+            </div>
+            <div class="comparison-meta-footer">
+              <strong>Observation Angle: Oblique Front-Quarter Posture</strong><br>
+              Non-rigid skin stretching and angular foreshortening distort the Euclidean distances, yet the underlying stripe graph topology remains identical.
+            </div>
+          </div>
+        </div>
+
+        <div class="editorial-prose">
+          <p>
+            This is why the problem is scientifically profound: a tiger's skin is non-rigid. When it walks, turns, or crouches, fur folds and stretches. A simple pixel-to-pixel comparison or direct convolutional feature embedding fails because viewpoint variations easily overwhelm individual identity signals.
+          </p>
+          <p>
+            To solve this, a system must separate <em>where the tiger is positioned</em> from <em>the immutable geometric topology of its stripe markings</em>.
+          </p>
+        </div>
+      </article>
+
+      <!-- ====================================================================
+           SECTION 05 — THE BUILD
+           ==================================================================== -->
+      <article class="editorial-section" id="chapter-05" aria-label="Chapter 05: The Build">
+        <span class="chapter-kicker">CHAPTER 05 // ARCHITECTURE</span>
+        <h2 class="editorial-title">
+          We didn't want to stop at an idea<br><em>or a presentation.</em>
+        </h2>
+        <p class="editorial-lead">
+          The technical heart of WildID: a simulation-driven computer vision pipeline engineered to extract identity from raw forest pixels.
+        </p>
+
+        <div class="editorial-prose">
+          <p>
+            When building under a 24-hour clock, you immediately encounter the central bottleneck of computer vision: <strong>annotated training data</strong>. High-resolution photographs of wild tigers labeled with individual IDs, exact bounding boxes, and keypoints are virtually nonexistent in public academic repositories due to anti-poaching security protocols.
+          </p>
+          <p>
+            Instead of giving up or resorting to generic classification, we asked an unconventional question:
+          </p>
+        </div>
+
+        <blockquote class="editorial-quote">
+          <p>“What if we could automate data collection through simulated wildlife environments?”</p>
+        </blockquote>
+
+        <div class="editorial-prose">
+          <p>
+            We used Blender, its Python scripting interface (<code>bpy</code>), and GroveScape procedural foliage generators to create a virtual dry deciduous forest. Through automated local batch scripts, we rendered approximately <strong>10,000 synthetic wildlife images</strong> — systematically varying camera elevation, solar angle, shadow dapple, and tiger body postures.
+          </p>
+          <p>
+            Simulation gave us something pure: ground-truth geometric certainty. We knew the exact camera distance, the exact visible body coordinates, and the exact stripe positions for every generated frame.
+          </p>
+          <p>
+            Using this synthetic foundation alongside real wildlife images, we structured WildID as a multi-stage modular pipeline:
+          </p>
+        </div>
+
+        <!-- 5-Stage Pipeline Architecture Cards -->
+        <div class="pipeline-steps-grid">
+          <div class="pipeline-step-card">
+            <div>
+              <div class="pipeline-step-num">STAGE 01</div>
+              <div class="pipeline-step-title">Tiger Segmentation</div>
+              <div class="pipeline-step-desc">Isolating the animal from dense forest undergrowth and background foliage using high-precision boundary masks.</div>
+            </div>
+            <div class="pipeline-benchmark-badge">> 95% Prototype Bench</div>
+          </div>
+
+          <div class="pipeline-step-card">
+            <div>
+              <div class="pipeline-step-num">STAGE 02</div>
+              <div class="pipeline-step-title">Stripe Pattern Isolation</div>
+              <div class="pipeline-step-desc">High-pass spatial frequency filtering to eliminate ambient lighting gradients and isolate melanistic stripe bifurcations.</div>
+            </div>
+            <div class="pipeline-benchmark-badge">> 80% Detection Rate</div>
+          </div>
+
+          <div class="pipeline-step-card">
+            <div>
+              <div class="pipeline-step-num">STAGE 03</div>
+              <div class="pipeline-step-title">Pose Estimation</div>
+              <div class="pipeline-step-desc">Skeletal keypoint detection establishing which body regions (left flank, right flank, shoulder, croup) are visible in the frame.</div>
+            </div>
+            <div class="pipeline-benchmark-badge">> 70% Keypoint Align</div>
+          </div>
+
+          <div class="pipeline-step-card">
+            <div>
+              <div class="pipeline-step-num">STAGE 04</div>
+              <div class="pipeline-step-title">Fur-Carpet Normalization</div>
+              <div class="pipeline-step-desc">Unwrapping extracted markings onto a canonical 2D planar template, transforming non-rigid fur into a standardized biometric map.</div>
+            </div>
+            <div class="pipeline-benchmark-badge">Planar Vector Unwrap</div>
+          </div>
+
+          <div class="pipeline-step-card">
+            <div>
+              <div class="pipeline-step-num">STAGE 05</div>
+              <div class="pipeline-step-title">Identity Matching</div>
+              <div class="pipeline-step-desc">Vector embedding similarity search comparing candidate stripe graphs against the central observation database.</div>
+            </div>
+            <div class="pipeline-benchmark-badge">> 70% Match Retrieval</div>
+          </div>
+        </div>
+
+        <!-- Real Screenshot Evidence of Model Outputs -->
+        <div class="editorial-photo-frame" style="margin: 3.5rem 0;">
+          <div class="reticle-box">BIOMETRIC PIPELINE CHANNELS // LOCAL EVALUATION BENCH</div>
+          <img src="thumbs/Screenshot 2026-10-17 080835.png" alt="WildID biometric feature extraction channels screenshot" loading="lazy">
+          <div class="photo-caption">
+            <span><span class="caption-tag">EVIDENCE 01</span> // Actual prototype telemetry: Segmentation mask, pose skeleton, high-pass stripe extraction, and normalized biometric planar vector.</span>
+            <span>2026-10-17 • 08:08 AM</span>
+          </div>
+        </div>
+
+        <div class="editorial-prose">
+          <p>
+            It is critical to be intellectually honest here: <strong>synthetic data is an accelerator, not a substitute for the wild</strong>.
+          </p>
+          <p>
+            While 10,000 synthetic renders gave us a controllable testbench to debug the pipeline's geometry and code linkages, a computer-rendered leaf does not match the messy, unpredictable optics of an infrared trail camera triggered in heavy rain. We knew that validating the pipeline against genuine field datasets would be the ultimate hurdle.
+          </p>
+        </div>
+      </article>
+
+      <!-- ====================================================================
+           SECTION 06 — TWENTY-FOUR HOURS
+           ==================================================================== -->
+      <article class="editorial-section" id="chapter-06" aria-label="Chapter 06: Twenty-Four Hours">
+        <span class="chapter-kicker">CHAPTER 06 // THE CRUNCH</span>
+        <h2 class="editorial-title">
+          Building is one thing.<br><em>Making everything work together is another.</em>
+        </h2>
+        <p class="editorial-lead">
+          The visceral reality of the 24-hour sprint: fighting latency, pruning fragile code, and pushing through exhaustion at 2:58 in the morning.
+        </p>
+
+        <div class="editorial-prose">
+          <p>
+            The romantic notion of a hackathon is a burst of effortless inspiration. The reality is an unrelenting sequence of practical compromises made under sleep deprivation.
+          </p>
+          <p>
+            By 10:00 PM on Friday night, the initial excitement had given way to pure problem-solving. Each of us had an individual component running locally: Vaishnav was generating batch renders; Lokesh had built the GIS mapping coordinates; Soham was testing the Flask/JS interface; I was tuning the stripe high-pass filter thresholds.
+          </p>
+          <p>
+            Then came the real battle: <strong>getting five distinct subsystems to communicate seamlessly in real time</strong>.
+          </p>
+          <p>
+            When we chained the segmentation mask output into the pose estimator, memory leaks caused local processes to freeze. When the pose estimator passed coordinates to the fur unwrapper, edge-case camera angles produced matrix inversions that crashed the matching loop.
+          </p>
+        </div>
+
+        <!-- Authentic 2:58 AM Midnight Sprint Photo Masonry -->
+        <div class="sprint-masonry">
+          <div class="editorial-photo-frame">
+            <div class="reticle-box">HACKATHON CRUCIBLE // 02:58 AM SPRINT</div>
+            <img src="thumbs/IMG_20261017_025823.jpg" alt="Team HackOPs working in the dead of night at 2:58 AM" loading="lazy">
+            <div class="photo-caption">
+              <span><span class="caption-tag">REAL EVIDENCE</span> // 02:58 AM: The dead of night at BIT Bamni. Laptops, code editors, and late-night debugging.</span>
+              <span>2026-10-17 • 02:58 AM</span>
+            </div>
+          </div>
+
+          <div class="sprint-stack">
+            <div class="editorial-photo-frame">
+              <img src="thumbs/IMG_20261017_025832.jpg" alt="Hackathon hall at night" loading="lazy">
+              <div class="photo-caption">
+                <span>Working through pipeline integration trade-offs under the deadline clock.</span>
+              </div>
+            </div>
+            <div class="editorial-photo-frame">
+              <img src="thumbs/IMG_20261017_025833.jpg" alt="Close-up of development machines" loading="lazy">
+              <div class="photo-caption">
+                <span>Refining vector distance thresholds across test plates.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="editorial-prose">
+          <p>
+            At 02:58 AM, we made the call that saved our project: we stripped away complex speculative microservices and unified the pipeline into a lean, locally executing workflow.
+          </p>
+          <p>
+            We stopped chasing theoretical perfection and focused entirely on architectural robustness. If a user dragged in a new image, the system had to execute every step reliably, draw the reticles, project the matching correspondence lines, and plot the sighting on the map without stuttering.
+          </p>
+          <p>
+            By 07:00 AM on Saturday morning, as the sun broke over the Ballarpur campus trees, the pipeline executed end-to-end for the first time. We were exhausted, running on cold chai, but we had a living system.
+          </p>
+        </div>
+      </article>
+
+      <!-- ====================================================================
+           SECTION 07 — SHOWING WHAT WE BUILT
+           ==================================================================== -->
+      <article class="editorial-section" id="chapter-07" aria-label="Chapter 07: Showing What We Built">
+        <span class="chapter-kicker">CHAPTER 07 // THE DEMONSTRATION</span>
+        <h2 class="editorial-title">
+          From a working prototype to a conversation<br><em>about real-world use.</em>
+        </h2>
+        <p class="editorial-lead">
+          Presenting WildID live to the evaluation jury: moving past static slides to demonstrate an interactive operations center for forest range officers.
+        </p>
+
+        <div class="editorial-prose">
+          <p>
+            At 2:00 PM on Saturday, our presentation slot arrived. Each team had approximately 30 minutes to present their work and defend their technical architecture before the panel of judges, academic faculty, and conservation specialists.
+          </p>
+          <p>
+            We made a deliberate choice: we spent less than three minutes on introduction slides, and dedicated the remaining 27 minutes to <strong>live demonstration</strong>.
+          </p>
+        </div>
+
+        <!-- Authentic Presentation Photos -->
+        <div class="story-split-grid">
+          <div class="editorial-photo-frame">
+            <div class="reticle-box">STAGE PRESENTATION // 02:03 PM</div>
+            <img src="thumbs/IMG_20261017_140321.jpg" alt="Team HackOPs presenting live on stage at Ballarpur Institute of Technology" loading="lazy">
+            <div class="photo-caption">
+              <span><span class="caption-tag">STAGE RECORD</span> // Presenting WildID's live interface and pipeline on the projector.</span>
+              <span>2026-10-17 • 14:03</span>
+            </div>
+          </div>
+
+          <div class="editorial-photo-frame">
+            <div class="reticle-box">JURY DEFENSE // LIVE Q&A</div>
+            <img src="thumbs/IMG_20261017_140326.jpg" alt="Answering technical questions from the judges" loading="lazy">
+            <div class="photo-caption">
+              <span><span class="caption-tag">EVALUATION</span> // Demonstrating the live GIS territory mapping and answering algorithmic questions.</span>
+              <span>2026-10-17 • 14:03</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Live Dashboard Feature Showcase -->
+        <div class="dashboard-showcase-panel">
+          <div class="dashboard-showcase-grid">
+            <div>
+              <div class="reticle-box" style="position: static; display: inline-block; margin-bottom: 1rem;">OPERATIONS CENTER // LIVE CAPTURE</div>
+              <img src="thumbs/Screenshot 2026-10-17 100531.png" alt="WildID Live Leaflet GIS Territory Mapping Dashboard" style="width: 100%; border: 1px solid var(--border-medium);" loading="lazy">
+            </div>
+
+            <div>
+              <h3 style="font-family: var(--font-serif); font-size: 1.55rem; color: var(--text-display); margin-bottom: 0.85rem;">
+                Beyond Identification: Actionable Conservation Telemetry
+              </h3>
+              <p style="font-size: 0.92rem; line-height: 1.65; color: var(--text-body);">
+                We showed the judges that WildID was designed to turn isolated photographic sightings into longitudinal ecological intelligence:
+              </p>
+              <ul class="dashboard-features-list">
+                <li>
+                  <span class="feature-bullet">[01]</span>
+                  <span><strong>Territory Roaming Polygons:</strong> Generating convex hull roaming territories across Tadoba sectors (Moharli, Kolsa, Tadoba Basin) to trace home range stability.</span>
+                </li>
+                <li>
+                  <span class="feature-bullet">[02]</span>
+                  <span><strong>Ecological Resource Correlation:</strong> Mapping sighting density against perennial water sources, including the Andheri River basin, to detect drought-driven migrations.</span>
+                </li>
+                <li>
+                  <span class="feature-bullet">[03]</span>
+                  <span><strong>Role-Based Conversational RAG:</strong> A local AI assistant enabling range officers to query: <em>“Which camera captured T-12 last week, and has its range overlapped with T-09?”</em></span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="editorial-prose">
+          <p>
+            Seeing the judges lean forward as the live Leaflet map updated its markers, and watching our pipeline extract real tiger stripes in under two seconds, was an unforgettable feeling. We weren't reading bullet points from a screen; we were showing something that genuinely functioned.
+          </p>
+        </div>
+      </article>
+
+      <!-- ====================================================================
+           SECTION 08 — THE FEEDBACK THAT MATTERED
+           ==================================================================== -->
+      <article class="editorial-section" id="chapter-08" aria-label="Chapter 08: The Feedback That Mattered">
+        <span class="chapter-kicker">CHAPTER 08 // CRITICAL EVALUATION</span>
+        <h2 class="editorial-title">
+          The most useful feedback was about<br><em>what we hadn't solved yet.</em>
+        </h2>
+        <p class="editorial-lead">
+          The judges appreciated our system's scalability. Then they delivered the crucial critique that gave WildID its true future.
+        </p>
+
+        <div class="editorial-prose">
+          <p class="dropcap">
+            The evaluation did not stop at polite compliments. The judging panel included professionals with deep backgrounds in forest administration, wildlife research, and computer engineering.
+          </p>
+          <p>
+            They were impressed by the architecture. They praised how modular the pipeline was, noting that the coordinate unwrapping and stripe matching could, in principle, be adapted to leopards, snow leopards, or zebra species with minimal structural refactoring.
+          </p>
+          <p>
+            Then, one of the judges addressed the core of our technical methodology:
+          </p>
+        </div>
+
+        <blockquote class="editorial-quote" style="border-left-color: var(--color-ochre);">
+          <p>“Your simulation approach is clever for rapid prototyping. But to be trusted by forest departments, your models must be trained and validated on real, messy camera-trap photographs.”</p>
+          <cite>Judges' Panel // WILDHACK 2K26 Technical Review</cite>
+        </blockquote>
+
+        <!-- Structured Dual Critique Breakdown -->
+        <div class="critique-grid">
+          <div class="critique-card highlight">
+            <div class="critique-type">WHAT WAS PRAISED // ARCHITECTURAL STRENGTH</div>
+            <div class="critique-title">Scalability & Multi-Species Adaptability</div>
+            <p style="font-size: 0.92rem; line-height: 1.7; color: var(--text-body);">
+              The judges recognized that WildID avoided hardcoded shortcuts. The clean separation between segmentation, pose geometry, planar vector unwrapping, and identity querying creates a modular pipeline that can scale beyond a single forest reserve.
+            </p>
+          </div>
+
+          <div class="critique-card">
+            <div class="critique-type">WHAT WAS CHALLENGED // THE HARD TRUTH</div>
+            <div class="critique-title">Synthetic Data vs. Camera-Trap Reality</div>
+            <p style="font-size: 0.92rem; line-height: 1.7; color: var(--text-body);">
+              Blender simulations produce clean polygons and predictable lighting. Real camera-trap imagery suffers from low dynamic range, intense infrared flare, motion blur, rain streaks, and partial body occlusions. A model must be trained on this messiness to be scientifically dependable.
+            </p>
+          </div>
+        </div>
+
+        <div class="editorial-prose">
+          <p>
+            Hearing that feedback was the most valuable moment of the entire hackathon.
+          </p>
+          <p>
+            It would have been easy to feel defensive. But the judges were entirely correct. A scientific tool cannot rely on synthetic approximations when the subjects are living endangered animals whose conservation relies on absolute precision.
+          </p>
+          <p>
+            The judges didn't dismiss our work — they held it to the highest standard of real-world conservation biology. They handed us the exact roadmap we needed to pursue.
+          </p>
+        </div>
+      </article>
+
+      <!-- ====================================================================
+           SECTION 09 — A SPECIAL MENTION
+           ==================================================================== -->
+      <article class="editorial-section" id="chapter-09" aria-label="Chapter 09: A Special Mention">
+        <span class="chapter-kicker">CHAPTER 09 // RECOGNITION</span>
+        <h2 class="editorial-title">
+          Not the finish line.<br><em>A reason to keep going.</em>
+        </h2>
+        <p class="editorial-lead">
+          Standing before forest conservators and tech leaders: earning a Special Mention among 30 national teams.
+        </p>
+
+        <div class="story-split-grid">
+          <div class="editorial-prose">
+            <p class="dropcap">
+              When the valedictory ceremony commenced on Saturday evening, the auditorium was packed with participants, university faculty, forest department dignitaries, and industry delegates.
+            </p>
+            <p>
+              When the rankings were announced, Team HackOPs was awarded a <strong>Special Mention</strong> by the jury.
+            </p>
+            <p>
+              We finished outside the top three podium. We do not know the exact numerical point margins, nor would it be fair to speculate. The winning teams built exceptional solutions, and the competition was fierce.
+            </p>
+            <p>
+              For our team, receiving a Special Mention at our first-ever offline hackathon — for a project we had only begun writing code for 24 hours earlier — was deeply validating. We had built a functioning end-to-end computer vision system, demonstrated it live, stood before seasoned forest conservators, and received recognition for our ambition and architectural clarity.
+            </p>
+          </div>
+
+          <div class="editorial-photo-frame">
+            <div class="reticle-box">PODIUM CITATION // SPECIAL MENTION</div>
+            <img src="thumbs/IMG-20261018-WA0000.jpg" alt="Team HackOPs receiving Special Mention on stage at WILDHACK 2K26" loading="lazy">
+            <div class="photo-caption">
+              <span><span class="caption-tag">VALEDICTORY RECORD</span> // Team HackOPs receiving the Special Mention award at Ballarpur Institute of Technology.</span>
+              <span>17 Oct 2026</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="editorial-prose" style="margin-top: 2rem;">
+          <h3 style="font-family: var(--font-serif); font-size: 1.45rem; color: var(--text-display); margin-bottom: 1rem;">
+            Dignitaries & Conservation Leaders We Met
+          </h3>
+          <p>
+            Beyond the certificate, the greatest reward of the hackathon was the privilege of conversing with leaders working at the forefront of Indian industry and wildlife protection:
+          </p>
+        </div>
+
+        <!-- Dignitaries Roster Grid -->
+        <div class="dignitary-pills-wrap">
+          <div class="dignitary-pill">
+            <div class="dignitary-name">Mr. Parag Gupta</div>
+            <div class="dignitary-org">Director & Country Manager, Amazon Devices India</div>
+            <a href="https://www.linkedin.com/in/parag-gupta-2316494/" target="_blank" rel="noopener noreferrer" class="dignitary-link">
+              View LinkedIn Profile ↗
+            </a>
+          </div>
+
+          <div class="dignitary-pill">
+            <div class="dignitary-name">Mr. Sanjay Wasade</div>
+            <div class="dignitary-org">Chairman, Ballarpur Institute of Technology</div>
+            <a href="https://www.linkedin.com/in/sanjay-wasade-372655b/" target="_blank" rel="noopener noreferrer" class="dignitary-link">
+              View LinkedIn Profile ↗
+            </a>
+          </div>
+
+          <div class="dignitary-pill">
+            <div class="dignitary-name">Mr. Lovely Sharma</div>
+            <div class="dignitary-org">BIT Alumnus & Industry Leader</div>
+            <a href="https://www.linkedin.com/in/lovely-k-sharma/" target="_blank" rel="noopener noreferrer" class="dignitary-link">
+              View LinkedIn Profile ↗
+            </a>
+          </div>
+
+          <div class="dignitary-pill">
+            <div class="dignitary-name">Dr. Prabhunath Shukla</div>
+            <div class="dignitary-org">Conservator of Forests & Field Director, Tadoba-Andhari Tiger Reserve</div>
+            <a href="https://www.linkedin.com/in/prabhunath-shukla/" target="_blank" rel="noopener noreferrer" class="dignitary-link">
+              View LinkedIn Profile ↗
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- ====================================================================
+           SECTION 10 — WHAT COMES AFTER THE HACKATHON?
+           ==================================================================== -->
+      <article class="editorial-section" id="chapter-10" aria-label="Chapter 10: What Comes After">
+        <span class="chapter-kicker">CHAPTER 10 // THE ROADMAP</span>
+        <h2 class="editorial-title">
+          The 24 hours ended.<br><em>The problem didn't.</em>
+        </h2>
+        <p class="editorial-lead">
+          Transitioning from a 24-hour sprint to an ongoing research initiative: what it will take to make WildID truly field-ready.
+        </p>
+
+        <div class="story-split-grid reverse">
+          <div class="editorial-photo-frame">
+            <div class="reticle-box">HABITAT HORIZON // DUSK IN TADOBA</div>
+            <img src="thumbs/IMG_20261017_182836.jpg" alt="Dusk falling over the forest canopy of Tadoba" loading="lazy">
+            <div class="photo-caption">
+              <span><span class="caption-tag">FIELD VIEW</span> // Evening over the Tadoba buffer zone as the hackathon concluded.</span>
+              <span>2026-10-17 • 18:28</span>
+            </div>
+          </div>
+
+          <div class="editorial-prose">
+            <p class="dropcap">
+              Many hackathon projects live and die inside a temporary GitHub repository, abandoned the moment the certificates are distributed. WildID is not one of them.
+            </p>
+            <p>
+              The challenge of individual wildlife re-identification did not conclude when the timer hit zero. If anything, the event crystallized the specific technical problems we must tackle next:
+            </p>
+          </div>
+        </div>
+
+        <!-- Future Milestone Timeline -->
+        <div class="roadmap-timeline">
+          <div class="roadmap-item">
+            <div class="roadmap-marker"></div>
+            <div class="roadmap-item-title">1. Curating Authentic Camera-Trap Training Corpora</div>
+            <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text-body);">
+              In response to the judges' guidance, our primary focus is assembling an open-source benchmark dataset of real Bengal tiger camera-trap imagery across diverse seasons, night-vision infrared conditions, and partial occlusions.
+            </p>
+          </div>
+
+          <div class="roadmap-item">
+            <div class="roadmap-marker"></div>
+            <div class="roadmap-item-title">2. Automated Bulk Image Ingestion Engine</div>
+            <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text-body);">
+              Our hackathon prototype required manually selecting and submitting images. Real reserve monitoring produces tens of thousands of SD card captures monthly. We are architecting a background batch worker to ingest entire SD cards and catalog candidate sightings automatically.
+            </p>
+          </div>
+
+          <div class="roadmap-item">
+            <div class="roadmap-marker"></div>
+            <div class="roadmap-item-title">3. Graph Neural Network Stripe Embedding</div>
+            <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text-body);">
+              Moving from 2D pixel correlation to invariant topological graph neural networks (GNNs) that treat stripe bifurcations as mathematical nodes, achieving pose-invariant matching even when over 60% of the body is occluded by tall grass.
+            </p>
+          </div>
+
+          <div class="roadmap-item">
+            <div class="roadmap-marker"></div>
+            <div class="roadmap-item-title">4. Conservation Field Partnerships (Aspirations)</div>
+            <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text-body);">
+              Our ultimate hope is to explore testing our improved system in real field settings in collaboration with the administration of <strong>Pench National Park</strong> and the <strong>Tadoba-Andhari Tiger Reserve</strong>. These are ambitions rather than formalized partnerships, but they give our engineering purpose.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ====================================================================
+           SECTION 11 — THE CLOSING
+           ==================================================================== -->
+      <article class="editorial-section last-chapter" id="chapter-11" aria-label="Chapter 11: The Closing">
+        <span class="chapter-kicker">CHAPTER 11 // EPILOGUE</span>
+        <h2 class="editorial-title">
+          We came to build a project.<br><em>We left with a clearer direction.</em>
+        </h2>
+        <p class="editorial-lead">
+          Identifying an individual wild animal is more than an engineering benchmark. It is learning to read the living memory of the forest.
+        </p>
+
+        <div class="editorial-prose">
+          <p class="dropcap">
+            When we packed our bags at Ballarpur on Sunday morning, the campus was quiet. The banners for WILDHACK 2K26 swayed gently in the autumn breeze.
+          </p>
+          <p>
+            Looking back on those 24 intense hours, the value of the experience was never about claiming victory or proving that our code was flawless. It was about taking an idea we genuinely cared about, refusing to leave it on the shelf any longer, putting it through the crucible of a deadline, and having the humility to listen to criticism from people who protect tigers for a living.
+          </p>
+          <p>
+            We learned that artificial intelligence does not replace field biology — it serves it. When an algorithm correctly matches a tiger's flank pattern across a three-month gap, it is not just calculating a vector cosine distance. It is validating that this majestic predator is alive, traversing its territory, hunting along its rivers, and enduring in an increasingly fragmented landscape.
+          </p>
+          <p>
+            WildID started with a simple question: <em>Can we teach computers to recognize an individual animal in the wild?</em>
+          </p>
+          <p>
+            Today, we have a working foundation, a clear list of mistakes to fix, and the unwavering conviction to see this through.
+          </p>
+          <p style="font-family: var(--font-serif); font-size: 1.35rem; color: var(--color-ochre); margin-top: 2rem;">
+            This was our experience at WILDHACK 2K26. And this is only the beginning.
+          </p>
+        </div>
+
+        <!-- Quiet, Immersive Final Photographic Plate -->
+        <div class="editorial-photo-frame" style="margin: 3.5rem 0;">
+          <div class="reticle-box">EPILOGUE SPECIMEN // THE LIVING FOREST</div>
+          <img src="thumbs/20261017_064022.jpg.jpeg" alt="Royal Bengal tiger resting in dappled forest shadow" loading="lazy">
+          <div class="photo-caption">
+            <span><span class="caption-tag">FINAL PLATE</span> // “The forest has a memory. We are learning to read it.”</span>
+            <span>Tadoba Core • 2026</span>
+          </div>
+        </div>
+
+        <!-- Author Colophon & Project Credits -->
+        <div class="colophon-card">
+          <div class="colophon-headline">WildID — AI-Powered Individual Wildlife Re-Identification</div>
+          <div class="colophon-sub">An Engineering & Field Conservation Initiative by Team HackOPs</div>
+          
+          <p style="font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: 0.08em; color: var(--color-ivory); margin-bottom: 0.5rem;">
+            Hanshal Bobate &nbsp;·&nbsp; Vaishnav Balpande &nbsp;·&nbsp; Lokesh Parate &nbsp;·&nbsp; Soham Bagmare
+          </p>
+          <p style="font-size: 0.82rem; color: var(--text-muted);">
+            WILDHACK 2K26 Special Mention Awardees · Ballarpur Institute of Technology & Tadoba-Andhari Tiger Reserve
+          </p>
+
+          <div class="colophon-links-row">
+            <a href="blog.html" class="btn-primary-ochre" style="text-decoration: none;">
+              Read Full 731-Line Research Paper (Blog)
+            </a>
+            <a href="#specimenArchiveSection" class="btn-secondary-outline" id="colophonAtlasLink">
+              Explore 130-Specimen Identity Atlas
+            </a>
+            <a href="https://github.com/HanshalBobate/WILDHACKS_HACKOPS_IMAGE_GALLERY" target="_blank" rel="noopener noreferrer" class="btn-secondary-outline">
+              GitHub Repository ↗
+            </a>
+          </div>
+        </div>
+      </article>
+
+    </main>
+
+    <!-- ====================================================================
+         COMPANION SPECIMEN ATLAS & FORENSIC WORKBENCH (130 OBSERVATIONS)
+         ==================================================================== -->
+    <section class="specimen-archive-section expanded" id="specimenArchiveSection" aria-label="130 Observation Specimen Atlas">
+      
+      <!-- Collapsible / Expandable Toggle Bar -->
+      <div class="archive-toggle-bar" id="archiveToggleBar">
+        <div class="archive-toggle-title">
+          <span>🐅</span>
+          <span>The Specimen Archive // <strong>130 Documented Observations</strong></span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--color-ochre);">Interactive Forensic Atlas</span>
+          <span class="archive-expand-icon">▲</span>
+        </div>
       </div>
 
-      <div class="workbench-dual-viewport">
-        <!-- Specimen A (Reference Profile) -->
-        <div class="workbench-panel">
-          <div class="workbench-panel-head">
-            <span class="workbench-slot-label">Specimen A // Reference Observation</span>
-            <select id="workbenchSelectA" class="select-filter" aria-label="Select Specimen A"></select>
+      <div class="archive-content-body" id="archiveContentBody">
+
+        <!-- 5-Stage Scientific Progression Navigation -->
+        <nav class="progression-strip" aria-label="Methodology Progression">
+          <div class="prog-item active" data-stage="All">
+            <div class="prog-step">STAGE 00 // COMPENDIUM</div>
+            <div class="prog-title">The Complete Atlas</div>
+            <div class="prog-desc">Full 130-observation corpus spanning field biology, telemetry, and engineering.</div>
           </div>
-          <div class="workbench-img-wrap" id="workbenchWrapA">
-            <img id="workbenchImgA" class="workbench-img" src="" alt="Specimen A">
+          <div class="prog-item" data-stage="Landscape">
+            <div class="prog-step">STAGE 01 // LANDSCAPE</div>
+            <div class="prog-title">Forest Cartography</div>
+            <div class="prog-desc">Dry deciduous terrain, teak canopy elevation contours, and movement corridors.</div>
           </div>
-          <div class="card-meta-table">
-            <span>ID: <strong id="wbIdA">OBS-001</strong></span>
-            <span>Sector: <strong id="wbSectorA">Moharli</strong></span>
-            <span>Date: <strong id="wbDateA">2026-10-16</strong></span>
-            <span>Sensor: <strong id="wbCamA">Optical Station</strong></span>
+          <div class="prog-item" data-stage="Individual">
+            <div class="prog-step">STAGE 02 // INDIVIDUAL</div>
+            <div class="prog-title">Bengal Tiger Specimen</div>
+            <div class="prog-desc">Full-body natural postures, environmental context, and camera trap logs.</div>
+          </div>
+          <div class="prog-item" data-stage="Evidence">
+            <div class="prog-step">STAGE 03 // EVIDENCE</div>
+            <div class="prog-title">Stripe Geometry & Re-ID</div>
+            <div class="prog-desc">Flank bifurcations, whisker spot matrices, and biometric topological evidence.</div>
+          </div>
+          <div class="prog-item" data-stage="Interpretation">
+            <div class="prog-step">STAGE 04 // INTERPRETATION</div>
+            <div class="prog-title">Command Telemetry</div> 
+            <div class="prog-desc">Range officer decision support, roaming range maps, and patrol intelligence.</div>
+          </div>
+        </nav>
+
+        <!-- Curated Identity Atlas Exhibition Spotlight -->
+        <section class="showcase-banner" id="showcaseBanner">
+          <div class="showcase-visual" id="showcaseVisual" title="Click to inspect this master plate in deep forensic mode">
+            <img id="showcaseImg" class="showcase-img" src="" alt="Featured WildID Specimen Plate" loading="lazy">
+            <div class="showcase-overlay-reticle">
+              <div class="reticle-corner top">+ CORNER [0,0] // SPECIMEN RETICLE</div>
+              <div class="reticle-corner bottom">TATR SECTOR 4B // TELEMETRY CORRESPONDENCE +</div>
+            </div>
+          </div>
+          <article class="showcase-docket">
+            <span class="docket-badge" id="showcaseBadge">SPECIMEN // BIOMETRIC PROVENANCE</span>
+            <h2 class="docket-headline" id="showcaseHeadline">Individual Lateral Stripe Profiling & Re-ID</h2>
+            <blockquote class="docket-quote" id="showcaseQuote">
+              “A tiger’s stripe pattern is a persistent forensic fingerprint. Even in dappled shadow, local bifurcation geometry remains mathematically unique across an entire lifespan.”
+            </blockquote>
+            <table class="docket-specs-table">
+              <tbody>
+                <tr>
+                  <td class="spec-k">Observation ID</td>
+                  <td class="spec-v" id="showcaseId">OBS-TAD-001</td>
+                </tr>
+                <tr>
+                  <td class="spec-k">Biometric Classification</td>
+                  <td class="spec-v" id="showcaseClass">Bengal Tiger (Panthera tigris)</td>
+                </tr>
+                <tr>
+                  <td class="spec-k">Habitat Sector</td>
+                  <td class="spec-v" id="showcaseSector">Moharli Core Range (Sector 4B)</td>
+                </tr>
+                <tr>
+                  <td class="spec-k">Sensor Station</td>
+                  <td class="spec-v" id="showcaseCam">Ultra-High Dynamic Range Optical Sensor</td>
+                </tr>
+                <tr>
+                  <td class="spec-k">Telemetry Status</td>
+                  <td class="spec-v" id="showcaseStatus" style="color: var(--color-ochre);">Confirmed Mark-Recapture Match</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="docket-actions">
+              <button class="btn-primary-ochre" id="showcaseInspectBtn">Deep Forensic Inspection</button>
+              <button class="btn-secondary-outline" id="showcaseWorkbenchBtn">Load in Re-ID Workbench</button>
+            </div>
+          </article>
+        </section>
+
+        <!-- Forensic Control Deck (Filters & Search) -->
+        <section class="control-deck" id="controlDeck" aria-label="Gallery Controls">
+          <div class="control-row-top">
+            <div class="category-tabs" role="tablist">
+              <button class="tab-btn active" data-category="all" role="tab" aria-selected="true">
+                All Observations <span class="badge-count" id="countAll">130</span>
+              </button>
+              <button class="tab-btn" data-category="telemetry" role="tab" aria-selected="false">
+                Biometric & Telemetry <span class="badge-count" id="countTelemetry">21</span>
+              </button>
+              <button class="tab-btn" data-category="wildlife" role="tab" aria-selected="false">
+                Wildlife & Tigers <span class="badge-count" id="countWildlife">39</span>
+              </button>
+              <button class="tab-btn" data-category="chronicles" role="tab" aria-selected="false">
+                HackOps Field Sprint <span class="badge-count" id="countChronicles">70</span>
+              </button>
+            </div>
+
+            <div class="view-mode-group" role="group" aria-label="View Mode">
+              <button class="view-btn active" id="viewGridBtn" title="Specimen Plates Grid View">
+                Plates Grid
+              </button>
+              <button class="view-btn" id="viewTableBtn" title="Archival Docket Register Table">
+                Archival Register
+              </button>
+              <button class="view-btn" id="viewWorkbenchBtn" title="Dual-Specimen Re-ID Workbench">
+                Re-ID Workbench
+              </button>
+            </div>
+          </div>
+
+          <div class="control-row-bottom">
+            <div class="search-box-wrap">
+              <span class="search-icon" aria-hidden="true">⌕</span>
+              <input type="text" id="searchInput" class="search-input" placeholder="Search by Observation ID, title, sector, camera, or coordinates..." aria-label="Search gallery records">
+            </div>
+
+            <div class="filter-controls-group">
+              <div class="select-wrap">
+                <select id="stageFilter" class="select-filter" aria-label="Filter by Scientific Stage">
+                  <option value="all">Stage: All Stages</option>
+                  <option value="Landscape">Stage 1: Landscape</option>
+                  <option value="Individual">Stage 2: Individual</option>
+                  <option value="Evidence">Stage 3: Evidence</option>
+                  <option value="Interpretation">Stage 4: Interpretation</option>
+                  <option value="Field Lab">Stage: HackOps Field Lab</option>
+                </select>
+              </div>
+
+              <div class="select-wrap">
+                <select id="sortSelect" class="select-filter" aria-label="Sort observations">
+                  <option value="index-asc">Sort: Chronological (Oldest First)</option>
+                  <option value="index-desc">Sort: Chronological (Newest First)</option>
+                  <option value="size-desc">Sort: File Size (Highest Resolution)</option>
+                  <option value="pixels-desc">Sort: Sensor Megapixels</option>
+                </select>
+              </div>
+
+              <div class="results-counter" id="resultsCounter">
+                Showing <strong id="visibleCount">130</strong> of 130 records
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- View Mode A: Specimen Plates Gallery Grid -->
+        <div id="galleryGrid" class="gallery-grid" role="region" aria-label="Image Observations Grid">
+          <!-- Injected dynamically by app.js -->
+        </div>
+
+        <!-- View Mode B: Archival Docket Catalog Table -->
+        <div id="catalogTableWrap" class="catalog-table-wrap" role="region" aria-label="Archival Register Table">
+          <table class="catalog-table">
+            <thead>
+              <tr>
+                <th>Specimen Code</th>
+                <th>Plate</th>
+                <th>Stage</th>
+                <th>Observation Title & Scientific Claim</th>
+                <th>Habitat Sector</th>
+                <th>Sensor / Camera</th>
+                <th>Dimensions</th>
+                <th>File Weight</th>
+                <th>Verification Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="catalogTableBody">
+              <!-- Injected dynamically by app.js -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- View Mode C: Dual-Specimen Comparison Workbench -->
+        <div id="workbenchView" class="workbench-container" role="region" aria-label="Stripe Re-ID Analysis Workbench">
+          <div class="workbench-header">
+            <div>
+              <h2 class="workbench-title">Stripe Re-Identification Dual Workbench</h2>
+              <p class="workbench-subtitle">
+                Side-by-side biometric comparison verifying stripe correspondence, flank bifurcation topology, and individual mark-recapture identity.
+              </p>
+            </div>
+            <button class="util-btn" id="workbenchResetBtn">Reset to Recommended Pair</button>
+          </div>
+
+          <div class="workbench-dual-viewport">
+            <div class="workbench-panel">
+              <div class="workbench-panel-head">
+                <span class="workbench-slot-label">Specimen A // Reference Observation</span>
+                <select id="workbenchSelectA" class="select-filter" aria-label="Select Specimen A"></select>
+              </div>
+              <div class="workbench-img-wrap" id="workbenchWrapA">
+                <img id="workbenchImgA" class="workbench-img" src="" alt="Specimen A">
+              </div>
+              <div class="card-meta-table">
+                <span>ID: <strong id="wbIdA">OBS-001</strong></span>
+                <span>Sector: <strong id="wbSectorA">Moharli</strong></span>
+                <span>Date: <strong id="wbDateA">2026-10-16</strong></span>
+                <span>Sensor: <strong id="wbCamA">Optical Station</strong></span>
+              </div>
+            </div>
+
+            <div class="workbench-panel">
+              <div class="workbench-panel-head">
+                <span class="workbench-slot-label">Specimen B // Candidate Sighting</span>
+                <select id="workbenchSelectB" class="select-filter" aria-label="Select Specimen B"></select>
+              </div>
+              <div class="workbench-img-wrap" id="workbenchWrapB">
+                <img id="workbenchImgB" class="workbench-img" src="" alt="Specimen B">
+              </div>
+              <div class="card-meta-table">
+                <span>ID: <strong id="wbIdB">OBS-002</strong></span>
+                <span>Sector: <strong id="wbSectorB">Tadoba Basin</strong></span>
+                <span>Date: <strong id="wbDateB">2026-10-17</strong></span>
+                <span>Sensor: <strong id="wbCamB">Field Station</strong></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="workbench-analysis-metrics">
+            <div class="metric-box">
+              <span class="metric-label">Stripe Feature Similarity</span>
+              <span class="metric-val" id="wbSimVal">98.4%</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-label">Verified Correspondences</span>
+              <span class="metric-val" id="wbCorrVal">24 Nodes</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-label">Spatial Distance Delta</span>
+              <span class="metric-val" id="wbDistVal">4.2 km</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-label">Identification Claim</span>
+              <span class="metric-val" id="wbClaimVal" style="font-size: 1.25rem;">CONFIRMED MATCH</span>
+            </div>
           </div>
         </div>
 
-        <!-- Specimen B (Candidate Sighting) -->
-        <div class="workbench-panel">
-          <div class="workbench-panel-head">
-            <span class="workbench-slot-label">Specimen B // Candidate Sighting</span>
-            <select id="workbenchSelectB" class="select-filter" aria-label="Select Specimen B"></select>
-          </div>
-          <div class="workbench-img-wrap" id="workbenchWrapB">
-            <img id="workbenchImgB" class="workbench-img" src="" alt="Specimen B">
-          </div>
-          <div class="card-meta-table">
-            <span>ID: <strong id="wbIdB">OBS-002</strong></span>
-            <span>Sector: <strong id="wbSectorB">Tadoba Basin</strong></span>
-            <span>Date: <strong id="wbDateB">2026-10-17</strong></span>
-            <span>Sensor: <strong id="wbCamB">Field Station</strong></span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Comparative Biometric Analytics Readout -->
-      <div class="workbench-analysis-metrics">
-        <div class="metric-box">
-          <span class="metric-label">Stripe Feature Similarity</span>
-          <span class="metric-val" id="wbSimVal">98.4%</span>
-        </div>
-        <div class="metric-box">
-          <span class="metric-label">Verified Correspondences</span>
-          <span class="metric-val" id="wbCorrVal">24 Nodes</span>
-        </div>
-        <div class="metric-box">
-          <span class="metric-label">Spatial Distance Delta</span>
-          <span class="metric-val" id="wbDistVal">4.2 km</span>
-        </div>
-        <div class="metric-box">
-          <span class="metric-label">Identification Claim</span>
-          <span class="metric-val" id="wbClaimVal" style="font-size: 1.25rem;">CONFIRMED MATCH</span>
-        </div>
       </div>
     </section>
 
@@ -306,7 +1135,6 @@
     <div id="inspectionModal" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Forensic Inspection Docket">
       <div class="inspection-docket-window">
         
-        <!-- Viewport Section (Left) -->
         <div class="modal-viewport">
           <div class="modal-viewport-toolbar">
             <div style="display: flex; gap: 0.85rem; align-items: center;">
@@ -333,7 +1161,6 @@
           <button class="modal-nav-arrow next" id="modalNextBtn" title="Next Specimen (Right Arrow)" aria-label="Next Specimen">›</button>
         </div>
 
-        <!-- Specimen Archival Docket Sidebar (Right) -->
         <aside class="modal-sidebar-docket">
           <div class="modal-sidebar-header">
             <div>
@@ -350,7 +1177,6 @@
               Multi-channel biometric observation documenting unique bifurcation patterns on the flank. Mathematical correspondence vectors confirmed against central mark-recapture archive.
             </div>
 
-            <!-- Technical Specimen Metadata Group -->
             <div class="sidebar-data-group">
               <div class="data-group-title">Forensic Field Metadata</div>
               <div class="data-row">
@@ -375,7 +1201,6 @@
               </div>
             </div>
 
-            <!-- Geographic & Conservation Status Group -->
             <div class="sidebar-data-group">
               <div class="data-group-title">Geographic & Biometric Metrics</div>
               <div class="data-row">
@@ -415,9 +1240,9 @@
       <div>
         <p class="footer-quote">“The Forest Has a Memory. We Are Learning to Read It.”</p>
         <p class="footer-credits">
-          <strong>WildID</strong> — AI-Powered Individual Wildlife Re-Identification Initiative.<br>
-          Curated from authentic research observations, telemetry streams, and HackOps field laboratory chronicles.<br>
-          Indian Dry Deciduous Habitat Study: <span>Tadoba-Andhari Tiger Reserve (TATR)</span>.
+          <strong>WildID — Our Experience at WILDHACK 2K26</strong><br>
+          A First-Person Narrative by <strong>Team HackOPs</strong> (Hanshal Bobate, Vaishnav Balpande, Lokesh Parate, Soham Bagmare).<br>
+          Indian Dry Deciduous Habitat Study: <span>Tadoba-Andhari Tiger Reserve (TATR)</span> & Ballarpur Institute of Technology.
         </p>
       </div>
       <div style="text-align: right;">
