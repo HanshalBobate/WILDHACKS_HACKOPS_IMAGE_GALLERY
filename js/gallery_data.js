@@ -1848,84 +1848,6 @@ window.WILDID_GALLERY = [
   {
     "id": "OBS-072",
     "index": 72,
-    "filename": "IMG_20261017_025823.jpg",
-    "thumb": "thumbs/IMG_20261017_025823.jpg",
-    "image": "images/IMG_20261017_025823.jpg",
-    "title": "02:58 AM Crucible // Coding on the Bed Workstation",
-    "category": "chronicles",
-    "categoryName": "HackOps Field Chronicles",
-    "stage": "Field Lab",
-    "sector": "Range Command Post 02",
-    "coordinates": "20.2824° N, 79.3964° E",
-    "date": "2026-10-17 • 02:58",
-    "camera": "Sensor Station TATR-09",
-    "width": 3000,
-    "height": 4000,
-    "dimensions": "3000 × 4000",
-    "aspect": "portrait",
-    "size": "3.4 MB",
-    "bytes": 3531159,
-    "claim": "02:58 AM: The dead of night in our campus room with laptops perched on floral bedsheets, chargers entangled, and terminal windows glowing. While other teams rested, Team HackOPs pushed through the midnight wall to resolve high-pass stripe filtering errors. Pure developer endurance.",
-    "specimenCode": "LAB-CHRONICLE-072",
-    "status": "Engineering Milestone",
-    "stripeDensity": "0.76",
-    "correspondenceCount": 26
-  },
-  {
-    "id": "OBS-073",
-    "index": 73,
-    "filename": "IMG_20261017_025832.jpg",
-    "thumb": "thumbs/IMG_20261017_025832.jpg",
-    "image": "images/IMG_20261017_025832.jpg",
-    "title": "Tangled Cables & Glowing Screens // 3:00 AM Integration",
-    "category": "chronicles",
-    "categoryName": "HackOps Field Chronicles",
-    "stage": "Field Lab",
-    "sector": "Moharli Core Sector (Sector 4B)",
-    "coordinates": "20.2855° N, 79.4006° E",
-    "date": "2026-10-17 • 02:58",
-    "camera": "Sensor Station TATR-09",
-    "width": 3000,
-    "height": 4000,
-    "dimensions": "3000 × 4000",
-    "aspect": "portrait",
-    "size": "3.5 MB",
-    "bytes": 3698724,
-    "claim": "Power strips, HDMI adapters, and code editors lit up in the darkened room at 3:00 AM. Vaishnav and Lokesh verifying synthetic dataset export scripts while Soham wired the telemetry API endpoints. The defining crucible hours where hackathon projects are either made or broken.",
-    "specimenCode": "LAB-CHRONICLE-073",
-    "status": "Engineering Milestone",
-    "stripeDensity": "0.77",
-    "correspondenceCount": 27
-  },
-  {
-    "id": "OBS-074",
-    "index": 74,
-    "filename": "IMG_20261017_025833.jpg",
-    "thumb": "thumbs/IMG_20261017_025833.jpg",
-    "image": "images/IMG_20261017_025833.jpg",
-    "title": "Terminal Convergence // Midnight Model Validation",
-    "category": "chronicles",
-    "categoryName": "HackOps Field Chronicles",
-    "stage": "Field Lab",
-    "sector": "Kolsa Deep Range (Sector 8A)",
-    "coordinates": "20.2886° N, 79.4048° E",
-    "date": "2026-10-17 • 02:58",
-    "camera": "Sensor Station TATR-09",
-    "width": 3000,
-    "height": 4000,
-    "dimensions": "3000 × 4000",
-    "aspect": "portrait",
-    "size": "3.6 MB",
-    "bytes": 3724347,
-    "claim": "Close-up of active development laptops during the final overnight push, verifying that the segmentation pipeline compiled cleanly. Zero sleep, endless cups of water, and absolute team focus. By 4:00 AM, our core re-ID matching loop was finally running without crashes.",
-    "specimenCode": "LAB-CHRONICLE-074",
-    "status": "Engineering Milestone",
-    "stripeDensity": "0.78",
-    "correspondenceCount": 28
-  },
-  {
-    "id": "OBS-075",
-    "index": 75,
     "filename": "IMG_20261017_140321.jpg",
     "thumb": "thumbs/IMG_20261017_140321.jpg",
     "image": "images/IMG_20261017_140321.jpg",
@@ -1950,8 +1872,8 @@ window.WILDID_GALLERY = [
     "correspondenceCount": 29
   },
   {
-    "id": "OBS-076",
-    "index": 76,
+    "id": "OBS-073",
+    "index": 73,
     "filename": "IMG_20261017_140322.jpg",
     "thumb": "thumbs/IMG_20261017_140322.jpg",
     "image": "images/IMG_20261017_140322.jpg",
@@ -1976,34 +1898,8 @@ window.WILDID_GALLERY = [
     "correspondenceCount": 30
   },
   {
-    "id": "OBS-077",
-    "index": 77,
-    "filename": "IMG_20261017_140326.jpg",
-    "thumb": "thumbs/IMG_20261017_140326.jpg",
-    "image": "images/IMG_20261017_140326.jpg",
-    "title": "Live Dashboard Demo // Projecting Leaflet GIS on Stage",
-    "category": "telemetry",
-    "categoryName": "HackOps Field Chronicles",
-    "stage": "Interpretation",
-    "sector": "Zari Border Perimeter",
-    "coordinates": "20.2204° N, 79.3124° E",
-    "date": "2026-10-17 • 14:03",
-    "camera": "Sensor Station TATR-09",
-    "width": 4608,
-    "height": 2592,
-    "dimensions": "4608 × 2592",
-    "aspect": "landscape",
-    "size": "3.1 MB",
-    "bytes": 3222317,
-    "claim": "Demonstrating our live Leaflet GIS telemetry dashboard on the auditorium screen as judges watched closely. Showing how re-identified tiger sightings automatically map into home range polygons and waterhole corridors. Moving beyond classification to actionable ranger intelligence.",
-    "specimenCode": "LAB-CHRONICLE-077",
-    "status": "Engineering Milestone",
-    "stripeDensity": "0.81",
-    "correspondenceCount": 12
-  },
-  {
-    "id": "OBS-078",
-    "index": 78,
+    "id": "OBS-074",
+    "index": 74,
     "filename": "IMG_20261017_140327.jpg",
     "thumb": "thumbs/IMG_20261017_140327.jpg",
     "image": "images/IMG_20261017_140327.jpg",
@@ -2028,8 +1924,8 @@ window.WILDID_GALLERY = [
     "correspondenceCount": 13
   },
   {
-    "id": "OBS-079",
-    "index": 79,
+    "id": "OBS-075",
+    "index": 75,
     "filename": "IMG_20261017_140328.jpg",
     "thumb": "thumbs/IMG_20261017_140328.jpg",
     "image": "images/IMG_20261017_140328.jpg",
@@ -2054,34 +1950,8 @@ window.WILDID_GALLERY = [
     "correspondenceCount": 14
   },
   {
-    "id": "OBS-080",
-    "index": 80,
-    "filename": "IMG_20261017_140404.jpg",
-    "thumb": "thumbs/IMG_20261017_140404.jpg",
-    "image": "images/IMG_20261017_140404.jpg",
-    "title": "Workstation Code Walkthrough // Live Technical Inspection",
-    "category": "chronicles",
-    "categoryName": "HackOps Field Chronicles",
-    "stage": "Field Lab",
-    "sector": "WildHacks Field Lab Base Alpha",
-    "coordinates": "20.2297° N, 79.3250° E",
-    "date": "2026-10-17 • 14:04",
-    "camera": "Sensor Station TATR-09",
-    "width": 4000,
-    "height": 3000,
-    "dimensions": "4000 × 3000",
-    "aspect": "landscape",
-    "size": "4.5 MB",
-    "bytes": 4743666,
-    "claim": "Gathered closely around the laptop workstation on stage, walking judges through our actual Python codebase and Git commit history. Demonstrating that our pipeline was genuinely functional, locally executed, and fully reproducible. Earning the judges' respect for architectural integrity.",
-    "specimenCode": "LAB-CHRONICLE-080",
-    "status": "Engineering Milestone",
-    "stripeDensity": "0.84",
-    "correspondenceCount": 15
-  },
-  {
-    "id": "OBS-081",
-    "index": 81,
+    "id": "OBS-076",
+    "index": 76,
     "filename": "IMG_20261017_170741.jpeg",
     "thumb": "thumbs/IMG_20261017_170741.jpeg",
     "image": "images/IMG_20261017_170741.jpeg",
@@ -2106,8 +1976,8 @@ window.WILDID_GALLERY = [
     "correspondenceCount": 16
   },
   {
-    "id": "OBS-082",
-    "index": 82,
+    "id": "OBS-077",
+    "index": 77,
     "filename": "IMG_20261017_170818 (10).jpg",
     "thumb": "thumbs/IMG_20261017_170818 (10).jpg",
     "image": "images/IMG_20261017_170818 (10).jpg",
@@ -2132,8 +2002,8 @@ window.WILDID_GALLERY = [
     "correspondenceCount": 17
   },
   {
-    "id": "OBS-083",
-    "index": 83,
+    "id": "OBS-078",
+    "index": 78,
     "filename": "IMG_20261017_170818 (11).jpg",
     "thumb": "thumbs/IMG_20261017_170818 (11).jpg",
     "image": "images/IMG_20261017_170818 (11).jpg",
@@ -2158,8 +2028,8 @@ window.WILDID_GALLERY = [
     "correspondenceCount": 18
   },
   {
-    "id": "OBS-084",
-    "index": 84,
+    "id": "OBS-079",
+    "index": 79,
     "filename": "IMG_20261017_170818 (2).jpeg",
     "thumb": "thumbs/IMG_20261017_170818 (2).jpeg",
     "image": "images/IMG_20261017_170818 (2).jpeg",
@@ -2184,8 +2054,8 @@ window.WILDID_GALLERY = [
     "correspondenceCount": 19
   },
   {
-    "id": "OBS-085",
-    "index": 85,
+    "id": "OBS-080",
+    "index": 80,
     "filename": "IMG_20261017_170818 (3).jpeg",
     "thumb": "thumbs/IMG_20261017_170818 (3).jpeg",
     "image": "images/IMG_20261017_170818 (3).jpeg",
@@ -2210,8 +2080,8 @@ window.WILDID_GALLERY = [
     "correspondenceCount": 20
   },
   {
-    "id": "OBS-086",
-    "index": 86,
+    "id": "OBS-081",
+    "index": 81,
     "filename": "IMG_20261017_170818 (4).jpeg",
     "thumb": "thumbs/IMG_20261017_170818 (4).jpeg",
     "image": "images/IMG_20261017_170818 (4).jpeg",
@@ -2236,8 +2106,8 @@ window.WILDID_GALLERY = [
     "correspondenceCount": 21
   },
   {
-    "id": "OBS-087",
-    "index": 87,
+    "id": "OBS-082",
+    "index": 82,
     "filename": "IMG_20261017_170818 (5).jpeg",
     "thumb": "thumbs/IMG_20261017_170818 (5).jpeg",
     "image": "images/IMG_20261017_170818 (5).jpeg",
@@ -2262,8 +2132,8 @@ window.WILDID_GALLERY = [
     "correspondenceCount": 22
   },
   {
-    "id": "OBS-088",
-    "index": 88,
+    "id": "OBS-083",
+    "index": 83,
     "filename": "IMG_20261017_170818 (6).jpg",
     "thumb": "thumbs/IMG_20261017_170818 (6).jpg",
     "image": "images/IMG_20261017_170818 (6).jpg",
@@ -2288,8 +2158,8 @@ window.WILDID_GALLERY = [
     "correspondenceCount": 23
   },
   {
-    "id": "OBS-089",
-    "index": 89,
+    "id": "OBS-084",
+    "index": 84,
     "filename": "IMG_20261017_170818 (7).jpg",
     "thumb": "thumbs/IMG_20261017_170818 (7).jpg",
     "image": "images/IMG_20261017_170818 (7).jpg",
@@ -2314,8 +2184,8 @@ window.WILDID_GALLERY = [
     "correspondenceCount": 24
   },
   {
-    "id": "OBS-090",
-    "index": 90,
+    "id": "OBS-085",
+    "index": 85,
     "filename": "IMG_20261017_170818 (8).jpg",
     "thumb": "thumbs/IMG_20261017_170818 (8).jpg",
     "image": "images/IMG_20261017_170818 (8).jpg",
@@ -2340,8 +2210,8 @@ window.WILDID_GALLERY = [
     "correspondenceCount": 25
   },
   {
-    "id": "OBS-091",
-    "index": 91,
+    "id": "OBS-086",
+    "index": 86,
     "filename": "IMG_20261017_170818 (9).jpg",
     "thumb": "thumbs/IMG_20261017_170818 (9).jpg",
     "image": "images/IMG_20261017_170818 (9).jpg",
@@ -2366,8 +2236,8 @@ window.WILDID_GALLERY = [
     "correspondenceCount": 26
   },
   {
-    "id": "OBS-092",
-    "index": 92,
+    "id": "OBS-087",
+    "index": 87,
     "filename": "IMG_20261017_182836.jpg",
     "thumb": "thumbs/IMG_20261017_182836.jpg",
     "image": "images/IMG_20261017_182836.jpg",
@@ -2392,8 +2262,8 @@ window.WILDID_GALLERY = [
     "correspondenceCount": 27
   },
   {
-    "id": "OBS-093",
-    "index": 93,
+    "id": "OBS-088",
+    "index": 88,
     "filename": "IMG_20261017_182841.jpg",
     "thumb": "thumbs/IMG_20261017_182841.jpg",
     "image": "images/IMG_20261017_182841.jpg",
@@ -2418,8 +2288,8 @@ window.WILDID_GALLERY = [
     "correspondenceCount": 28
   },
   {
-    "id": "OBS-094",
-    "index": 94,
+    "id": "OBS-089",
+    "index": 89,
     "filename": "IMG_20261017_182842.jpg",
     "thumb": "thumbs/IMG_20261017_182842.jpg",
     "image": "images/IMG_20261017_182842.jpg",
@@ -2444,8 +2314,8 @@ window.WILDID_GALLERY = [
     "correspondenceCount": 29
   },
   {
-    "id": "OBS-095",
-    "index": 95,
+    "id": "OBS-090",
+    "index": 90,
     "filename": "IMG_20261017_201650.jpg",
     "thumb": "thumbs/IMG_20261017_201650.jpg",
     "image": "images/IMG_20261017_201650.jpg",
@@ -2470,8 +2340,8 @@ window.WILDID_GALLERY = [
     "correspondenceCount": 30
   },
   {
-    "id": "OBS-096",
-    "index": 96,
+    "id": "OBS-091",
+    "index": 91,
     "filename": "IMG_20261017_202252.jpg",
     "thumb": "thumbs/IMG_20261017_202252.jpg",
     "image": "images/IMG_20261017_202252.jpg",
@@ -2496,8 +2366,8 @@ window.WILDID_GALLERY = [
     "correspondenceCount": 12
   },
   {
-    "id": "OBS-097",
-    "index": 97,
+    "id": "OBS-092",
+    "index": 92,
     "filename": "IMG_20261017_205727.jpg",
     "thumb": "thumbs/IMG_20261017_205727.jpg",
     "image": "images/IMG_20261017_205727.jpg",
@@ -2522,8 +2392,8 @@ window.WILDID_GALLERY = [
     "correspondenceCount": 13
   },
   {
-    "id": "OBS-098",
-    "index": 98,
+    "id": "OBS-093",
+    "index": 93,
     "filename": "IMG_20261017_205731.jpg",
     "thumb": "thumbs/IMG_20261017_205731.jpg",
     "image": "images/IMG_20261017_205731.jpg",
@@ -2548,8 +2418,8 @@ window.WILDID_GALLERY = [
     "correspondenceCount": 14
   },
   {
-    "id": "OBS-099",
-    "index": 99,
+    "id": "OBS-094",
+    "index": 94,
     "filename": "IMG_20261017_205733.jpg",
     "thumb": "thumbs/IMG_20261017_205733.jpg",
     "image": "images/IMG_20261017_205733.jpg",
@@ -2574,8 +2444,8 @@ window.WILDID_GALLERY = [
     "correspondenceCount": 15
   },
   {
-    "id": "OBS-100",
-    "index": 100,
+    "id": "OBS-095",
+    "index": 95,
     "filename": "IMG_20261017_205742.jpg",
     "thumb": "thumbs/IMG_20261017_205742.jpg",
     "image": "images/IMG_20261017_205742.jpg",
@@ -2600,8 +2470,8 @@ window.WILDID_GALLERY = [
     "correspondenceCount": 16
   },
   {
-    "id": "OBS-101",
-    "index": 101,
+    "id": "OBS-096",
+    "index": 96,
     "filename": "IMG_20261018_131943_489.jpg",
     "thumb": "thumbs/IMG_20261018_131943_489.jpg",
     "image": "images/IMG_20261018_131943_489.jpg",
@@ -2626,8 +2496,8 @@ window.WILDID_GALLERY = [
     "correspondenceCount": 17
   },
   {
-    "id": "OBS-102",
-    "index": 102,
+    "id": "OBS-097",
+    "index": 97,
     "filename": "IMG_20261018_131943_489_1.jpg",
     "thumb": "thumbs/IMG_20261018_131943_489_1.jpg",
     "image": "images/IMG_20261018_131943_489_1.jpg",
@@ -2652,8 +2522,8 @@ window.WILDID_GALLERY = [
     "correspondenceCount": 18
   },
   {
-    "id": "OBS-103",
-    "index": 103,
+    "id": "OBS-098",
+    "index": 98,
     "filename": "IMG_20261018_131943_746_3.jpg",
     "thumb": "thumbs/IMG_20261018_131943_746_3.jpg",
     "image": "images/IMG_20261018_131943_746_3.jpg",
@@ -2678,8 +2548,8 @@ window.WILDID_GALLERY = [
     "correspondenceCount": 19
   },
   {
-    "id": "OBS-104",
-    "index": 104,
+    "id": "OBS-099",
+    "index": 99,
     "filename": "IMG_20261018_131943_751_4.jpg",
     "thumb": "thumbs/IMG_20261018_131943_751_4.jpg",
     "image": "images/IMG_20261018_131943_751_4.jpg",
@@ -2704,8 +2574,8 @@ window.WILDID_GALLERY = [
     "correspondenceCount": 20
   },
   {
-    "id": "OBS-105",
-    "index": 105,
+    "id": "OBS-100",
+    "index": 100,
     "filename": "IMG_20261018_131943_853_5.jpg",
     "thumb": "thumbs/IMG_20261018_131943_853_5.jpg",
     "image": "images/IMG_20261018_131943_853_5.jpg",
@@ -2730,8 +2600,8 @@ window.WILDID_GALLERY = [
     "correspondenceCount": 21
   },
   {
-    "id": "OBS-106",
-    "index": 106,
+    "id": "OBS-101",
+    "index": 101,
     "filename": "Screenshot 2026-10-17 080835.png",
     "thumb": "thumbs/Screenshot 2026-10-17 080835.png",
     "image": "images/Screenshot 2026-10-17 080835.png",
@@ -2756,8 +2626,8 @@ window.WILDID_GALLERY = [
     "correspondenceCount": 22
   },
   {
-    "id": "OBS-107",
-    "index": 107,
+    "id": "OBS-102",
+    "index": 102,
     "filename": "Screenshot 2026-10-17 081004.png",
     "thumb": "thumbs/Screenshot 2026-10-17 081004.png",
     "image": "images/Screenshot 2026-10-17 081004.png",
@@ -2782,8 +2652,8 @@ window.WILDID_GALLERY = [
     "correspondenceCount": 23
   },
   {
-    "id": "OBS-108",
-    "index": 108,
+    "id": "OBS-103",
+    "index": 103,
     "filename": "Screenshot 2026-10-17 095112.png",
     "thumb": "thumbs/Screenshot 2026-10-17 095112.png",
     "image": "images/Screenshot 2026-10-17 095112.png",
@@ -2808,8 +2678,8 @@ window.WILDID_GALLERY = [
     "correspondenceCount": 24
   },
   {
-    "id": "OBS-109",
-    "index": 109,
+    "id": "OBS-104",
+    "index": 104,
     "filename": "Screenshot 2026-10-17 100531.png",
     "thumb": "thumbs/Screenshot 2026-10-17 100531.png",
     "image": "images/Screenshot 2026-10-17 100531.png",
@@ -2834,8 +2704,8 @@ window.WILDID_GALLERY = [
     "correspondenceCount": 25
   },
   {
-    "id": "OBS-110",
-    "index": 110,
+    "id": "OBS-105",
+    "index": 105,
     "filename": "Screenshot 2026-10-17 103003.png",
     "thumb": "thumbs/Screenshot 2026-10-17 103003.png",
     "image": "images/Screenshot 2026-10-17 103003.png",
@@ -2860,8 +2730,8 @@ window.WILDID_GALLERY = [
     "correspondenceCount": 26
   },
   {
-    "id": "OBS-111",
-    "index": 111,
+    "id": "OBS-106",
+    "index": 106,
     "filename": "Screenshot 2026-10-17 103438.png",
     "thumb": "thumbs/Screenshot 2026-10-17 103438.png",
     "image": "images/Screenshot 2026-10-17 103438.png",
@@ -2886,8 +2756,8 @@ window.WILDID_GALLERY = [
     "correspondenceCount": 27
   },
   {
-    "id": "OBS-112",
-    "index": 112,
+    "id": "OBS-107",
+    "index": 107,
     "filename": "Screenshot 2026-10-17 112438.png",
     "thumb": "thumbs/Screenshot 2026-10-17 112438.png",
     "image": "images/Screenshot 2026-10-17 112438.png",
@@ -2912,8 +2782,8 @@ window.WILDID_GALLERY = [
     "correspondenceCount": 28
   },
   {
-    "id": "OBS-113",
-    "index": 113,
+    "id": "OBS-108",
+    "index": 108,
     "filename": "Screenshot 2026-10-17 112519.png",
     "thumb": "thumbs/Screenshot 2026-10-17 112519.png",
     "image": "images/Screenshot 2026-10-17 112519.png",
@@ -2938,8 +2808,8 @@ window.WILDID_GALLERY = [
     "correspondenceCount": 29
   },
   {
-    "id": "OBS-114",
-    "index": 114,
+    "id": "OBS-109",
+    "index": 109,
     "filename": "Screenshot 2026-10-17 112526.png",
     "thumb": "thumbs/Screenshot 2026-10-17 112526.png",
     "image": "images/Screenshot 2026-10-17 112526.png",
@@ -2964,8 +2834,8 @@ window.WILDID_GALLERY = [
     "correspondenceCount": 30
   },
   {
-    "id": "OBS-115",
-    "index": 115,
+    "id": "OBS-110",
+    "index": 110,
     "filename": "Screenshot 2026-10-17 112541.png",
     "thumb": "thumbs/Screenshot 2026-10-17 112541.png",
     "image": "images/Screenshot 2026-10-17 112541.png",
@@ -2990,8 +2860,8 @@ window.WILDID_GALLERY = [
     "correspondenceCount": 12
   },
   {
-    "id": "OBS-116",
-    "index": 116,
+    "id": "OBS-111",
+    "index": 111,
     "filename": "Screenshot 2026-10-17 114324.png",
     "thumb": "thumbs/Screenshot 2026-10-17 114324.png",
     "image": "images/Screenshot 2026-10-17 114324.png",
@@ -3016,8 +2886,8 @@ window.WILDID_GALLERY = [
     "correspondenceCount": 13
   },
   {
-    "id": "OBS-117",
-    "index": 117,
+    "id": "OBS-112",
+    "index": 112,
     "filename": "Screenshot 2026-10-18 212740.png",
     "thumb": "thumbs/Screenshot 2026-10-18 212740.png",
     "image": "images/Screenshot 2026-10-18 212740.png",
@@ -3042,8 +2912,8 @@ window.WILDID_GALLERY = [
     "correspondenceCount": 14
   },
   {
-    "id": "OBS-118",
-    "index": 118,
+    "id": "OBS-113",
+    "index": 113,
     "filename": "Screenshot 2026-10-18 212753.png",
     "thumb": "thumbs/Screenshot 2026-10-18 212753.png",
     "image": "images/Screenshot 2026-10-18 212753.png",
@@ -3068,8 +2938,8 @@ window.WILDID_GALLERY = [
     "correspondenceCount": 15
   },
   {
-    "id": "OBS-119",
-    "index": 119,
+    "id": "OBS-114",
+    "index": 114,
     "filename": "Screenshot 2026-10-18 212832.png",
     "thumb": "thumbs/Screenshot 2026-10-18 212832.png",
     "image": "images/Screenshot 2026-10-18 212832.png",
@@ -3094,8 +2964,8 @@ window.WILDID_GALLERY = [
     "correspondenceCount": 16
   },
   {
-    "id": "OBS-120",
-    "index": 120,
+    "id": "OBS-115",
+    "index": 115,
     "filename": "Screenshot 2026-10-18 212947.png",
     "thumb": "thumbs/Screenshot 2026-10-18 212947.png",
     "image": "images/Screenshot 2026-10-18 212947.png",
@@ -3120,8 +2990,8 @@ window.WILDID_GALLERY = [
     "correspondenceCount": 17
   },
   {
-    "id": "OBS-121",
-    "index": 121,
+    "id": "OBS-116",
+    "index": 116,
     "filename": "Screenshot 2026-10-18 213000.png",
     "thumb": "thumbs/Screenshot 2026-10-18 213000.png",
     "image": "images/Screenshot 2026-10-18 213000.png",
@@ -3146,8 +3016,8 @@ window.WILDID_GALLERY = [
     "correspondenceCount": 18
   },
   {
-    "id": "OBS-122",
-    "index": 122,
+    "id": "OBS-117",
+    "index": 117,
     "filename": "Screenshot 2026-10-18 213007.png",
     "thumb": "thumbs/Screenshot 2026-10-18 213007.png",
     "image": "images/Screenshot 2026-10-18 213007.png",
@@ -3172,8 +3042,8 @@ window.WILDID_GALLERY = [
     "correspondenceCount": 19
   },
   {
-    "id": "OBS-123",
-    "index": 123,
+    "id": "OBS-118",
+    "index": 118,
     "filename": "WA_1792133703926.jpeg",
     "thumb": "thumbs/WA_1792133703926.jpeg",
     "image": "images/WA_1792133703926.jpeg",
@@ -3198,8 +3068,8 @@ window.WILDID_GALLERY = [
     "correspondenceCount": 20
   },
   {
-    "id": "OBS-124",
-    "index": 124,
+    "id": "OBS-119",
+    "index": 119,
     "filename": "WA_1792133716751.jpeg",
     "thumb": "thumbs/WA_1792133716751.jpeg",
     "image": "images/WA_1792133716751.jpeg",
@@ -3224,8 +3094,8 @@ window.WILDID_GALLERY = [
     "correspondenceCount": 21
   },
   {
-    "id": "OBS-125",
-    "index": 125,
+    "id": "OBS-120",
+    "index": 120,
     "filename": "file_00000000375c8211ac88027801cb7c94.png",
     "thumb": "thumbs/file_00000000375c8211ac88027801cb7c94.png",
     "image": "images/file_00000000375c8211ac88027801cb7c94.png",
@@ -3250,8 +3120,8 @@ window.WILDID_GALLERY = [
     "correspondenceCount": 22
   },
   {
-    "id": "OBS-126",
-    "index": 126,
+    "id": "OBS-121",
+    "index": 121,
     "filename": "file_00000000403c8211ba3ceaec4ee43357.png",
     "thumb": "thumbs/file_00000000403c8211ba3ceaec4ee43357.png",
     "image": "images/file_00000000403c8211ba3ceaec4ee43357.png",
@@ -3276,8 +3146,8 @@ window.WILDID_GALLERY = [
     "correspondenceCount": 23
   },
   {
-    "id": "OBS-127",
-    "index": 127,
+    "id": "OBS-122",
+    "index": 122,
     "filename": "file_000000004a74821197a0a9131e0c9c8d.png",
     "thumb": "thumbs/file_000000004a74821197a0a9131e0c9c8d.png",
     "image": "images/file_000000004a74821197a0a9131e0c9c8d.png",
@@ -3302,8 +3172,8 @@ window.WILDID_GALLERY = [
     "correspondenceCount": 24
   },
   {
-    "id": "OBS-128",
-    "index": 128,
+    "id": "OBS-123",
+    "index": 123,
     "filename": "file_00000000c8608207a074cefe37aa7074.png",
     "thumb": "thumbs/file_00000000c8608207a074cefe37aa7074.png",
     "image": "images/file_00000000c8608207a074cefe37aa7074.png",
@@ -3328,8 +3198,8 @@ window.WILDID_GALLERY = [
     "correspondenceCount": 25
   },
   {
-    "id": "OBS-129",
-    "index": 129,
+    "id": "OBS-124",
+    "index": 124,
     "filename": "image-1792225801113.jpg",
     "thumb": "thumbs/image-1792225801113.jpg",
     "image": "images/image-1792225801113.jpg",
@@ -3354,8 +3224,8 @@ window.WILDID_GALLERY = [
     "correspondenceCount": 26
   },
   {
-    "id": "OBS-130",
-    "index": 130,
+    "id": "OBS-125",
+    "index": 125,
     "filename": "image-1792226590858.jpg",
     "thumb": "thumbs/image-1792226590858.jpg",
     "image": "images/image-1792226590858.jpg",

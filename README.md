@@ -41,7 +41,7 @@ A first-person editorial digital story documenting Team HackOPs' experience at W
 
 ## 🐅 Companion Interactive Features
 
-- **130-Observation Specimen Atlas**: Collapsible drawer featuring the complete 130-image archive with multi-channel biometric filters, live search, and tabular registers.
+- **125-Observation Specimen Atlas**: Collapsible drawer featuring the complete 125-image archive with multi-channel biometric filters, live search, and tabular registers.
 - **Deep Forensic Lightbox**: Full-resolution pixel zoom (up to 400%), pan & drag, and cartographic HUD coordinate grid overlays.
 - **Dual Re-ID Workbench**: Side-by-side biometric comparison verifying stripe correspondence, flank bifurcation topology, and similarity scores.
 - **Synthesized Ambient Soundscape**: Subtle Web Audio forest soundscape (dry leaves and distant crickets).
@@ -70,14 +70,14 @@ WILDHACKS_HACKOPS_IMAGE_GALLERY/
 ├── update.bat              # One-click Windows batch runner for sync.py
 ├── watch.py                # Live background file watcher
 ├── generate_blog.py        # Static blog generator & parser
-├── gallery_data.json       # Structured JSON manifest of all 130 documented assets
+├── gallery_data.json       # Structured JSON manifest of all 125 documented assets
 ├── README.md               # Documentation
 ├── css/
 │   ├── style.css           # Core visual design tokens & gallery/workbench styles
 │   ├── editorial.css       # Long-form editorial storytelling layout & typography
 │   └── blog.css            # Specialized research dispatch publication styles
 ├── js/
-│   ├── gallery_data.js     # Client-side JavaScript manifest of all 130 observations
+│   ├── gallery_data.js     # Client-side JavaScript manifest of all 125 observations
 │   ├── app.js              # Story progress spy, soundscape, lightbox, & workbench engine
 │   └── blog.js             # Dynamic blog engine (TOC scrollspy, blog.txt live loader)
 ├── images/                 # Master high-resolution photographic evidence
